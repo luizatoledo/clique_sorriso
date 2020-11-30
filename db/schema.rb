@@ -10,29 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_172553) do
+ActiveRecord::Schema.define(version: 2020_11_30_181706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "dentist_profile_id", null: false
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["dentist_profile_id"], name: "index_appointments_on_dentist_profile_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
-  create_table "dentist_profiles", force: :cascade do |t|
-    t.boolean "approved"
+  create_table "dentists", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.boolean "approved"
     t.string "cro"
     t.string "specialty"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_dentist_profiles_on_user_id"
+    t.index ["user_id"], name: "index_dentists_on_user_id"
+  end
+
+  create_table "procedures", force: :cascade do |t|
+    t.bigint "dentist_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dentist_id"], name: "index_procedures_on_dentist_id"
+    t.index ["service_id"], name: "index_procedures_on_service_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "treatments", force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.bigint "procedure_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_treatments_on_appointment_id"
+    t.index ["procedure_id"], name: "index_treatments_on_procedure_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,11 +67,22 @@ ActiveRecord::Schema.define(version: 2020_11_30_172553) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "role"
+    t.boolean "admin"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "cpf"
+    t.string "phone_number"
+    t.string "address"
+    t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appointments", "dentist_profiles"
   add_foreign_key "appointments", "users"
-  add_foreign_key "dentist_profiles", "users"
+  add_foreign_key "dentists", "users"
+  add_foreign_key "procedures", "dentists"
+  add_foreign_key "procedures", "services"
+  add_foreign_key "treatments", "appointments"
+  add_foreign_key "treatments", "procedures"
 end

@@ -1,8 +1,8 @@
-class CreateDentistProfiles < ActiveRecord::Migration[6.0]
+class CreateDentists < ActiveRecord::Migration[6.0]
   def change
-    create_table :dentist_profiles do |t|
-      t.boolean :approved
+    create_table :dentists do |t|
       t.references :user, null: false, foreign_key: true
+      t.boolean :approved
       t.string :cro
       t.string :specialty
 
