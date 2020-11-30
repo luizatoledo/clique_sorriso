@@ -5,4 +5,6 @@ class Appointment < ApplicationRecord
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
 
+  validates :date, presence: true
+
 end
