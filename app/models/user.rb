@@ -14,9 +14,9 @@ class User < ApplicationRecord
   
   has_one_attached :photo
 
-  validates :first_name, :last_name, :cpf, :phone_number, :address, :birthday, :role, :admin, presence: true
+  validates :first_name, :last_name, :cpf, :phone_number, :address, :birthday, :role, presence: true
   validates :cpf, uniqueness: true
-  validades :role, inclusion: { in: [0,1] }
+  validates :role, inclusion: { in: [ 'patient', 'dentist' ] }
   validates :cpf, format: { with: /\d{3}\.\d{3}\.\d{3}-\d{2}/,
   message: "only accepts format XXX.XXX.XXX-XX" }
   validates :phone_number, format: { with: /\(\d{2}\)\d{4,5}-\d{4}/,
