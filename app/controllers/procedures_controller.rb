@@ -1,8 +1,10 @@
 class ProceduresController < ApplicationController
+  before_action :find_procedure, only: %i[edit update show destroy]
   def new
-    raise
-    @procedure = Procedure.new
+    @dentists = Dentist.all
     @dentist = Dentist.find(params[:dentist_id])
+    @procedure = Procedure.new
+    redirect_to procedures_path unless current_user.dentist?
   end
 
   def create
@@ -18,19 +20,29 @@ class ProceduresController < ApplicationController
   end
 
   def edit
-    @procedure = Procedure.find(params[:procedure][:dentist])
+    @dentists = Dentist.all
+  end
+
+  def update
+    @procedure.service = Service.find(params[:procedure][:service]) if params[:procedure][:service].present?
+    @procedure.save
+    redirect_to procedure_path(@procedure)
   end
 
   def show
-    @procedure = Procedure.find(params[:id])
   end
 
   def index
     @procedures = Procedure.all
   end
+  
+  def destroy
+    @procedure.destroy
+    redirect_to procedures_path
+  end
+  private
 
-  # private
-  # def procedure_params
-  #   params.require(:procedure).permit(:dentist_id, :service_id)
-  # end
+  def find_procedure
+    @procedure = Procedure.find(params[:id])
+  end
 end

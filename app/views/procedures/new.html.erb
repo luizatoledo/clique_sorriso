@@ -2,13 +2,17 @@
 <p>Find me in app/views/procedures/new.html.erb</p>
 
 <% dentist_names = {} %>
-<% Dentist.all.each do |d| %>
-  <% dentist_names[(d.user.last_name + " " + d.user.last_name).to_sym] = d.id  %>
+<% @dentists.each do |d| %>
+  <% dentist_names[(d.user.first_name + " " + d.user.last_name).to_sym] = d.id  %>
 <% end %>
 
 <%= simple_form_for [@dentist, @procedure] do |f| %>
 
-<%= f.input :dentist, collection: dentist_names %>
+<% if current_user.admin %>
+  <%= f.input :dentist, collection: dentist_names %>
+<% elsif current_user.dentist? %>
+  <%= f.input :dentist, collection: dentist_names.select{|_key, value| value == current_user.dentist.id }, selected: current_user.dentist %>
+<% end %>
 <%= f.input :service, collection: Service.all %>
 
 <%= f.button :submit %>

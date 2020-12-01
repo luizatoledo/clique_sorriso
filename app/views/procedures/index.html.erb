@@ -2,6 +2,22 @@
 <p>Find me in app/views/procedures/index.html.erb</p>
 
 
+<% @procedures.each do |p| %>
+<div>
+<%= link_to  "#{p.dentist.user.last_name}  --- #{p.service.title}", procedure_path(p) %>
+<%= link_to  "edit", edit_procedure_path(p) %>
+<%= link_to 'Delete', p, method: :delete, data: { confirm: 'Delete?' } %>
+</div>
+
+<br>
+  <%= p.dentist.user.last_name %> --- <%= p.service.title %>
+<% end %>
+
+
+
+
+
+
 
 
 
