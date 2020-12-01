@@ -1,13 +1,15 @@
 <% if current_user.admin %>
 	<%= simple_form_for dentist do |f| %>
-	<%= f.input :cro %>
-	<%= f.input :specialty %>
-	<%= f.input :approved %>
-	<%= f.button :submit %>
+		<%= f.input :cro %>
+		<%= f.input :specialty %>
+		<%= f.input :approved %>
+		<%= f.association :user %>
+		<%= f.button :submit %>
 	<% end %>
 <% else %>
 	<%= simple_form_for dentist do |f| %>
-	<%= f.input :cro %>
-	<%= f.input :specialty %>
-	<%= f.button :submit %>
+		<%= f.input :cro %>
+		<%= f.input :specialty %>
+		<%= f.button :submit %>
+	<% end %>
 <% end %>
