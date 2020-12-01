@@ -43,6 +43,9 @@
 					</div>
 				</div>
 			<% end %>
+		<% if current_user.admin || current_user = @dentist.user %>
+			<%= link_to "Adicionar procedimentos", new_dentist_procedure_path(@dentist), class: 'btn btn-ghost' %>
+		<% end %>
 		<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-ghost' %>
 	</div>
 </div>

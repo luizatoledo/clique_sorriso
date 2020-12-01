@@ -15,6 +15,12 @@ class DentistsController < ApplicationController
 
   def create
     @dentist = Dentist.new(dentist_params)
+    @dentist.user.role = 'dentist'
+    if @dentist.save
+      redirect_to dentist_path(@dentist)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -36,8 +42,8 @@ class DentistsController < ApplicationController
 
   def dentist_params
     if current_user.admin
-      params.require(:dentist).permit(:cro, :specialty, :approved)
-    else
+      params.require(:dentist).permit(:cro, :specialty, :approved, :user_id)
+    elsif current_user.patient?
       params.require(:dentist).permit(:cro, :specialty)
     end
   end
