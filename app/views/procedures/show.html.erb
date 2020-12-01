@@ -1,0 +1,10 @@
+<h1>Procedures#show</h1>
+<p>Find me in app/views/procedures/show.html.erb</p>
+
+
+<%= @procedure.dentist.user.first_name %><br>
+<%= @procedure.service.title %><br>
+<%= @procedure.service.duration %> min <br>
+<%= @procedure.service.description %><br>
+<%= link_to  "edit", edit_procedure_path(@procedure) %>
+<%= link_to 'Delete', @procedure, method: :delete, data: { confirm: 'Delete?' } %>
