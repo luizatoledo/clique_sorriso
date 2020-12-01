@@ -7,10 +7,11 @@
         <p><%= procedure.service.title %> | 
         <%= procedure.dentist.user.fullname %> 
       <% end %>
-      <div><%= link_to 'details', appointment_path(appointment) %></div>
-      <div><%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Delete?' } %></div>
+      <div><%= link_to 'detalhes', appointment_path(appointment) %></div>
+      <div><%= link_to 'editar', edit_appointment_path(appointment) %></div>
+      <div><%= link_to 'Excluir', appointment, method: :delete, data: { confirm: 'Delete?' } %></div>
     <% end %>
-  <div><%= link_to "Add new appointment", new_appointment_path %></div>
+  <div><%= link_to "Novo agendamento", new_appointment_path %></div>
 </div>
 
 

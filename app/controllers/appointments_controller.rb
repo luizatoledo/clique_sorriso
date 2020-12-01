@@ -17,10 +17,8 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-    # @treatment = Treatment.new
     if @appointment.save
-      # @treatment.appointment = @appointment
-      # @treatment.save
+
       redirect_to appointment_path(@appointment)
     else
       render :new
@@ -31,9 +29,16 @@ class AppointmentsController < ApplicationController
   end
 
   def update
+    if @appointment.update(appointment_params)
+      redirect_to appointment_path(@appointment), notice: 'Seu agendamento foi atualizado.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @appointment.destroy
+    redirect_to appointments_path  
   end
 
   private
