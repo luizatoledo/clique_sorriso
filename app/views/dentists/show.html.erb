@@ -1,2 +1,8 @@
-<h1>Dentists#show</h1>
-<p>Find me in app/views/dentists/show.html.erb</p>
+<div class="container">
+	<h1><%= @dentist.user.first_name %>'s profile</h1>
+	<div class="dentist-info d-flex flex-column">
+		<p><%= @dentist.cro %></p>
+		<p><%= @dentist.specialty %></p>
+		<p><%= link_to "Go back to dentists list", dentists_path %></p>
+	</div>
+</div>
