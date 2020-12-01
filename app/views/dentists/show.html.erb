@@ -1,8 +1,48 @@
 <div class="container">
-	<h1><%= @dentist.user.first_name %>'s profile</h1>
-	<div class="dentist-info d-flex flex-column">
-		<p><%= @dentist.cro %></p>
-		<p><%= @dentist.specialty %></p>
-		<p><%= link_to "Go back to dentists list", dentists_path %></p>
+	<div class="dentist-show-title text-center">
+		<h1>Perfil de <%= @dentist.user.first_name %></h1>
+	</div>
+	<div class="dentist-show-infos d-flex flex-column">
+		<div class="dentist-show-avatar d-flex">
+			<% if @dentist.user.photo.attached? %>
+				<%= cl_image_tag @dentist.user.photo.key, class: "dentist-show-avatar" %>
+			<% else %>
+				<%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: "dentist-show-avatar-no-image" %>
+			<% end %>
+		</div>
+		<div class="dentist-info d-flex flex-column align-items-center">
+			<span class="dentist-show-info-name"> Nome: 
+				<%= @dentist.user.first_name.capitalize %> 
+				<%= @dentist.user.last_name.capitalize %>
+			</span>
+			<span class="dentist-show-info-cro">
+				CRO: <%= @dentist.cro %>
+			</span>
+			<span class="dentist-show-info-specialty">
+				Especialidade: <%= @dentist.specialty %>
+			</span>
+		</div>
+		<div class="dentist-show-procedures-cards">
+			<h2>Procedimentos realizados:</h2>
+			<% @dentist.procedures.each do |procedure| %>
+				<div class="dentist-show-procedure-card d-flex">
+					<div class="dentist-show-procedure-img-div">
+						<% if procedure.photo.attached? %>
+							<%= cl_image_tag procedure.photo.key, class: 'dentist-show-procedure-img' %>
+						<% else %>
+							<%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'dentist-show-procedure-no-img', size: '100' %>
+						<% end %>
+					</div>
+					<div class="dentist-show-procedure-infos d-flex flex-column">
+						<div class="dentist-show-procedure-title">
+							<%= procedure.service.title %>
+						</div>
+						<div class="dentist-show-procedure-description">
+							<%= procedure.service.description %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-ghost' %>
 	</div>
 </div>
