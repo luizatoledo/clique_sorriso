@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :procedures, only: [:index, :show, :edit, :update, :destroy]
-  get '/users/:id/appointments'
 
-
+  resources :appointments
+  
+  resources :services, only: [:new, :create]
 
   # DENTISTS
     # Index, show para todos verem qual é a lista de dentistas da clínica e entrar no show de cada um
