@@ -1,0 +1,9 @@
+<div class="container">
+	<h1>Our dentists</h1>
+	<ul>
+	<% @dentists.each do |dentist| %>
+		<li><%= link_to dentist.user.first_name, dentist_path(dentist) %></li>
+	<% end %>
+	</ul>
+<%# idea: cards listing dentists profile (full name, cro, specialty, avatar) %>
+</div>
