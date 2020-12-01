@@ -6,7 +6,7 @@
   <% dentist_names[(d.user.last_name + " " + d.user.last_name).to_sym] = d.id  %>
 <% end %>
 
-<%= simple_form_for [@procedure] do |f| %>
+<%= simple_form_for [@dentist, @procedure] do |f| %>
 
 <%= f.input :dentist, collection: dentist_names %>
 <%= f.input :service, collection: Service.all %>
