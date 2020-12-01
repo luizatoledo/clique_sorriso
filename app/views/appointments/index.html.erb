@@ -1,0 +1,17 @@
+<div class="container">
+    <h2><%= @user.fullname %></h2>
+    <h2>Meus agendamentos</h2>
+    <% @appointments.each do |appointment| %>
+      <p><%= appointment.date %></p>
+      <p><% appointment.procedures.each do |procedure| %></p>
+        <p><%= procedure.service.title %> | 
+        <%= procedure.dentist.user.fullname %> 
+      <% end %>
+      <div><%= link_to 'details', appointment_path(appointment) %></div>
+      <div><%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Delete?' } %></div>
+    <% end %>
+  <div><%= link_to "Add new appointment", new_appointment_path %></div>
+</div>
+
+
+

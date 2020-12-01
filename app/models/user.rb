@@ -22,4 +22,8 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /\(\d{2}\)\d{4,5}-\d{4}/,
   message: "only accepts format (XX)XXXXX-XXXX" }
 
+  def fullname
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+  end
+
 end

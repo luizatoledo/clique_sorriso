@@ -1,0 +1,14 @@
+<div class="container">
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.input :date, as: :date %>
+  <div id='treatments'>
+    <%= f.simple_fields_for :treatments do |treatment| %>
+      <%= render 'treatment_fields', :f => treatment %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add treatment', f, :treatments %>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>
+</div>
