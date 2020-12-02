@@ -1,0 +1,19 @@
+<% if current_user.admin %>
+	<%= simple_form_for dentist do |f| %>
+		<p>Selecione o usuário: </p>
+		<%= f.select :user_id, User.where(role:'patient').map { |u| [u.fullname, u.id ] }, include_blank: true %>
+		<%= f.input :cro %>
+		<%= f.input :specialty %>
+		<%= f.input :approved %>
+		<%#= f.association :user %>
+		<%= f.button :submit %>
+	<% end %>
+<% elsif current_user.patient? %>
+	<%= simple_form_for dentist do |f| %>
+		<%= f.input :cro %>
+		<%= f.input :specialty %>
+		<%= f.button :submit %>
+	<% end %>
+<% else %>
+  <p>You are already logged in to a dentist profile</p>
+<% end %>
