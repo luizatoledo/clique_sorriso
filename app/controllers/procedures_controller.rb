@@ -1,10 +1,10 @@
 class ProceduresController < ApplicationController
   before_action :find_procedure, only: %i[edit update show destroy]
   def new
+    redirect_to procedures_path unless current_user.dentist?
     @dentists = Dentist.all
     @dentist = Dentist.find(params[:dentist_id])
     @procedure = Procedure.new
-    redirect_to procedures_path unless current_user.dentist?
   end
 
   def create
@@ -37,12 +37,24 @@ class ProceduresController < ApplicationController
   end
   
   def destroy
-    @procedure.destroy
-    redirect_to procedures_path
+    @procedure.destroy if can_delete?(@procedure)
   end
   private
 
   def find_procedure
     @procedure = Procedure.find(params[:id])
   end
+  
+  def can_delete?(procedure)
+    procedure.treatments.each do |t1|
+      appointment_duration = 0
+      t1.appointment.services.each { |s| appointment_duration += s.duration }
+      return false if  t1.appointment.date + appointment_duration.minutes > DateTime.now
+    end
+    return true
+  end
 end
+
+
+
+
