@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  authenticate :user, ->(user) { user.role == 'dentist' } do
+    resources :dentists, only: [:new]
+  end
+
+  authenticate :user, ->(user) { user.admin == true } do
+    resources :dentists, only: [:destroy]
+  end
+  
   resources :dentists, except: [:new, :destroy] do
     resources :procedures, only: [:new, :create]
   end
@@ -14,13 +22,7 @@ Rails.application.routes.draw do
   
   resources :services, only: [:new, :create]
 
-  authenticate :user, ->(user) { user.role == 'dentist' } do
-    resources :dentists, only: [:new]
-  end
 
-  authenticate :user, ->(user) { user.admin == true } do
-    resources :dentists, only: [:destroy]
-  end
 
   # DENTISTS
     # Index, show para todos verem qual é a lista de dentistas da clínica e entrar no show de cada um

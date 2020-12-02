@@ -8,12 +8,12 @@
 		<%#= f.association :user %>
 		<%= f.button :submit %>
 	<% end %>
-<% elsif current_user.patient? %>
+<% elsif current_user.dentist? && current_user.dentist.approved == false %>
 	<%= simple_form_for dentist do |f| %>
 		<%= f.input :cro %>
 		<%= f.input :specialty %>
 		<%= f.button :submit %>
 	<% end %>
 <% else %>
-  <p>You are already logged in to a dentist profile</p>
+  <p>You are already logged in to an approved dentist profile</p>
 <% end %>
