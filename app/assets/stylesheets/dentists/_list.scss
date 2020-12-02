@@ -1,0 +1,45 @@
+.dentists-list-title{
+  color: #89b0ae;
+  border-bottom: 1px solid #555b6e;
+}
+
+.dentist-card{
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.dentist-card-avatar-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dentist-card-avatar{
+  margin-right: 22px;
+}
+
+.dentist-card-infos-name-link{
+  text-decoration: none;
+  color: #555b6e;
+  font-weight: bold;
+  font-size: 24px;
+  &:hover{
+    text-decoration: none;
+    color: #89b0ae;
+  }
+}
+
+.dentist-card-infos-specialty{
+  color: #79819b;
+  margin-top: 5px;
+}
+
+.dentist-card-infos-cro{
+  color: #79819b;
+}
+
+.fa-ellipsis-v{
+  color: #79819b;
+}
