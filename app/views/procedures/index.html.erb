@@ -2,26 +2,61 @@
 <p>Find me in app/views/procedures/index.html.erb</p>
 
 <% if current_user.admin || current_user.dentist? %>
-<%= link_to  "Create", new_dentist_procedure_path(current_user.dentist.id) %>
+<%= link_to  "Create", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
 <% end %>
 
 
 
-<% @procedures.each do |p| %>
-<div>
-<%= link_to  "#{p.dentist.user.last_name}  --- #{p.service.title}", procedure_path(p) %>
-<%= link_to  "edit", edit_procedure_path(p) %>
-<%= link_to 'Delete', p, method: :delete, data: { confirm: 'Delete?' } %>
+<div class="services">
+<% Service.all.each do |service| %>
+    <div class="service">
+      <div class="service-info">
+        <h4><%= service.title %></h2>
+        <div class="service-details">
+            <div class="service-description">
+                Descricao: <%= service.description %>
+            </div>
+            <div class="service-time">
+                Duracao: <%= service.duration %>
+            </div>
+        </div>
+      </div>  
+      <div class="procedures">
+        <% service.dentists.each do |dentist| %> 
+            <%= dentist.user.fullname %>
+        <% end %>
+        
+      </div>
+    </div>
+<% end %>
 </div>
 
-<br>
-  <%= p.dentist.user.last_name %> --- <%= p.service.title %>
+
+<% @dentists.each do |d| %>
+    <div class="procedure-card">
+        <div class="procedure-photo">
+            <% if d.user.photo.attached? %>
+            <%= cl_image_tag d.user.photo.key, class: 'dentist-card-avatar', size: '100' %>
+            <% else %>
+            <%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'image-not-found-dentist-card', size: '100' %>
+            <% end %>
+        </div>
+        <div class="procedure-details">
+            <%= link_to dentist_path(d) do %>
+                <span><%= " Dentista: #{d.user.first_name} #{d.user.last_name}" %></span>
+                <span><%= "CRO: #{d.cro}" %></span>
+            <% end %>
+        </div>
+    </div>
+
+    <% d.procedures.each do |p| %>
+        <div class="procedure-details">
+            <div><%= "#{p.service.title}" %></div>
+            <div><%= "#{p.service.description}" %></div>
+            <div><%= "#{p.service.duration}" %></div>
+            <%= link_to  "edit", edit_procedure_path(p), class: "btn btn-primary" %>
+            <%= link_to 'Delete', p, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary" %>
+        </div>
+    <% end %>
 <% end %>
-
-
-
-
-
-
-
 
