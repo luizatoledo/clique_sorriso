@@ -3,6 +3,6 @@
   <p><%= procedure.service.title %> | 
   <%= procedure.dentist.user.fullname %>
 <% end %>
-<div><%= link_to 'editar', edit_appointment_path(appointment) %></div>
+<div><%= link_to 'editar', edit_appointment_path(@appointment) %></div>
 <div><%= link_to 'Excluir', @appointment, method: :delete, data: { confirm: 'Delete?' } %></div>
 <div><%= link_to "Meus agendamentos", appointments_path %></div>

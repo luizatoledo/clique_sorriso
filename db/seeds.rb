@@ -63,7 +63,7 @@ d2.save!
 
 # Appointment
 
-a1 = Appointment.new(date: Time.now)
+a1 = Appointment.new(date: Time.now + 10.hours)
 a1.user = u1
 a1.save!
 
