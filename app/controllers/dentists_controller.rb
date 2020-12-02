@@ -1,5 +1,5 @@
 class DentistsController < ApplicationController
-  before_action :set_dentist, only: [:show, :edit]
+  before_action :set_dentist, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -7,6 +7,7 @@ class DentistsController < ApplicationController
   end
 
   def show
+    redirect_to dentists_path unless @dentist.user.role = 'dentist' || current_user.admin
   end
 
   def new
@@ -15,7 +16,9 @@ class DentistsController < ApplicationController
 
   def create
     @dentist = Dentist.new(dentist_params)
-    @dentist.user.role = 'dentist'
+    if current_user.admin
+      @dentist.user.role = 'dentist' if @dentist.approved
+    end
     if @dentist.save
       redirect_to dentist_path(@dentist)
     else
@@ -32,6 +35,11 @@ class DentistsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @dentist.destroy
+    redirect_to dentists_path
   end
 
   private
