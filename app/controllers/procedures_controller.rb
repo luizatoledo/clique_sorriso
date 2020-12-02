@@ -25,6 +25,8 @@ class ProceduresController < ApplicationController
 
   def update
     @procedure.service = Service.find(params[:procedure][:service]) if params[:procedure][:service].present?
+    @procedure.dentist = Dentist.find(params[:procedure][:dentist]) if params[:procedure][:dentist].present? && current_user.admin
+    
     @procedure.save
     redirect_to procedure_path(@procedure)
   end
@@ -33,12 +35,15 @@ class ProceduresController < ApplicationController
   end
 
   def index
+    @dentists = Dentist.all
     @procedures = Procedure.all
   end
   
   def destroy
     @procedure.destroy if can_delete?(@procedure)
+    redirect_to procedures_path
   end
+
   private
 
   def find_procedure

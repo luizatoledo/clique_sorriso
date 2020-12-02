@@ -1,0 +1,28 @@
+.procedure-card {
+    width: 90vw;
+    display: flex ;
+    flex-direction: row;
+    transition: 0.2s;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.services {
+    width: 63%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .service {
+        height:  200px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        margin: 10px;
+        padding: 10px 20px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .procedures {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }   
+}
