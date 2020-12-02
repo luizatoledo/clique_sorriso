@@ -3,15 +3,24 @@
   border-bottom: 1px solid #555b6e;
 }
 
+.dentist-cards-container{
+  height: 95vh;
+
+}
+
 .dentist-card{
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   border-radius: 5px;
   padding: 12px;
+  height: 15%;
 }
 
+.dentist-card-avatar{
+  width: 10%;
+}
 .dentist-card-avatar-img{
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
