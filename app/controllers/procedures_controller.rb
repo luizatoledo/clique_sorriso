@@ -1,5 +1,7 @@
 class ProceduresController < ApplicationController
   before_action :find_procedure, only: %i[edit update show destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  
   def new
     redirect_to procedures_path unless current_user.dentist?
     @dentists = Dentist.all
