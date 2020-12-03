@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @chatroom.name %> User: <%= current_user.fullname %></h1>
+
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+  <% end %>
+
+
+
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render partial: 'messages/message', locals: { message: message} %>
+    <% end %>
+  </div>
+</div>

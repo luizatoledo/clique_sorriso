@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "dentists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.boolean "approved"
@@ -54,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.index ["user_id"], name: "index_dentists_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "laboratories", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -61,6 +68,16 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
+=======
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+>>>>>>> master
   end
 
   create_table "procedures", force: :cascade do |t|
@@ -112,6 +129,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "users"
   add_foreign_key "dentists", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "procedures", "dentists"
   add_foreign_key "procedures", "services"
   add_foreign_key "treatments", "appointments"
