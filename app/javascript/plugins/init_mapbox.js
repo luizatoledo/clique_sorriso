@@ -11,20 +11,24 @@ const initMapbox = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    console.log("Mapa appear");
-    
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-        new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
-    });
+    navigator.geolocation.watchPosition(function(position) {
+      const positionLatLog = [position.coords.longitude, position.coords.latitude]; 
+      console.log(positionLatLog)
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: positionLatLog, 
+        zoom: 14
+      });
 
-    fitMapToMarkers(map, markers);
+      const markers = JSON.parse(mapElement.dataset.markers);
+      markers.forEach((marker) => {
+          new mapboxgl.Marker()
+          .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
+        });
+      //fitMapToMarkers(map, markers);
+    });
   }
 };
 
