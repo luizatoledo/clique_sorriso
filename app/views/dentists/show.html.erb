@@ -8,7 +8,7 @@
 	<div class="dentist-show-infos d-flex flex-column">
 		<div class="dentist-show-avatar d-flex">
 			<% if @dentist.user.photo.attached? %>
-				<%= cl_image_tag @dentist.user.photo.key, class: "dentist-show-avatar" %>
+				<%= cl_image_tag @dentist.user.photo.key, transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}], class: "dentist-show-avatar" %>
 			<% else %>
 				<%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: "dentist-show-avatar-no-image" %>
 			<% end %>
