@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag("tooth.png") %>
     <% end %>
 
@@ -15,7 +15,10 @@
       </li>
       <li class="nav-item <%= "active" if controller_name == "procedures" %>">
         <%= link_to "Nossos Serviços", procedures_path, class: "nav-link" %>
-        </li>
+      </li>
+      <li class="nav-item <%= "active" if controller_name == "dentists" %>">
+      <%= link_to "Nossos Dentistas", dentists_path, class: "nav-link" %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
