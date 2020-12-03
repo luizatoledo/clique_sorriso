@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :dentist
   has_many :appointments
+  has_many :messages
   has_many :treatments, through: :appointments
   has_many :procedures, through: :treatments
   has_many :dentists, through: :procedures
