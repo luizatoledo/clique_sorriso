@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
- 
-  get 'services/new'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -23,7 +21,9 @@ Rails.application.routes.draw do
   
   resources :services, only: [:new, :create]
 
-
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   # DENTISTS
     # Index, show para todos verem qual é a lista de dentistas da clínica e entrar no show de cada um
