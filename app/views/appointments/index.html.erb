@@ -9,6 +9,7 @@
     <% end %>
 	  </div>
     <h2><%= @user.fullname %></h2>
+    <div><%= link_to 'atualizar', edit_user_registration_path(@user) %></div>
     <h2>Meus agendamentos</h2>
     <% @appointments.each do |appointment| %>
       <p><%= appointment.date %></p>
