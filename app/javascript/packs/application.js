@@ -26,6 +26,7 @@ require("@nathanvda/cocoon")
 
 // External imports
 import "bootstrap";
+import { initflatpickr } from "./plugins/init_flatpickr"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,6 +35,7 @@ import { initChatroomCable } from '../channels/chatroom_channel'
 
 import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
+  initflatpickr();
   // Call your functions here, e.g:
   // initSelect2();
   initChatroomCable();
