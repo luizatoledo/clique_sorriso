@@ -1,5 +1,5 @@
 <%= simple_form_for(@appointment) do |f| %>
-  <%= f.input :date, as: :date %>
+  <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
   <div id='treatments'>
     <%= f.simple_fields_for :treatments do |treatment| %>
       <%= render 'treatment_fields', :f => treatment %>
