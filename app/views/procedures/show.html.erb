@@ -1,3 +1,4 @@
+<%#= raise %>
 <h1>Procedures#show</h1>
 <p>Find me in app/views/procedures/show.html.erb</p>
 
@@ -6,6 +7,9 @@
 <%= @procedure.service.title %><br>
 <%= @procedure.service.duration %> min <br>
 <%= @procedure.service.description %><br>
+
+<%= cl_image_tag @procedure.service.photo.key %>
+
 <%= link_to  "edit", edit_procedure_path(@procedure) %>
 <%= link_to 'Delete', @procedure, method: :delete, data: { confirm: 'Delete?' } %>
 <%= link_to  "Back", procedures_path %>
