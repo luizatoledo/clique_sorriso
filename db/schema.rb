@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.index ["user_id"], name: "index_dentists_on_user_id"
   end
 
-<<<<<<< HEAD
   create_table "laboratories", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -68,7 +67,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-=======
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
->>>>>>> master
   end
 
   create_table "procedures", force: :cascade do |t|
