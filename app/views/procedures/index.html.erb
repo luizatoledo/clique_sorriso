@@ -1,8 +1,8 @@
 <h1>Procedures#index</h1>
 <p>Find me in app/views/procedures/index.html.erb</p>
 
-<% if current_user.admin || current_user.dentist? %>
-<%= link_to  "Create", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
+<% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
+  <%= link_to  "Create", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
 <% end %>
 
 
@@ -22,17 +22,21 @@
         </div>
       </div>  
       <div class="procedures">
-        <% service.dentists.each do |dentist| %> 
-            <%= dentist.user.fullname %>
+        <% service.dentists.each do |dentist| %>
+          <%= link_to procedure_path(Procedure.find_by(dentist_id: dentist.id)) do %>
+            <div class="dentist_button">
+                <div><img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/user-5d0a17a1a8c6db61a57ce05ef2b6c77a97a706da7cf250f27964a31a89df1414.png"></div>
+                <div><%= dentist.user.fullname %></div>
+            </div>
+          <% end %>
         <% end %>
-        
       </div>
     </div>
 <% end %>
 </div>
 
 
-<% @dentists.each do |d| %>
+<!-- <% @dentists.each do |d| %>
     <div class="procedure-card">
         <div class="procedure-photo">
             <% if d.user.photo.attached? %>
@@ -48,7 +52,6 @@
             <% end %>
         </div>
     </div>
-
     <% d.procedures.each do |p| %>
         <div class="procedure-details">
             <div><%= "#{p.service.title}" %></div>
@@ -59,4 +62,4 @@
         </div>
     <% end %>
 <% end %>
-
+ -->

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :laboratories
   get 'services/new'
   devise_for :users
   root to: 'pages#home'
