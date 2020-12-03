@@ -1,9 +1,10 @@
 .procedure-card {
     width: 90vw;
     display: flex ;
-    flex-direction: row;
+    
     transition: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: 5vw;
 }
 
 
@@ -30,4 +31,40 @@
     div { 
         width: 7em;
     }
+}
+
+.procedure-card{
+    display: flex;
+
+}
+
+.service-photo {
+    width: 50vw;
+}
+
+.procedure-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 25px;
+}
+
+.procedure-info {
+    display: flex;
+    justify-content: space-between;
+    width: 35vw;
+    margin-left: 2vw;
+    .procedure-info-title {
+        width: 30%;
+    
+    }
+    .procedure-info-content {
+        line-break: auto;
+        padding-left: 2vw;
+        height: max-content;
+    }        
+}
+.procedure-show-buttons {
+    display: flex;
+    justify-content: space-between;
 }
