@@ -143,3 +143,18 @@ t5 = Treatment.new()
 t5.appointment = a1
 t5.procedure = p3
 t5.save!
+
+
+labo_infos = [{name: "Cimerman Análises Clínicas", address: "672 avenida angelica, sao paulo"},
+{name: "Rádio Imuno Ensaio", address: "634 alameda barao, sao paulo"},
+{name: "Simples Exames", address: "188 rua martim francisco, sao paulo"},
+{name: "Medicina Diagnóstica Pedroso", address: "1241 avenida pedroso de morais, sao paulo"}]
+
+labo_infos.count.times do |i|
+  Laboratory.create(labo_infos[i])
+end
+
+
+
+
+

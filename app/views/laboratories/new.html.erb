@@ -1,0 +1,11 @@
+<div class="new-labo-form">
+    <% if current_user.admin %>
+        <%= simple_form_for @laboratory do |f| %>
+            <h1>Criar Laboratories here: </h1>
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%#= f.association :user %>
+            <%= f.button :submit, class: "btn btn-primary"%>
+        <% end %>
+    <% end %>
+</div>

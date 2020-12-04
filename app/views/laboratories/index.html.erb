@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-<div class="d-flex">
-<div style="width: 50%;">
-<h1>Laboratories</h1>
 
+<div class="d-flex">
+<div class="labo-content-list">
+<!-- <div class="new-labo-button btn btn-primary">
+    <%= link_to 'New Laboratory', new_laboratory_path %>
+</div> -->
 <table>
+  <h1>Laboratories</h1>
   <thead>
     <tr>
       <th>Name</th>
@@ -17,14 +19,12 @@
       <tr>
         <td><%= laboratory.name %></td>
         <td><%= laboratory.address %></td>
-        <td><%= link_to 'Show', laboratory %></td>
-        <td><%= link_to 'Edit', edit_laboratory_path(laboratory) %></td>
-        <td><%= link_to 'Destroy', laboratory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', laboratory, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Laboratory', new_laboratory_path %>
+ 
 </div>
 <br>
 
@@ -32,6 +32,7 @@
      style="width: 50%; height: 600px; left: 0;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+   
   </div>
   
 </div>

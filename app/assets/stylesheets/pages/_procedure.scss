@@ -5,6 +5,7 @@
     flex-direction: row;
     transition: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 70vh;
 }
 .services-title {
     margin-left: 20vw;
@@ -37,6 +38,8 @@
 
 .service-photo {
     width: 30vw;
+    margin: auto;
+    border-radius: 5px;
 }
 
 .procedure-infos {
@@ -71,3 +74,41 @@
    flex-direction: column;
    justify-content: space-around;
 }
+.procedure-info-content {
+    width: 25vw;
+    display: flex;
+    justify-content: flex-start;
+}
+.procedure-info-title {
+    width: 10vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.new-labo-form {
+    width: 80vw;
+    margin: auto;
+    input {
+        border-radius: 8px;
+        margin-bottom: 5vh;
+      }
+
+}
+.labo-content-list {
+    width:50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    table {
+        width: 60%;
+        margin: auto;
+    }
+    h1 {
+        margin: auto;
+    }
+}
+.new-labo-button {
+    
+}
+
+

@@ -8,19 +8,16 @@ class LaboratoriesController < ApplicationController
     @markers = @laboratories.geocoded.map do |labo|
       {
         lat: labo.latitude,
-        lng: labo.longitude,
-       
+        lng: labo.longitude
       }
     end
   end
 
   # GET /laboratories/1
   # GET /laboratories/1.json
-  def show
-  end
-
   # GET /laboratories/new
   def new
+    redirect_to root_path if !(current_user.admin)
     @laboratory = Laboratory.new
   end
 
