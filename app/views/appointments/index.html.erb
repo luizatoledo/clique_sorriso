@@ -29,9 +29,9 @@
             <p><%= procedure.service.title %> | 
             <%= procedure.dentist.user.fullname %></p>
           <% end %>
-          <% if Time.now > (appointment.date - (60 * 15)) && Time.now < (appointment.date + (appointment_duration * 60)) %>
+          <%# if Time.now > (appointment.date - (60 * 15)) && Time.now < (appointment.date + (appointment_duration * 60)) %>
             <div><%= link_to 'CHAT', "/chatrooms/1", class: "btn btn-primary" %></div>
-          <% end %>
+          <%# end %>
           <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
         </div>
       <%# end %>
