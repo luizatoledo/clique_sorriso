@@ -49,3 +49,13 @@
 .banner-container{
   margin-left:80px;
 }
+
+.banner-link{
+  color: white;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    color: #555b6e;
+
+  }
+}
