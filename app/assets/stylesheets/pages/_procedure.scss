@@ -1,11 +1,15 @@
 .procedure-card {
     width: 90vw;
+    margin: auto;
     display: flex ;
     flex-direction: row;
     transition: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 70vh;
 }
-
+.services-title {
+    margin-left: 20vw;
+}
 
 .services {
     width: 63%;
@@ -31,3 +35,80 @@
         width: 7em;
     }
 }
+
+.service-photo {
+    width: 30vw;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.procedure-infos {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    width: 60%;
+}
+
+.procedure-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 22px;
+}
+.procedure-new-form-card {
+  width: 60vw;
+  margin: auto;
+  input {
+    border-radius: 8px;
+    margin-bottom: 5vh;
+  }
+  select {
+    border-radius: 8px;
+    margin-bottom: 5vh;
+  }
+}
+.new-service-form {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.procedure-info-content {
+    width: 25vw;
+    display: flex;
+    justify-content: flex-start;
+}
+.procedure-info-title {
+    width: 10vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.new-labo-form {
+    width: 80vw;
+    margin: auto;
+    input {
+        border-radius: 8px;
+        margin-bottom: 5vh;
+      }
+
+}
+.labo-content-list {
+    width:50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    table {
+        width: 60%;
+        margin: auto;
+    }
+    h1 {
+        margin: auto;
+    }
+}
+.new-labo-button {
+    
+}
+
+

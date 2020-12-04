@@ -1,5 +1,7 @@
-<h1>Services#new</h1>
-<p>Find me in app/views/services/new.html.erb</p>
+
+  <div class="procedure-new-form-card">
+  <h1>Criar novo serviço aqui</h1>
+
 
 <%= simple_form_for [@service] do |f| %>
 
@@ -7,9 +9,10 @@
 
 <%= f.input :duration %>
 <%= f.input :description %>
+<%= f.input :photo, as: :file, input_html: { multiple: false } %>
 
-
-<%= f.button :submit %>
+<%= f.button :submit, value: "Criar Serviço", class: "btn btn-primary" %>
 
 <% end %>
+</div>
 

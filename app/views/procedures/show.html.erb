@@ -1,11 +1,38 @@
-<h1>Procedures#show</h1>
-<p>Find me in app/views/procedures/show.html.erb</p>
+
+<div class="services-title">
+    <h1>Procedure Nº <%=@procedure.id %></h1>
+</div>
+
+<div class="procedure-card row">
+    <div class="service-photo col-4">
+        <%= (cl_image_tag @procedure.service.photo.key, class: "service-photo") if @procedure.service.photo.attached? %>
+    </div>
+
+    <div class="procedure-infos col-8">
+        <div class="procedure-info">
+            <div class="procedure-info-title">Dentist</div>
+            <div class="procedure-info-content"><%= @procedure.dentist.user.fullname %></div>
+        </div>
+        <div class="procedure-info">
+            <div class="procedure-info-title">Service</div>
+            <div class="procedure-info-content"><%= @procedure.service.title %></div>
+        </div>
+        <div class="procedure-info">
+            <div class="procedure-info-title">Duration</div>
+            <div class="procedure-info-content"> <%= @procedure.service.duration %> minutos</div>
+       
+        </div>
+        <div class="procedure-info">
+            <div class="procedure-info-title">Description</div>
+            <div class="procedure-info-content"><%= @procedure.service.description %>nhjSDabh g gh bg bgh hujk j  hu h n nj n jk   b hj b h jb  hj bhj  b hjb hj b hj b h b hj b  hj</div>
+        </div>
+        <div class="procedure-info">
+            <%= link_to  "Editar", edit_procedure_path(@procedure), class: "btn btn-primary" %>
+            <%= link_to 'Deletar', @procedure, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary"  %>
+            <%= link_to  "Voltar", procedures_path, class: "btn btn-primary"  %>
+        </div>
+    </div>
+</div>
 
 
-<%= @procedure.dentist.user.first_name %><br>
-<%= @procedure.service.title %><br>
-<%= @procedure.service.duration %> min <br>
-<%= @procedure.service.description %><br>
-<%= link_to  "edit", edit_procedure_path(@procedure) %>
-<%= link_to 'Delete', @procedure, method: :delete, data: { confirm: 'Delete?' } %>
-<%= link_to  "Back", procedures_path %>
+

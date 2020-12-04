@@ -1,20 +1,21 @@
-<h1>Procedures#edit</h1>
-<p>Find me in app/views/procedures/edit.html.erb</p>
+<div class="procedure-new-form-card">  
+  <h1>Edit procedimento aqui</h1>
 
-<% dentist_names = {} %>
-<% @dentists.each do |d| %>
-  <% dentist_names[(d.user.first_name + " " + d.user.last_name).to_sym] = d.id  %>
-<% end %>
+  <% dentist_names = {} %>
+  <% @dentists.each do |d| %>
+    <% dentist_names[(d.user.first_name + " " + d.user.last_name).to_sym] = d.id  %>
+  <% end %>
 
-<%= simple_form_for [ @procedure] do |f| %>
+  <%= simple_form_for [ @procedure] do |f| %>
 
-<% if current_user.admin %>
-  <%= f.input :dentist, collection: dentist_names %>
-<% elsif current_user.dentist? %>
-  <%= f.input :dentist, collection: dentist_names.select{|_key, value| value == current_user.dentist.id }, selected: current_user.dentist %>
-<% end %>
-<%= f.input :service, collection: Service.all %>
+  <% if current_user.admin %>
+    <%= f.input :dentist, collection: dentist_names %>
+  <% elsif current_user.dentist? %>
+    <%= f.input :dentist, collection: dentist_names.select{|_key, value| value == current_user.dentist.id }, selected: current_user.dentist %>
+  <% end %>
+  <%= f.input :service, collection: Service.all %>
 
-<%= f.button :submit %>
+  <%= f.button :submit, value: "Salvar", class: "btn btn-primary" %>
 
-<% end %>
+  <% end %>
+</div>
