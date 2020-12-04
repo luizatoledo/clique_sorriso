@@ -2,18 +2,18 @@
 	<% if current_user.admin && @dentist.approved == false %>
 		<div class="alert alert-warning" role="alert">This dentist profile is not yet approved! </div>
 	<% end %>
-	<div class="dentist-show-title text-center">
+	<div class="dentist-show-title text-center my-3">
 		<h1>Perfil de <%= @dentist.user.first_name %></h1>
 	</div>
 	<div class="dentist-show-infos d-flex flex-column">
-		<div class="dentist-show-avatar d-flex">
+		<div class="dentist-show-avatar d-flex justify-content-center mb-4">
 			<% if @dentist.user.photo.attached? %>
 				<%= cl_image_tag @dentist.user.photo.key, transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}], class: "dentist-show-avatar" %>
 			<% else %>
 				<%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: "dentist-show-avatar-no-image" %>
 			<% end %>
 		</div>
-		<div class="dentist-info d-flex flex-column align-items-center">
+		<div class="dentist-info d-flex flex-column align-items-center mb-4">
 			<span class="dentist-show-info-name"> Nome: 
 				<%= @dentist.user.first_name.capitalize %> 
 				<%= @dentist.user.last_name.capitalize %>
@@ -26,10 +26,10 @@
 			</span>
 		</div>
 		<div class="dentist-show-procedures-cards">
-			<h2>Procedimentos realizados:</h2>
+			<h2 class="mb-4 procedure-title">Procedimentos realizados:</h2>
 			<% @dentist.procedures.each do |procedure| %>
-				<div class="dentist-show-procedure-card d-flex">
-					<div class="dentist-show-procedure-img-div">
+				<div class="dentist-show-procedure-card d-flex mb-4">
+					<div class="dentist-show-procedure-img-div mr-3">
 						<% if procedure.photo.attached? %>
 							<%= cl_image_tag procedure.photo.key, class: 'dentist-show-procedure-img' %>
 						<% else %>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="dentist-show-procedure-infos d-flex flex-column">
 						<div class="dentist-show-procedure-title">
-							<%= procedure.service.title %>
+							<%= link_to procedure.service.title, procedure_path(procedure) %>
 						</div>
 						<div class="dentist-show-procedure-description">
 							<%= procedure.service.description %>
@@ -46,16 +46,19 @@
 					</div>
 				</div>
 			<% end %>
-		<% if current_user.admin || current_user == @dentist.user %>
-			<%= link_to "Adicionar procedimentos", new_dentist_procedure_path(@dentist), class: 'btn btn-ghost' %>
-			<%= link_to "Editar perfil do dentista", edit_dentist_path(@dentist), class: 'btn btn-ghost' %>
-		<% end %>
-		<% if current_user.admin %>
-			<%= link_to "Excluir dentista", dentist_path(@dentist), method: :delete, class: 'btn btn-ghost' %>
-		<% end %>
-		<%# <% if current_user.adimn && @dentist.approved == false %>
+
+		<div class="dentist-show-buttons d-flex justify-content-around mb-4">
+			<% if current_user.admin || current_user == @dentist.user %>
+				<%= link_to "Adicionar procedimentos", new_dentist_procedure_path(@dentist), class: 'btn btn-new' %>
+				<%= link_to "Editar perfil do dentista", edit_dentist_path(@dentist), class: 'btn btn-new' %>
+			<% end %>
+			<% if current_user.admin %>
+				<%= link_to "Excluir dentista", dentist_path(@dentist), method: :delete, class: 'btn btn-new' %>
+			<% end %>
+			<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-new' %>
+		</div>
+	<%# <% if current_user.adimn && @dentist.approved == false %>
 			<%# <%= link_to "Aprovar dentista", dentist_path(@dentist) %>
 		<%# <% end %>
-		<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-ghost' %>
 	</div>
 </div>

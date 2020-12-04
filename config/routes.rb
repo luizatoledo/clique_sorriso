@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :appointments
   
-  resources :services, only: [:new, :create]
+  resources :services, only: [:new, :create, :edit, :update]
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create

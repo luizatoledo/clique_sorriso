@@ -28,7 +28,6 @@ class ProceduresController < ApplicationController
   def update
     @procedure.service = Service.find(params[:procedure][:service]) if params[:procedure][:service].present?
     @procedure.dentist = Dentist.find(params[:procedure][:dentist]) if params[:procedure][:dentist].present? && current_user.admin
-    
     @procedure.save
     redirect_to procedure_path(@procedure)
   end
