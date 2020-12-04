@@ -1,27 +1,43 @@
-<div class="container">
-    <div class="profile-pic">
+<div class="page row around">
+  <div class="content col-xs-12 col-md-4">
+    <div class="profile-pic d-flex align-items-center flex-column">
     <% if current_user.photo.attached? %>
-		  <%= cl_image_tag @user.photo.key,
-		  transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}],
-		  class: "avatar-large"%>
+      <%= cl_image_tag @user.photo.key,
+      transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}],
+      class: "avatar-large"%>
     <% else %>
       <%= image_tag("user.png", width: 100, height: 100 ) %>
     <% end %>
-	  </div>
+    </div>
     <h2><%= @user.fullname %></h2>
-    <div><%= link_to 'atualizar', edit_user_registration_path(@user) %></div>
-    <h2>Meus agendamentos</h2>
-    <% @appointments.each do |appointment| %>
-      <p><%= appointment.date %></p>
-      <p><% appointment.procedures.each do |procedure| %></p>
-        <p><%= procedure.service.title %> | 
-        <%= procedure.dentist.user.fullname %> 
-      <% end %>
-      <div><%= link_to 'detalhes', appointment_path(appointment) %></div>
-      <div><%= link_to 'editar', edit_appointment_path(appointment) %></div>
-      <div><%= link_to 'Excluir', appointment, method: :delete, data: { confirm: 'Delete?' } %></div>
-    <% end %>
-  <div><%= link_to "Novo agendamento", new_appointment_path %></div>
+    <P><%= @user.address %></P>
+    <P><%= @user.phone_number %></P>
+    <P><%= @user.email %></P>
+    <div><%= link_to 'atualizar', edit_user_registration_path(@user), class: "btn btn-primary" %></div>
+  </div>
+  <div class="content col-xs-12 col-md-8">
+    <div class="dentists-list-title">
+      <h2>Meus Agendamentos</h2>
+    </div>
+    <% @appointments.order(:date).each do |appointment| %>
+      <%# if appointment.date > Time.now %>
+        <div class="appointment-card">
+          <p><%= appointment.date %></p>
+          <% appointment_duration = 0 %>
+          <p><% appointment.procedures.each do |procedure| %></p>
+            <% appointment_duration += procedure.service.duration %>
+            <p><%= procedure.service.title %> | 
+            <%= procedure.dentist.user.fullname %></p>
+            <% if Time.now > (appointment.date - (60 * 15)) && Time.now < (appointment.date + (appointment_duration * 60)) %>
+              <div><%= link_to 'CHAT', "/chatrooms/1", class: "btn btn-primary" %></div>
+            <% end %>     
+          <% end %>
+          <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
+        </div>
+      <%# end %>
+    <% end %>  
+    <div><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary" %></div>
+  </div>
 </div>
 
 
