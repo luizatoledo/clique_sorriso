@@ -15,8 +15,12 @@
     <%if service.procedures.count > 0 %>
         <!-- <div class="service-big-card">
             <div><%= (cl_image_tag service.photo.key, class: "service-photo-avatar") if service.photo.attached? %></div> -->
+
+            <div class="service-photo">
+              <%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
+            </div>
+         
             <div class="service">
-                  <div class="service-photo"></div>
                   <div class="service-info">
                       <h4> <%= service.title %></h2>
                   <div class="service-details">
