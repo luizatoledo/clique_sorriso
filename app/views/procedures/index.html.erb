@@ -1,37 +1,46 @@
-<h1>Procedures#index</h1>
-<p>Find me in app/views/procedures/index.html.erb</p>
+<div class="services-title">
+    <h1>Serviços disponíveis</h1>
+    <div class="dentist_button">
+        <% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
+            <%= link_to  "Criar procedimento novo", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
+        <% end %>
+    </div>
+</div>
 
-<% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
-  <%= link_to  "Create", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
-<% end %>
 
 
 
 <div class="services">
 <% Service.all.each do |service| %>
-    <div class="service">
-      <div class="service-info">
-        <h4><%= service.title %></h2>
-        <div class="service-details">
-            <div class="service-description">
-                Descricao: <%= service.description %>
+    <%if service.procedures.count > 0 %>
+        <!-- <div class="service-big-card">
+            <div><%= (cl_image_tag service.photo.key, class: "service-photo-avatar") if service.photo.attached? %></div> -->
+            <div class="service">
+                  <div class="service-photo"></div>
+                  <div class="service-info">
+                      <h4> <%= service.title %></h2>
+                  <div class="service-details">
+                      <div class="service-description">
+                          Descrição: <%= service.description %>
+                      </div>
+                      <div class="service-time">
+                          Duração: <%= service.duration %>
+                      </div>
+                </div>
             </div>
-            <div class="service-time">
-                Duracao: <%= service.duration %>
-            </div>
-        </div>
-      </div>  
-      <div class="procedures">
-        <% service.dentists.each do |dentist| %>
-          <%= link_to procedure_path(Procedure.find_by(dentist_id: dentist.id)) do %>
-            <div class="dentist_button">
-                <div><img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/user-5d0a17a1a8c6db61a57ce05ef2b6c77a97a706da7cf250f27964a31a89df1414.png"></div>
-                <div><%= dentist.user.fullname %></div>
-            </div>
+        <!-- </div>  -->
+        <div class="procedures">
+          <% service.dentists.each do |dentist| %>
+            <%= link_to procedure_path(Procedure.find_by(dentist_id: dentist.id, service_id: service.id)) do %>
+              <div class="dentist_button">
+                  <div><img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/user-5d0a17a1a8c6db61a57ce05ef2b6c77a97a706da7cf250f27964a31a89df1414.png"></div>
+                  <div><%= dentist.user.fullname %></div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
 <% end %>
 </div>
 

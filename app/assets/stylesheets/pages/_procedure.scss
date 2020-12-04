@@ -1,12 +1,14 @@
 .procedure-card {
     width: 90vw;
+    margin: auto;
     display: flex ;
-    
+    flex-direction: row;
     transition: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-left: 5vw;
 }
-
+.services-title {
+    margin-left: 20vw;
+}
 
 .services {
     width: 63%;
@@ -33,38 +35,39 @@
     }
 }
 
-.procedure-card{
-    display: flex;
-
-}
-
 .service-photo {
-    width: 50vw;
+    width: 30vw;
 }
 
 .procedure-infos {
+    padding-top: 5%;
+    padding-bottom: 5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    font-size: 25px;
+    justify-content: space-between;
+    align-content: center;
+    width: 60%;
 }
 
 .procedure-info {
     display: flex;
-    justify-content: space-between;
-    width: 35vw;
-    margin-left: 2vw;
-    .procedure-info-title {
-        width: 30%;
-    
-    }
-    .procedure-info-content {
-        line-break: auto;
-        padding-left: 2vw;
-        height: max-content;
-    }        
+    justify-content: space-around;
+    font-size: 22px;
 }
-.procedure-show-buttons {
-    display: flex;
-    justify-content: space-between;
+.procedure-new-form-card {
+  width: 60vw;
+  margin: auto;
+  input {
+    border-radius: 8px;
+    margin-bottom: 5vh;
+  }
+  select {
+    border-radius: 8px;
+    margin-bottom: 5vh;
+  }
+}
+.new-service-form {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
 }
