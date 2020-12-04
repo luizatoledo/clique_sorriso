@@ -14,7 +14,7 @@
             <div class="procedure-info-content"><%= @procedure.dentist.user.fullname %></div>
         </div>
         <div class="procedure-info">
-            <div class="procedure-info-title">Service</div>
+            <div class="procedure-info-title">Serviço</div>
             <div class="procedure-info-content"><%= @procedure.service.title %></div>
         </div>
         <div class="procedure-info">
@@ -24,12 +24,15 @@
         </div>
         <div class="procedure-info">
             <div class="procedure-info-title">Description</div>
-            <div class="procedure-info-content"><%= @procedure.service.description %>nhjSDabh g gh bg bgh hujk j  hu h n nj n jk   b hj b h jb  hj bhj  b hjb hj b hj b h b hj b  hj</div>
+            <div class="procedure-info-content"><%= @procedure.service.description %></div>
         </div>
         <div class="procedure-info">
-            <%= link_to  "Editar", edit_procedure_path(@procedure), class: "btn btn-primary" %>
+            <%= link_to  "Editar procedure", edit_procedure_path(@procedure), class: "btn btn-primary" %>
             <%= link_to 'Deletar', @procedure, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary"  %>
             <%= link_to  "Voltar", procedures_path, class: "btn btn-primary"  %>
+            <% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
+              <%= link_to  "Editar serviço", edit_service_path(@procedure.service), class: "btn btn-primary"  %>
+            <% end %>
         </div>
     </div>
 </div>

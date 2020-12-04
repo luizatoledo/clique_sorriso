@@ -1,0 +1,17 @@
+
+  <div class="procedure-new-form-card">
+  <h1>Editar o serviço aqui</h1>
+
+
+<%= simple_form_for [@service] do |f| %>
+
+<%= f.input :title %>
+
+<%= f.input :duration %>
+<%= f.input :description %>
+<%= f.input :photo, as: :file, input_html: { multiple: false } %>
+
+<%= f.button :submit, value: "Criar Serviço", class: "btn btn-primary" %>
+
+<% end %>
+</div>
