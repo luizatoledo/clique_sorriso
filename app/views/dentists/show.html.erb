@@ -48,11 +48,11 @@
 			<% end %>
 
 		<div class="dentist-show-buttons d-flex justify-content-around mb-4">
-			<% if current_user.admin || current_user == @dentist.user %>
+			<% if ( user_signed_in? && current_user.admin ) || current_user == @dentist.user %>
 				<%= link_to "Adicionar procedimentos", new_dentist_procedure_path(@dentist), class: 'btn btn-new' %>
 				<%= link_to "Editar perfil do dentista", edit_dentist_path(@dentist), class: 'btn btn-new' %>
 			<% end %>
-			<% if current_user.admin %>
+			<% if user_signed_in? && current_user.admin %>
 				<%= link_to "Excluir dentista", dentist_path(@dentist), method: :delete, class: 'btn btn-new' %>
 			<% end %>
 			<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-new' %>
