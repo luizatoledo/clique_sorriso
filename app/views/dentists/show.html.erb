@@ -1,5 +1,5 @@
 <div class="container">
-	<% if current_user.admin && @dentist.approved == false %>
+	<% if user_signed_in? && current_user.admin && @dentist.approved == false %>
 		<div class="alert alert-warning" role="alert">This dentist profile is not yet approved! </div>
 	<% end %>
 	<div class="dentist-show-title text-center my-3">
@@ -30,8 +30,8 @@
 			<% @dentist.procedures.each do |procedure| %>
 				<div class="dentist-show-procedure-card d-flex mb-4">
 					<div class="dentist-show-procedure-img-div mr-3">
-						<% if procedure.photo.attached? %>
-							<%= cl_image_tag procedure.photo.key, class: 'dentist-show-procedure-img' %>
+						<% if procedure.service.photo.attached? %>
+							<%= cl_image_tag procedure.service.photo.key, class: 'dentist-show-procedure-img' %>
 						<% else %>
 							<%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'dentist-show-procedure-no-img', size: '100' %>
 						<% end %>
@@ -48,11 +48,11 @@
 			<% end %>
 
 		<div class="dentist-show-buttons d-flex justify-content-around mb-4">
-			<% if current_user.admin || current_user == @dentist.user %>
+			<% if ( user_signed_in? && current_user.admin ) || current_user == @dentist.user %>
 				<%= link_to "Adicionar procedimentos", new_dentist_procedure_path(@dentist), class: 'btn btn-new' %>
 				<%= link_to "Editar perfil do dentista", edit_dentist_path(@dentist), class: 'btn btn-new' %>
 			<% end %>
-			<% if current_user.admin %>
+			<% if user_signed_in? && current_user.admin %>
 				<%= link_to "Excluir dentista", dentist_path(@dentist), method: :delete, class: 'btn btn-new' %>
 			<% end %>
 			<%= link_to "Voltar para lista de dentistas", dentists_path, class: 'btn btn-new' %>

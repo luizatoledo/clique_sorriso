@@ -1,12 +1,13 @@
 <%= simple_form_for(@appointment) do |f| %>
-  <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
   <div id='treatments'>
+    <p>Selecione os procedimentos que deseja:</p>
     <%= f.simple_fields_for :treatments do |treatment| %>
       <%= render 'treatment_fields', :f => treatment %>
     <% end %>
     <div class='links'>
-      <%= link_to_add_association 'adicionar tratamento', f, :treatments %>
+      <%= link_to_add_association 'Adicionar Procedimento', f, :treatments %>
     </div>
   </div>
+  <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
   <%= f.submit %>
 <% end %>

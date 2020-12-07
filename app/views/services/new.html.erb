@@ -5,11 +5,11 @@
 
 <%= simple_form_for [@service] do |f| %>
 
-<%= f.input :title %>
+<%= f.input :title, label: "Title" %>
 
-<%= f.input :duration %>
-<%= f.input :description %>
-<%= f.input :photo, as: :file, input_html: { multiple: false } %>
+<%= f.input :duration, label: "Duração" %>
+<%= f.input :description, label: "Descrição" %>
+<%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Foto" %>
 
 <%= f.button :submit, value: "Criar Serviço", class: "btn btn-primary" %>
 
