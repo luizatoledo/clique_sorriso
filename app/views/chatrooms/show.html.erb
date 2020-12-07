@@ -5,11 +5,17 @@
     <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
   <% end %>
 
-
-
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
       <%= render partial: 'messages/message', locals: { message: message} %>
     <% end %>
   </div>
+</div>
+
+<div class="videocall">
+  <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+  <script>
+    callFrame = window.DailyIframe.createFrame();
+    callFrame.join({ url: 'https://cliquesorriso.daily.co/cliquesorriso' })
+  </script>
 </div>

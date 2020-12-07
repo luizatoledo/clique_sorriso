@@ -6,6 +6,14 @@ class Appointment < ApplicationRecord
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
 
-  validates :date, presence: true
+  validates :date, presence: true, on: :update
+
+  def appoint_duration
+    duration = 0
+    self.services.each do |service|
+      duration += service.duration
+    end
+    duration
+  end
 
 end
