@@ -15,7 +15,19 @@
 <div class="videocall">
   <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
   <script>
-    callFrame = window.DailyIframe.createFrame();
+    callFrame = window.DailyIframe.createFrame({
+      iframeStyle: {
+        position: 'fixed',
+        border: '1px solid black',
+        width: '375px',
+        height: '450px',
+        right: '1em',
+        bottom: '1em'
+      },
+      lang: 'pt',
+      showLeaveButton: true,
+      showFullscreenButton: true
+    });
     callFrame.join({ url: 'https://cliquesorriso.daily.co/cliquesorriso' })
   </script>
 </div>
