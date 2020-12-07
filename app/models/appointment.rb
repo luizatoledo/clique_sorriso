@@ -6,7 +6,7 @@ class Appointment < ApplicationRecord
   has_many :procedures, through: :treatments
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
-
+  has_many :prescriptions
   validates :date, presence: true, on: :update
 
   def appoint_duration

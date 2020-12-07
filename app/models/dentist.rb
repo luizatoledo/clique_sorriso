@@ -4,7 +4,7 @@ class Dentist < ApplicationRecord
   has_many :treatments, through: :procedures
   has_many :appointments, through: :treatments
   has_many :services, through: :procedures
-
+  has_many :prescriptions
   validates :cro, :specialty, presence: true
   validates :approved, inclusion: { in: [true, false]}
   

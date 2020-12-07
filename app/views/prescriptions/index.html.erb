@@ -1,0 +1,8 @@
+<h1>Prescriptions#index</h1>
+
+
+<% @prescriptions.each do |prescription| %>
+  <div>Paciente: <%= prescription.user.fullname %></div>
+  <div>Dentista: <%= prescription.dentist.user.fullname %></div>
+  <div>Detalhe: <%= prescription.description %></div>
+<% end %>
