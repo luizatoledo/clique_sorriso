@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   
   post '/dentists/unavailable', to: 'dentists#unavailable'
+  post '/dentists/available_hours', to: 'dentists#available_hours'
   resources :dentists, except: [:new, :destroy] do
     resources :procedures, only: [:new, :create]
   end

@@ -8,6 +8,8 @@
       <%= link_to_add_association 'Adicionar Procedimento', f, :treatments %>
     </div>
   </div>
-  <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
+  <div class="new-appointment-date">
+    <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
+  </div>
   <%= f.submit %>
 <% end %>
