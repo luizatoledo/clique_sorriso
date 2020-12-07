@@ -20,25 +20,18 @@
       <h2>Meus Agendamentos</h2>
     </div>
     <% @appointments.order(:date).each do |appointment| %>
-      <%# if appointment.date > Time.now %>
         <div class="appointment-card">
           <p><%= appointment.date %></p>
-          <% appointment_duration = 0 %>
-          <p><% appointment.procedures.each do |procedure| %></p>
-            <% appointment_duration += procedure.service.duration %>
+          <% appointment.procedures.each do |procedure| %>
             <p><%= procedure.service.title %> | 
             <%= procedure.dentist.user.fullname %></p>
           <% end %>
-          <%# if Time.now > (appointment.date - (60 * 15)) && Time.now < (appointment.date + (appointment_duration * 60)) %>
+          <% if Time.now > (appointment.date - (60 * 15)) && Time.now < (appointment.date + (appointment.appoint_duration * 60)) %>
             <div><%= link_to 'CHAT', "/chatrooms/1", class: "btn btn-primary" %></div>
-          <%# end %>
+          <% end %>
           <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
         </div>
-      <%# end %>
     <% end %>  
     <div><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary" %></div>
   </div>
 </div>
-
-
-
