@@ -1,13 +1,13 @@
 <div class="page row around">
   <div class="content col-xs-12 col-md-4">
     <div class="profile-pic d-flex align-items-center flex-column">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key,
-      transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}],
-      class: "avatar-large"%>
-    <% else %>
-      <%= image_tag("user.png", width: 100, height: 100 ) %>
-    <% end %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key,
+        transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}],
+        class: "avatar-large"%>
+      <% else %>
+        <%= image_tag("user.png", width: 100, height: 100 ) %>
+      <% end %>
     </div>
     <h2><%= @user.fullname %></h2>
     <P><%= @user.address %></P>

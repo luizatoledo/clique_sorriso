@@ -18,6 +18,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
+      chatroom = Chatroom.new(name: @appointment.id, appointment_id: @appointment.id)
+      chatroom.save
       redirect_to appointment_path(@appointment)
     else
       render :new
