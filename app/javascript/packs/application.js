@@ -26,12 +26,12 @@ require("@nathanvda/cocoon")
 
 // External imports
 import "bootstrap";
-import { initflatpickr } from "./plugins/init_flatpickr"
+import { initflatpickr, getDentistSchedule } from "./plugins/init_flatpickr";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-import { initChatroomCable } from '../channels/chatroom_channel'
+import { initChatroomCable } from '../channels/chatroom_channel';
 
 import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
@@ -40,5 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initChatroomCable();
   initMapbox();
+  getDentistSchedule();
 });
 

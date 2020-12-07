@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
- 
   resources :laboratories
-  get 'services/new'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
     resources :dentists, only: [:destroy]
   end
   
+  post '/dentists/unavailable', to: 'dentists#unavailable'
   resources :dentists, except: [:new, :destroy] do
     resources :procedures, only: [:new, :create]
   end
