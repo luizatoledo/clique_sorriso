@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_150536) do
+ActiveRecord::Schema.define(version: 2020_12_07_165605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "prescriptions", force: :cascade do |t|
+    t.bigint "dentist_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "appointment_id", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+    t.index ["dentist_id"], name: "index_prescriptions_on_dentist_id"
+    t.index ["user_id"], name: "index_prescriptions_on_user_id"
+  end
+
   create_table "procedures", force: :cascade do |t|
     t.bigint "dentist_id", null: false
     t.bigint "service_id", null: false
@@ -118,7 +130,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
     t.string "cpf"
     t.string "address"
     t.string "phone_number"
-    t.integer "role", default: 0
+    t.integer "role"
     t.boolean "admin", default: false
     t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -130,6 +142,9 @@ ActiveRecord::Schema.define(version: 2020_12_03_150536) do
   add_foreign_key "dentists", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "prescriptions", "appointments"
+  add_foreign_key "prescriptions", "dentists"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "procedures", "dentists"
   add_foreign_key "procedures", "services"
   add_foreign_key "treatments", "appointments"

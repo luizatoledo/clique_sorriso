@@ -1,0 +1,13 @@
+<h1>Prescriptions#new</h1>
+<p>Find me in app/views/prescriptions/new.html.erb</p>
+
+
+<%= simple_form_for [@prescription] do |f| %>
+
+<%= f.input :description, label: "Descrição" %>
+<%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Foto / PDF" %>
+
+<%= f.button :submit, value: "Criar Serviço", class: "btn btn-primary" %>
+
+<% end %>
+</div>

@@ -13,7 +13,7 @@
 }
 
 .services {
-    width: 63%;
+    width: 73%;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -32,11 +32,7 @@
         }
     }   
 }
-.dentist_button {
-    div { 
-        width: 7em;
-    }
-}
+
 
 .service-photo {
     width: 30vw;
@@ -121,4 +117,14 @@
   height: 190px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+// service
+.service-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.service-button {
+  margin-right: 1vw;
 }

@@ -9,11 +9,11 @@
   <%= simple_form_for [ @procedure] do |f| %>
 
   <% if current_user.admin %>
-    <%= f.input :dentist, collection: dentist_names %>
+    <%= f.input :dentist, collection: dentist_names, label: "Dentista" %>
   <% elsif current_user.dentist? %>
-    <%= f.input :dentist, collection: dentist_names.select{|_key, value| value == current_user.dentist.id }, selected: current_user.dentist %>
+    <%= f.input :dentist, collection: dentist_names.select{|_key, value| value == current_user.dentist.id }, selected: current_user.dentist, label: "Dentista" %>
   <% end %>
-  <%= f.input :service, collection: Service.all %>
+  <%= f.input :service, collection: Service.all, label: "Serviço" %>
 
   <%= f.button :submit, value: "Salvar", class: "btn btn-primary" %>
 
