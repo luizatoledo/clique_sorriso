@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_12_07_165605) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "appointment_id", null: false
+    t.index ["appointment_id"], name: "index_chatrooms_on_appointment_id"
   end
 
   create_table "dentists", force: :cascade do |t|
@@ -139,6 +141,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_165605) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "users"
+  add_foreign_key "chatrooms", "appointments"
   add_foreign_key "dentists", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
