@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_165605) do
+ActiveRecord::Schema.define(version: 2020_12_08_153351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_165605) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "time"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -132,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_165605) do
     t.string "cpf"
     t.string "address"
     t.string "phone_number"
-    t.integer "role"
+    t.integer "role", default: 0
     t.boolean "admin", default: false
     t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
