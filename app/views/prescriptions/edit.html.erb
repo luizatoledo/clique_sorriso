@@ -1,2 +1,18 @@
+
+
+
+<div class="procedure-new-form-card">  
 <h1>Prescriptions#edit</h1>
-<p>Find me in app/views/prescriptions/edit.html.erb</p>
+
+
+
+<%= simple_form_for @prescription do |f| %>
+
+<%= f.input :description, label: "Descrição" %>
+<%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Foto / PDF" %>
+<%= f.file_field :file, label: "Foto / PDF" %>
+
+<%= f.button :submit, value: "Editar", class: "btn btn-primary" %>
+
+<% end %>
+</div>
