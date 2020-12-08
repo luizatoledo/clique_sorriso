@@ -29,6 +29,14 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Minha área", appointments_path, class: "dropdown-item" %>
             <%= link_to "Novo agendamento", new_appointment_path, class: "dropdown-item" %>
+            <%= link_to "Minhas prescrições", prescriptions_index_path, class: "dropdown-item" %>
+            <% if user_signed_in? && (current_user.admin) %>
+                <%= link_to  "Novo serviço", new_service_path, class: "btn btn-primary dropdown-item"%>
+                <%= link_to  "Todos os serviços", services_path, class: "btn btn-primary dropdown-item"%>
+            <% end %>
+            <% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
+              <%= link_to  "Novo procedimento", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary dropdown-item"%>
+            <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

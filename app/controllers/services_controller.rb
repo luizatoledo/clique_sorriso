@@ -1,4 +1,10 @@
 class ServicesController < ApplicationController
+
+  def index
+    redirect_to root_path if !(current_user.admin)
+    @Services = Service.all
+  end
+
   def new
     redirect_to root_path if !(current_user.admin)
     @service = Service.new
@@ -24,6 +30,13 @@ class ServicesController < ApplicationController
       redirect_to procedures_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @service = Service.find(params[:id])
+    if @service.destroy
+      redirect_to services_path
     end
   end
 

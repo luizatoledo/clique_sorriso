@@ -8,7 +8,8 @@ class LaboratoriesController < ApplicationController
     @markers = @laboratories.geocoded.map do |labo|
       {
         lat: labo.latitude,
-        lng: labo.longitude
+        lng: labo.longitude,
+        name: labo.name
       }
     end
   end

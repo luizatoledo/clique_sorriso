@@ -26,6 +26,11 @@ const initMapbox = () => {
           new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
+          let el = document.createElement('div')
+          el.innerHTML = marker.name
+          new mapboxgl.Marker(el, { offset: [35, -35] })
+          .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
         });
       //fitMapToMarkers(map, markers);
     });

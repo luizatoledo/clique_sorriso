@@ -1,0 +1,16 @@
+<h1>Prescriptions#index</h1>
+
+
+<% @prescriptions.each do |prescription| %>
+  <div class="services">
+    <div>Paciente: <%= prescription.user.fullname %></div>
+    <div>Dentista: <%= prescription.dentist.user.fullname %></div>
+    <div>Detalhe: <%= prescription.description %></div>
+    <div>
+      <%= link_to  "edit", edit_prescription_path(prescription), class: "btn btn-primary" %>
+       <p>if prescription.file.attached?</p>
+      <%= link_to  "baixar o anexo", edit_prescription_path(prescription), class: "btn btn-primary" %>
+      
+    </div>
+  </div>
+<% end %>
