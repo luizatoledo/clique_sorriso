@@ -1,6 +1,3 @@
-
-
-
 <div class="procedure-new-form-card">  
 <h1>Prescriptions#edit</h1>
 
@@ -9,9 +6,9 @@
 <%= simple_form_for @prescription do |f| %>
 
 <%= f.input :description, label: "Descrição" %>
-<%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Foto / PDF" %>
-<%= f.file_field :file, label: "Foto / PDF" %>
-
+<div>
+  <%= f.file_field :file %>
+</div>
 <%= f.button :submit, value: "Editar", class: "btn btn-primary" %>
 
 <% end %>

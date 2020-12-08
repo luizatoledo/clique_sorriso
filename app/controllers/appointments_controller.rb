@@ -41,13 +41,40 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    redirect_to appointments_path  
+    redirect_to appointments_path
+  end
+  
+  def selected_procedures
+    procedure = Procedure.find(params[:procedure_id])
+    render json: procedure
+    return procedure
+  end
+
+  def selected_day
+    day = params[:date_picked]
+    render json: [day]
+    return day
+  end
+
+  def available_hours
+    proc = selected_procedures
+    date = selected_day
+    @doc = proc.dentist
+    appoint_of_day = []
+    @doc.appointments.uniq.each do |a|
+      if a.date.strftime('%d-%m-%Y') == date.strftime('%d-%m-%Y')
+        appoint_of_day << a
+      end
+    end
+    # available = []
+    # appoint_of_day.each do |app|
+    appoint_of_day
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date, treatments_attributes: [:id, :procedure_id, :_destroy])
+    params.require(:appointment).permit(:date, :time, treatments_attributes: [:id, :procedure_id, :_destroy])
   end
 
   def find_appointment
