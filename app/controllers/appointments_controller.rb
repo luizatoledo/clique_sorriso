@@ -43,7 +43,7 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to appointments_path
   end
-  
+
   def selected_procedures
     procedure = Procedure.find(params[:procedure_id])
     render json: procedure

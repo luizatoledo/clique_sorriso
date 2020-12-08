@@ -86,7 +86,7 @@ d2.save!
 s1 = Service.create!(title: 'Clareamento',
 								 description: 'Procedimento estético para torar os tons do esmalte dentário mais claros. Utiliza-se produtos a base de peróxido de hidrogênio',
 								 duration: 45)
-img_clareamento = URI.open('https://conteudo.imguol.com.br/c/entretenimento/e1/2020/09/08/dentes-brancos-sorriso-bonito-1599583111401_v2_450x337.jpg')
+img_clareamento = URI.open('https://blog.odontocompany.com/wp-content/uploads/2019/10/307864-especialista-explica-como-funciona-o-clareamento-dental.jpg')
 s1.photo.attach(io: img_clareamento, filename: 'clareamento.png', content_type: 'image/png')
 
 s2 = Service.create!(title: 'Tratamento de Canal',
@@ -110,7 +110,7 @@ s4.photo.attach(io: img_tartaro, filename: 'tartaro.png', content_type: 'image/p
 s5 = Service.create!(title: 'Consulta Online',
 									description: '30 minutos de conversa com o dentista para tirar dúvidas e passar orientações prévias ou pedidos de exame. O valor da consulta é revertido se o paciente da prosseguimento ao tratamento',
 									duration: 30)
-img_online = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7G-saONWYuzsmdI4_lDVD2ttUoY_U1eD6ug&usqp=CAU')
+img_online = URI.open('https://cdn1.iconfinder.com/data/icons/online-messaging-glyph/48/Sed-07-512.png')
 s5.photo.attach(io: img_online, filename: 'online.png', content_type: 'image/png')
 
 s6 = Service.create!(title: 'Aparelho Ortodôntico - Instalação ou Remoção',
