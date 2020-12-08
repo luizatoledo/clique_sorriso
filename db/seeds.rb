@@ -155,7 +155,7 @@ p5.save!
 
 # Dentista 2
 
-p6 = Procedure.new()
+p6 = Procedure.new
 p6.dentist = d2
 p6.service = s3
 p6.save!
