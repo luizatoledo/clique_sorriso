@@ -17,15 +17,20 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories/1
   # GET /laboratories/1.json
   # GET /laboratories/new
-  def new
-    redirect_to root_path if !(current_user.admin)
-    @laboratory = Laboratory.new
+  def show
+    @laboratory = Laboratory.find(params[:id])
+    @marker = { lat: @laboratory.latitude, lng:@laboratory.longitude, name: @laboratory.name }
+    #  {
+    #     lat: labo.latitude,
+    #     lng: labo.longitude,
+    #     name: labo.name
+    #   }
+    # end
+    @site = find_site
   end
 
   # GET /laboratories/1/edit
-  def edit
-  end
-
+  
   # POST /laboratories
   # POST /laboratories.json
   def create
@@ -76,4 +81,16 @@ class LaboratoriesController < ApplicationController
     def laboratory_params
       params.require(:laboratory).permit(:name, :address)
     end
+
+    def find_site
+      case @laboratory.name.downcase.first(3)
+      when "pap"
+        "https://papaizdiagnosticos.com.br/documentacao/?gclid=Cj0KCQiA5bz-BRD-ARIsABjT4ni2cJwxRv1ZU_mCjhPo6fDV3bBipO3VFn9MqXztnWXQADl-_RrcBj8aAgYxEALw_wcB"
+      when "ind"
+        "http://www.indor.com.br/index2.html"
+      when "iso"
+        "http://www.isoradiologia.com.br/"
+      end
+    end
+        
 end

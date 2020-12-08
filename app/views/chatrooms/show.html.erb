@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @chatroom.name %> User: <%= current_user.fullname %></h1>
+  <h1><%= @chatroom.name %> - <%= current_user.fullname %></h1>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
   <% end %>

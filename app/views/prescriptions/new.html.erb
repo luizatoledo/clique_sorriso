@@ -1,15 +1,12 @@
 <div class="procedure-new-form-card">  
-<h1>Nova prescrição</h1>
+    <h1>Nova prescrição</h1>
+    <%= simple_form_for @prescription do |f| %>
+    <%= f.input :appointment, label: "Paciente", collection: { "#{ @appointment.user.fullname }" => @appointment.id } %>
 
+    <%= f.input :description, label: "Descrição" %>
+    <%= f.file_field :file %>
 
+    <%= f.button :submit, value: "Criar prescrição", class: "btn btn-primary" %>
 
-<%= simple_form_for [@prescription] do |f| %>
-
-<%= f.input :description, label: "Descrição" %>
-<%= f.input :photo, as: :file, input_html: { multiple: false }, label: "Foto / PDF" %>
-<%= f.file_field :file, label: "Foto / PDF" %>
-
-<%= f.button :submit, value: "Criar prescrição", class: "btn btn-primary" %>
-
-<% end %>
+    <% end %>
 </div>
