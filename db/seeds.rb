@@ -104,7 +104,7 @@ s3.photo.attach(io: img_profilaxia, filename: 'profilaxia.png', content_type: 'i
 s4 = Service.create!(title: 'Remoção de tártaro',
 								 description: 'Raspagem básica de pouco tártaro',
 								 duration: 30)
-img_tartaro = URI.open('https://lh3.googleusercontent.com/proxy/5lqRT8LIRYQOVZ7nZ5Za76iaKhgJO5fSO0lUS4Yl_Sf1SEmT7cv40jgG0eLsQxv9B6IiA3cb7F0OFKQuw8UoO9ikREHDeotzLx__KWNyfca_FTrTzJ9R55YhE8PzjuULCHlJD6L7DszkUeCPmNHULik3Dyb_VEh0k02m45VNdPHaPcN0mak')
+img_tartaro = URI.open('https://fabriciaalmeida.com.br/wp-content/themes/fabriciaalmeida/assets/images/tratamentos/e4e5e65ebe9c5c650e0d68bbf40e9397.jpg')
 s4.photo.attach(io: img_tartaro, filename: 'tartaro.png', content_type: 'image/png')
 
 s5 = Service.create!(title: 'Consulta Online',
@@ -226,7 +226,7 @@ t5.save!
 # User 5 appointments and treatments
 
 a5 = Appointment.new
-a5.date = '2019-09-18 16:15:00'
+a5.date = '2019-09-18 16:30:00'
 a5.user = u5
 a5.save!
 
@@ -257,7 +257,7 @@ t8.save!
 
 a8 = Appointment.new
 a8.user = u5
-a8.date = '2019-12-01 15:45:00'
+a8.date = '2019-12-01 16:00:00'
 a8.save!
 
 t9 = Treatment.new
