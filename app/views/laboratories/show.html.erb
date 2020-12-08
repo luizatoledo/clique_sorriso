@@ -1,14 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div id="map"
+     style="width: 50%; height: 600px; right: 0; position: fixed"
+     data-marker="<%= @marker.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+   
+  </div>
+  <div class="new-labo-form labo-show-card">
+
 
 <p>
   <strong>Name:</strong>
+</p>
+<p>
   <%= @laboratory.name %>
 </p>
 
 <p>
   <strong>Address:</strong>
+</p>
+<p>
   <%= @laboratory.address %>
 </p>
 
-<%= link_to 'Edit', edit_laboratory_path(@laboratory) %> |
-<%= link_to 'Back', laboratories_path %>
+
+<p>
+<%= link_to(@site, target: '_blank') do %>
+  <i class="fa fa-question-circle" aria-hidden="true"></i> Mais informações entre no Site desse Laboratório
+<% end %>
+</p>
+<p>
+  <%= link_to 'Back', laboratories_path %>
+</p>
+</div>
+
+
+
+
+</div>
