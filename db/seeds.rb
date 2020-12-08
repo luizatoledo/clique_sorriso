@@ -92,7 +92,7 @@ s1.photo.attach(io: img_clareamento, filename: 'clareamento.png', content_type: 
 s2 = Service.create!(title: 'Tratamento de Canal',
 								 description: 'Tratamento de cárie que interferiu na polpa do dente',
 								 duration: 150)
-img_canal = URI.open('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dentalartepoa.com.br%2Fsorria%2Fquando-e-preciso-fazer-tratamento-de-canal%2F&psig=AOvVaw28TYMiFlKg4VESdfPE2CmL&ust=1607457896400000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDt-LzVvO0CFQAAAAAdAAAAABAD')
+img_canal = URI.open('https://blog.odontocompany.com/wp-content/uploads/2019/11/o-que-e-e-quando-o-tratamento-de-canal-e-indicado-entenda-agora222.jpg')
 s2.photo.attach(io: img_canal, filename: 'canal.png', content_type: 'image/png')
 
 s3 = Service.create!(title: 'Profilaxia | Limpeza Dentária',
