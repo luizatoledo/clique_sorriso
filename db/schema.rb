@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_165605) do
     t.string "cpf"
     t.string "address"
     t.string "phone_number"
-    t.integer "role"
+    t.integer "role", default: 0
     t.boolean "admin", default: false
     t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
