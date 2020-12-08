@@ -44,23 +44,12 @@ class DentistsController < ApplicationController
 
   def unavailable
     procedure = Procedure.find(params[:procedure_id])
-    day = params[:date_picked]
-    doc = procedure.dentist
-    day_appoints = Appointment.where(date: day)
-    # dates = []
-    # procedure.dentist.appointments.uniq.each do |appointment|
-    #   end_time = appointment.date + (appointment.appoint_duration * 60)
-    #   dates << {from: appointment.date.strftime('%d-%m-%Y %H:%M'), to: end_time.strftime('%d-%m-%Y %H:%M') }
-    #   # dates << appointment.date.to_date
-    # end
-    # render json: dates
+    dates = []
     procedure.dentist.appointments.uniq.each do |appointment|
+      end_time = appointment.date + (appointment.appoint_duration * 60)
+      dates << {from: appointment.date.strftime('%d-%m-%Y %H:%M'), to: end_time.strftime('%d-%m-%Y %H:%M') }
     end
-  end
-
-  def available_hours
-    
-
+    render json: dates
   end
 
   private

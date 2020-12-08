@@ -9,6 +9,8 @@ class Appointment < ApplicationRecord
   has_many :prescriptions
   validates :date, presence: true, on: :update
 
+  TIME = ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00']
+
   def appoint_duration
     duration = 0
     self.services.each do |service|

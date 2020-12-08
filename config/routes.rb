@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
   
   post '/dentists/unavailable', to: 'dentists#unavailable'
-  post '/dentists/available_hours', to: 'dentists#available_hours'
   resources :dentists, except: [:new, :destroy] do
     resources :procedures, only: [:new, :create]
   end
@@ -29,6 +28,8 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
+
+
 
   # DENTISTS
     # Index, show para todos verem qual é a lista de dentistas da clínica e entrar no show de cada um
