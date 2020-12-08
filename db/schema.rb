@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_155642) do
+ActiveRecord::Schema.define(version: 2020_12_08_153351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_155642) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "time"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -79,6 +80,18 @@ ActiveRecord::Schema.define(version: 2020_12_07_155642) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.bigint "dentist_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "appointment_id", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
+    t.index ["dentist_id"], name: "index_prescriptions_on_dentist_id"
+    t.index ["user_id"], name: "index_prescriptions_on_user_id"
   end
 
   create_table "procedures", force: :cascade do |t|
@@ -133,6 +146,9 @@ ActiveRecord::Schema.define(version: 2020_12_07_155642) do
   add_foreign_key "dentists", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "prescriptions", "appointments"
+  add_foreign_key "prescriptions", "dentists"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "procedures", "dentists"
   add_foreign_key "procedures", "services"
   add_foreign_key "treatments", "appointments"

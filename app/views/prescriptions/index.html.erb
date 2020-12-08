@@ -1,0 +1,20 @@
+<div class="prescription-card">
+  <h1>Minhas Prescrições</h1>
+</div>
+
+
+<% @prescriptions.each do |prescription| %>
+ <div class="prescription-card">
+    <div class="prescription-line"><div><b>Paciente: </b></div><div><%= prescription.user.fullname %></div></div>
+    <div class="prescription-line"><div><b>Dentista: </b></div><div><%= prescription.dentist.user.fullname %></div></div>
+    <div class="prescription-line"><div><b>Appointment-date: </b></div><div><%= prescription.appointment.date.to_s[0..10] %></div></div>
+    <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
+    <div class="prescription-buttons-line">
+      <div><%= link_to  "Edit", edit_prescription_path(prescription) %></div>
+      <div><%= link_to "Baixar o anexo", prescription.file, download: true %></div>
+    </div>
+  </div>
+  
+<% end %>
+
+

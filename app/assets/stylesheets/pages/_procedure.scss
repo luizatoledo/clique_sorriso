@@ -13,7 +13,7 @@
 }
 
 .services {
-    width: 63%;
+    width: 73%;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -32,11 +32,7 @@
         }
     }   
 }
-.dentist_button {
-    div { 
-        width: 7em;
-    }
-}
+
 
 .service-photo {
     width: 30vw;
@@ -98,16 +94,17 @@
 }
 .labo-content-list {
     width:50%;
-    margin: auto;
+    left: 0;
     display: flex;
     flex-direction: column;
     table {
-        width: 60%;
+        width: 75%;
         margin: auto;
     }
     h1 {
         margin: auto;
     }
+    
 }
 .new-labo-button {
     
@@ -122,3 +119,53 @@
   object-fit: cover;
   border-radius: 5px;
 }
+
+// service
+.service-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.service-button {
+  margin-right: 1vw;
+}
+
+.prescription-card {
+  width: 30vw;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 2vh;
+  div { 
+      margin-bottom: 1vh;
+  }
+  
+  h1 {
+      margin-bottom: 3vh;
+  }
+  b {
+      color:  rgba(100, 100, 111, 0.8);
+  }
+  .prescription-line {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      word-wrap:break-word;
+      div {
+          margin-left: 1vw;
+      }
+  }
+  .prescription-buttons-line {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+  }
+}
+
+.labo-show-card {
+    word-wrap:break-word;
+    p{
+        font-size: 18px;
+        margin-bottom: 5vh;
+    }
+}
+

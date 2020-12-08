@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :procedures, through: :treatments
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
-  
+  has_many :prescriptions
   enum role: [:patient, :dentist]
   
   has_one_attached :photo

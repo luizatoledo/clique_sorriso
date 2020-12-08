@@ -1,0 +1,15 @@
+<div class="procedure-new-form-card">  
+<h1>Prescriptions#edit</h1>
+
+
+
+<%= simple_form_for @prescription do |f| %>
+
+<%= f.input :description, label: "Descrição" %>
+<div>
+  <%= f.file_field :file %>
+</div>
+<%= f.button :submit, value: "Editar", class: "btn btn-primary" %>
+
+<% end %>
+</div>
