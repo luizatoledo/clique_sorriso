@@ -12,7 +12,7 @@
     <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
   </div>
   <div class="new-appointment-hour d-none">
-    <%= f.input :time, collection: %>
+    <%= f.input :time, collection: @available %>
   </div>
   <%= f.submit %>
 <% end %>

@@ -42,38 +42,15 @@ class DentistsController < ApplicationController
     redirect_to dentists_path
   end
 
-  def unavailable
-    procedure = Procedure.find(params[:procedure_id])
-    # dates = []
-    # procedure.dentist.appointments.uniq.each do |appointment|
-    #   end_time = appointment.date + (appointment.appoint_duration * 60)
-    #   dates << {from: appointment.date.strftime('%d-%m-%Y %H:%M'), to: end_time.strftime('%d-%m-%Y %H:%M') }
-    # end
-    # render json: dates
-
-    day = params[:date_picked]
-    appointments_of_day = []
-    procedure.dentist.appointments.uniq.each do |appointment|
-      if appointment.date.strftime('%d-%m-%Y') == day.strftime('%d-%m-%Y')
-        appointments_of_day << appointment
-      end
-    end
-
-    availability = TIMES
-    appointments_of_day.each do |a|
-      availability.length.times do |i|
-        if a.date.strftime('%H:M') == availability[i]
-          availability[i] = 'unavailable'
-          blocks_used = (a.appoint_duration / 30.0).ceil
-          (blocks_used - 1).times do |b|
-            availability[i+b] = 'unavailable'
-          end
-        end
-      end
-    end
-    availability.delete('unavailable')
-  end
-
+  # def unavailable
+  #   procedure = Procedure.find(params[:procedure_id])
+  #   dates = []
+  #   procedure.dentist.appointments.uniq.each do |appointment|
+  #     end_time = appointment.date + (appointment.appoint_duration * 60)
+  #     dates << {from: appointment.date.strftime('%d-%m-%Y %H:%M'), to: end_time.strftime('%d-%m-%Y %H:%M') }
+  #   end
+  #   render json: dates
+  # end
   private
 
   def set_dentist

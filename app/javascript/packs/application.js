@@ -26,7 +26,7 @@ require("@nathanvda/cocoon")
 
 // External imports
 import "bootstrap";
-import { initflatpickr, getDentistSchedule, showTimeInput} from "./plugins/init_flatpickr";
+import { initflatpickr, showTimeInput, sendProcedureInfo, sendDayInfo} from "./plugins/init_flatpickr";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -40,7 +40,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initChatroomCable();
   initMapbox();
-  getDentistSchedule();
+  sendProcedureInfo();
+  sendDayInfo();
   showTimeInput();
 });
 

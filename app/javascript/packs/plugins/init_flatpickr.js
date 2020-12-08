@@ -2,13 +2,18 @@ import flatpickr from "flatpickr";
 import $ from 'jquery';
 import { csrfToken } from "@rails/ujs";
 
-const initflatpickr = (dates_to_disable = []) => {
+const initflatpickr = () => {
   flatpickr(".datepicker", {
     // enableTime: true,
     dateFormat: "d-m-Y",
     minDate: "today",
     maxDate: new Date().fp_incr(120),
-    "disable": dates_to_disable,
+    "disable": [
+      function (date) {
+        // return true to disable
+        return (date.getDay() === 0 || date.getDay() === 6 );
+      }
+    ],
     // minTime: "8:00",
     // maxTime: "17:00",
     // time_24hr: true
@@ -53,5 +58,48 @@ const showTimeInput = () => {
   });
 };
 
+// function that will listen which procedures the user chooses and sends that to appoint/new
+const sendProcedureInfo = () => {
+  $(document).on('cocoon:after-insert', 'form', function(e) {
+    const procedures = document.querySelectorAll('.nested-fields > select');
+    const procedure = procedures[procedures.length - 1]
+    procedure.addEventListener('change', (event) => {
+      const procedureId = event.currentTarget.value;
+      const url = window.location.origin + '/appointments/selected_procedures';
+      fetch(url, {
+        method: "POST",
+        headers:{
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken()
+        },
+        body: JSON.stringify({ procedure_id: procedureId })
+      }).then(response => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+    });
+  });
+};
 
-export {initflatpickr, getDentistSchedule, showTimeInput}
+const sendDayInfo = () => {
+  const dateInput = document.querySelector('.appointment_date > input');
+  dateInput.addEventListener('change',(event) => {
+    const dateValue = event.currentTarget.value;
+    const url = window.location.origin + '/appointments/selected_day';
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken()
+      },
+      body: JSON.stringify({date_picked: dateValue})
+    }).then(response => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+  });
+};
+
+export {initflatpickr, showTimeInput, sendProcedureInfo, sendDayInfo}
