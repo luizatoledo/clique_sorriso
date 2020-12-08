@@ -1,4 +1,4 @@
-TIMES = ['08:00', '08:30', '09:00', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00',
+TIME = ['08:00', '08:30', '09:00', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00',
         '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00']
 class Appointment < ApplicationRecord
   belongs_to :user
@@ -9,7 +9,8 @@ class Appointment < ApplicationRecord
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
   has_many :prescriptions
-  validates :date, presence: true, on: :update
+  validates :date, presence: true
+  validates :time, presence: true, on: :update
 
   def appoint_duration
     duration = 0

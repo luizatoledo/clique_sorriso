@@ -66,7 +66,9 @@ class AppointmentsController < ApplicationController
         appoint_of_day << a
       end
     end
-    @available = appoint_of_day
+    # available = []
+    # appoint_of_day.each do |app|
+    appoint_of_day
   end
 
   private

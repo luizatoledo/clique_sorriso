@@ -1,6 +1,6 @@
 import flatpickr from "flatpickr";
 import $ from 'jquery';
-import { csrfToken } from "@rails/ujs";
+import { csrfToken, formDisableSelector } from "@rails/ujs";
 
 const initflatpickr = () => {
   flatpickr(".datepicker", {
@@ -85,6 +85,8 @@ const sendProcedureInfo = () => {
 const sendDayInfo = () => {
   const dateInput = document.querySelector('.appointment_date > input');
   dateInput.addEventListener('change',(event) => {
+    // const form = document.getElementById('new_appointment');
+    // form.submit();
     const dateValue = event.currentTarget.value;
     const url = window.location.origin + '/appointments/selected_day';
     fetch(url, {
