@@ -226,7 +226,7 @@ t5.save!
 # User 5 appointments and treatments
 
 a5 = Appointment.new
-a5.date = '2019-09-18 16:15:00'
+a5.date = '2019-09-18 16:30:00'
 a5.user = u5
 a5.save!
 
@@ -257,7 +257,7 @@ t8.save!
 
 a8 = Appointment.new
 a8.user = u5
-a8.date = '2019-12-01 15:45:00'
+a8.date = '2019-12-01 16:00:00'
 a8.save!
 
 t9 = Treatment.new
