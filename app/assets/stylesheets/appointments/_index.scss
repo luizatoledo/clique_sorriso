@@ -4,8 +4,17 @@
     height: 100%;
     text-align: start;
 
-    h2 {
-        color: #555b6e;
+    .appointments-title {
+        color: $independence;
+        border-bottom: 1px solid $independence;
+        margin-bottom: 20px;
+        h2, h4 {
+            display: inline-block;
+        }
+        i {
+            font-size: 20px;
+            margin-right: 0.5rem;
+        }
     }
 
     .content {
@@ -14,7 +23,7 @@
 
     a {
         text-decoration: none;
-        color: white;
+        color: $cultured;
     }
 
     .profile-pic {
@@ -26,9 +35,6 @@
         background-color: white;
     }
 
-     .appointments-button {
-        ;
-    }
 }
 
 
