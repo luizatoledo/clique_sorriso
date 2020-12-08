@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   
   authenticate :user, ->(user) { user.role == 'dentist' } do
     resources :dentists, only: [:new]
-    resources :prescriptions, only: [:index, :new, :create, :edit, :update]
   end
 
   authenticate :user, ->(user) { user.admin == true } do
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :appointments
 
-  resources :prescriptions, only: [:destroy]
+  resources :prescriptions, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resources :chatrooms, only: :show do
