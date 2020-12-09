@@ -19,7 +19,7 @@ class LaboratoriesController < ApplicationController
   # GET /laboratories/new
   def show
     @laboratory = Laboratory.find(params[:id])
-    @marker = { lat: @laboratory.latitude, lng:@laboratory.longitude, name: @laboratory.name }
+    @markers = [{ lat: @laboratory.latitude, lng:@laboratory.longitude, name: @laboratory.name }]
     #  {
     #     lat: labo.latitude,
     #     lng: labo.longitude,
