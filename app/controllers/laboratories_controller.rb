@@ -9,7 +9,7 @@ class LaboratoriesController < ApplicationController
       {
         lat: labo.latitude,
         lng: labo.longitude,
-        name: labo.name,
+        name: '',
         infoWindow: render_to_string(partial: "info_window", locals: { laboratory: labo })
       }
     end
