@@ -3,7 +3,11 @@ class AppointmentsController < ApplicationController
 
   def index
     @user = current_user
-    @appointments = Appointment.where(user: @user)
+    if current_user.dentist?
+      @appointments = current_user.dentist.appointments
+    else
+      @appointments = Appointment.where(user: @user)
+    end
   end
 
   def show

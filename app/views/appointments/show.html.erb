@@ -8,7 +8,11 @@
         <h6><span class="inactive" id="today-show">Hoje - </span><%= @appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h6>
         <p><% @appointment.procedures.each do |procedure| %></p>
           <p><%= procedure.service.title %> | 
-          <%= procedure.dentist.user.fullname %></p>
+          <% if current_user.dentist? %>
+            <%= @appointment.user.fullname %>
+          <% else %>
+            <%= procedure.dentist.user.fullname %>
+          <% end %></p>
         <% end %>
       </div>  
       <div>
