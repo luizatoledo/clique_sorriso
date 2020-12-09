@@ -1,78 +1,36 @@
-<div class="services-title">
-    <h1>Serviços disponíveis</h1>
-    <div class="dentist_button">
-        <% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
-            <%= link_to  "Criar procedimento novo", new_dentist_procedure_path(current_user.dentist.id), class: "btn btn-primary"%>
-        <% end %>
-    </div>
+<div class="procedures-index-title">
+	<h1>Serviços disponíveis</h1>
 </div>
 
-
-
-
-<div class="services">
-<% Service.all.each do |service| %>
-    <%if service.procedures.count > 0 %>
-        <!-- <div class="service-big-card">
-            <div><%= (cl_image_tag service.photo.key, class: "service-photo-avatar") if service.photo.attached? %></div> -->
-
-            <div class="service-photo">
-              <%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
-            </div>
-         
-            <div class="service">
-                  <div class="service-info">
-                      <h4> <%= service.title %></h2>
-                  <div class="service-details">
-                      <div class="service-description">
-                          Descrição: <%= service.description %>
-                      </div>
-                      <div class="service-time">
-                          Duração: <%= service.duration %>
-                      </div>
-                </div>
-            </div>
-        <!-- </div>  -->
-        <div class="procedures">
-          <% service.dentists.each do |dentist| %>
-            <%= link_to procedure_path(Procedure.find_by(dentist_id: dentist.id, service_id: service.id)) do %>
-              <div class="dentist_button">
-                  <div><img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/user-5d0a17a1a8c6db61a57ce05ef2b6c77a97a706da7cf250f27964a31a89df1414.png"></div>
-                  <div><%= dentist.user.fullname %></div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-<% end %>
+<div class="procedures-cards">
+	<% Service.all.order(:title).each do |service| %>
+		<%if service.procedures.count > 0 %>
+			<div class="procedure-card d-flex">
+				<div class="procedure-img-container m-3">
+					<%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
+				</div>
+				<div class="procedure-info-container mt-3 d-flex flex-column text-blue">
+					<div class="procedure-info-title d-flex justify-content-start w-100">
+						<h4><%= service.title %></h4>
+					</div>
+					<div class="procedure-info-details">
+						<p class="procedure-duration-text">Duração: <%= service.duration %> minutos</p>
+						<p class="procedure-description-text"><%= service.description %></p>
+					</div>
+					<div class="procedure-info-dentists d-flex justify-content-end">
+						<% service.dentists.each do |dentist| %>
+							<div class="procedure-dentists-container d-flex flex-column mr-3">
+								<div class="dentist-avatar">
+									<%= cl_image_tag dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
+								</div>
+								<div class="dentist-name">
+									<%= link_to dentist.user.first_name, dentist_path(dentist), class: 'link-to-dentist' %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
 </div>
-
-
-<!-- <% @dentists.each do |d| %>
-    <div class="procedure-card">
-        <div class="procedure-photo">
-            <% if d.user.photo.attached? %>
-            <%= cl_image_tag d.user.photo.key, class: 'dentist-card-avatar', size: '100' %>
-            <% else %>
-            <%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'image-not-found-dentist-card', size: '100' %>
-            <% end %>
-        </div>
-        <div class="procedure-details">
-            <%= link_to dentist_path(d) do %>
-                <span><%= " Dentista: #{d.user.first_name} #{d.user.last_name}" %></span>
-                <span><%= "CRO: #{d.cro}" %></span>
-            <% end %>
-        </div>
-    </div>
-    <% d.procedures.each do |p| %>
-        <div class="procedure-details">
-            <div><%= "#{p.service.title}" %></div>
-            <div><%= "#{p.service.description}" %></div>
-            <div><%= "#{p.service.duration}" %></div>
-            <%= link_to  "edit", edit_procedure_path(p), class: "btn btn-primary" %>
-            <%= link_to 'Delete', p, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary" %>
-        </div>
-    <% end %>
-<% end %>
- -->

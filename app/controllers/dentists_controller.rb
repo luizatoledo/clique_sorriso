@@ -42,6 +42,15 @@ class DentistsController < ApplicationController
     redirect_to dentists_path
   end
 
+  # def unavailable
+  #   procedure = Procedure.find(params[:procedure_id])
+  #   dates = []
+  #   procedure.dentist.appointments.uniq.each do |appointment|
+  #     end_time = appointment.date + (appointment.appoint_duration * 60)
+  #     dates << {from: appointment.date.strftime('%d-%m-%Y %H:%M'), to: end_time.strftime('%d-%m-%Y %H:%M') }
+  #   end
+  #   render json: dates
+  # end
   private
 
   def set_dentist

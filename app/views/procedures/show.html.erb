@@ -27,12 +27,13 @@
             <div class="procedure-info-content"><%= @procedure.service.description %></div>
         </div>
         <div class="procedure-info">
-            <%= link_to  "Editar procedure", edit_procedure_path(@procedure), class: "btn btn-primary" %>
-            <%= link_to 'Deletar', @procedure, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary"  %>
-            <%= link_to  "Voltar", procedures_path, class: "btn btn-primary"  %>
-            <% if user_signed_in? && (current_user.admin || current_user.dentist?) %>
-              <%= link_to  "Editar serviço", edit_service_path(@procedure.service), class: "btn btn-primary"  %>
+            <% if user_signed_in? && (current_user.admin) %>
+                <%= link_to  "Editar procedure", edit_procedure_path(@procedure), class: "btn btn-primary" %>
+                <%= link_to 'Deletar', @procedure, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary"  %>
+                 <%= link_to  "Editar serviço", edit_service_path(@procedure.service), class: "btn btn-primary"  %>
             <% end %>
+            <%= link_to  "Reserva", new_appointment_path(current_user), class: "btn btn-primary"  %>
+            <%= link_to  "Voltar", procedures_path, class: "btn btn-primary"  %>
         </div>
     </div>
 </div>

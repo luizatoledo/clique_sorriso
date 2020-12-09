@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
- 
   resources :laboratories
-  get 'services/new'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
   authenticate :user, ->(user) { user.role == 'dentist' } do
     resources :dentists, only: [:new]
   end
@@ -14,15 +12,19 @@ Rails.application.routes.draw do
     resources :dentists, only: [:destroy]
   end
   
+  # post '/dentists/unavailable', to: 'dentists#unavailable'
   resources :dentists, except: [:new, :destroy] do
     resources :procedures, only: [:new, :create]
   end
-
+ 
   resources :procedures, only: [:index, :show, :edit, :update, :destroy]
 
+  post '/appointments/selected_procedures', to: 'appointments#selected_procedures'
+  post '/appointments/selected_day', to: 'appointments#selected_day'
   resources :appointments
-  
-  resources :services, only: [:new, :create, :edit, :update]
+
+  resources :prescriptions, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create

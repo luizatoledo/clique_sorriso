@@ -1,0 +1,45 @@
+<div class="services-title">
+    <h1>Serviços disponíveis</h1>
+</div>
+
+<div class="services">
+<% Service.all.each do |service| %>
+    
+        <!-- <div class="service-big-card">
+            <div><%= (cl_image_tag service.photo.key, class: "service-photo-avatar") if service.photo.attached? %></div> -->
+
+            <div class="service-photo">
+              <%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
+            </div>
+         
+            <div class="service">
+                  <div class="service-info">
+                      <h4> <%= service.title %></h2>
+                  <div class="service-details">
+                      <div class="service-description">
+                          Descrição: <%= service.description %>
+                      </div>
+                      <div class="service-time">
+                          Duração: <%= service.duration %>
+                      </div>
+                </div>
+            </div>
+        <!-- </div>  -->
+        <div class="procedures">
+          <% service.dentists.each do |dentist| %>
+            <%= link_to procedure_path(Procedure.find_by(dentist_id: dentist.id, service_id: service.id)) do %>
+              <div class="dentist_button">
+                  <div><img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/user-5d0a17a1a8c6db61a57ce05ef2b6c77a97a706da7cf250f27964a31a89df1414.png"></div>
+                  <div><%= dentist.user.fullname %></div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+            <div class="service-buttons">
+                <div class="service-button"><%= link_to  "Editar", edit_service_path(service)%></div>
+                <div class="service-button"><%= link_to  "Deletar", service, method: :delete, data: { confirm: 'Delete?' }%></div>
+            </div>
+      </div>
+    
+<% end %>
+</div>
