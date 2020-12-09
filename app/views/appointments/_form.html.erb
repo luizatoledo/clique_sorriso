@@ -1,18 +1,22 @@
 <%= simple_form_for(@appointment) do |f| %>
   <div id='treatments'>
-    <p>Selecione os procedimentos que deseja:</p>
+    <div class="title-add-procedure blue-title-new-appointment">
+      <h4>1. Selecione os procedimentos que deseja:</h4>
+    </div>
     <%= f.simple_fields_for :treatments do |treatment| %>
       <%= render 'treatment_fields', :f => treatment %>
     <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'Adicionar Procedimento', f, :treatments %>
+    <div class='links-div'>
+      <%= link_to_add_association 'Adicionar Procedimento', f, :treatments, class: 'btn btn-add-procedure my-3' %>
     </div>
   </div>
-  <div class="new-appointment-date">
-    <%= f.input :date, as: :string, input_html: { class: "datepicker" }, label: "Data" %>
+  <div class="new-appointment-date blue-title-new-appointment">
+    <h4>2. Selecione a melhor data: </h4>
+    <%= f.input :date, label: '', as: :string, input_html: { class: "datepicker" } %>
   </div>
-  <div class="new-appointment-hour d-none">
-    <%= f.input :time, collection: TIME, label: "Horário" %>
+  <div class="new-appointment-hour d-none blue-title-new-appointment">
+    <h4>3. Selecione o melhor horário disponível na data informada: </h4>
+    <%= f.input :time, collection: TIME, required: true, label: "" %>
   </div>
-  <%= f.submit %>
+  <%= f.button :submit, "Agendar", class: 'btn-add-procedure'%>
 <% end %>

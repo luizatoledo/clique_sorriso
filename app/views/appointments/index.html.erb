@@ -20,38 +20,42 @@
       <div class="appointments-title">
         <i class="fas fa-angle-down"></i><h2>Próximas Consultas</h2>
       </div>
-      <% @appointments.order(:date).each do |appointment| %>
-        <% if Time.now.strftime("%F") <= appointment.date.change(offset: '-03:00').strftime("%F") %>
-          <div class="appointment-card">
-            <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
-            <% appointment.procedures.each do |procedure| %>
-              <p><%= procedure.service.title %> | 
-              <%= procedure.dentist.user.fullname %></p>
-            <% end %>
-            <% if Time.now > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
-              <div><%= link_to 'CHAT', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
-            <% end %>
-            <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
-          </div>
+      <div class="appointments-list">
+        <% @appointments.order(:date).each do |appointment| %>
+          <% if Time.now.strftime("%F") <= appointment.date.change(offset: '-03:00').strftime("%F") %>
+            <div class="appointment-card">
+              <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
+              <% appointment.procedures.each do |procedure| %>
+                <p><%= procedure.service.title %> | 
+                <%= procedure.dentist.user.fullname %></p>
+              <% end %>
+              <% if Time.now > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
+                <div><%= link_to 'CHAT', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
+              <% end %>
+              <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
     <div class="appointments-section">
       <div class="appointments-title">
         <i class="fas fa-angle-right"></i><h4>Histórico de Consultas</h4>
       </div>
-      <% @appointments.order(:date).each do |appointment| %>
-        <% if Time.now.strftime("%F") > appointment.date.change(offset: '-03:00').strftime("%F") %>
-          <div class="appointment-card">
-            <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
-            <% appointment.procedures.each do |procedure| %>
-              <p><%= procedure.service.title %> | 
-              <%= procedure.dentist.user.fullname %></p>
-            <% end %>
-            <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
-          </div>
-        <% end %>
-      <% end %>
+      <div class="appointments-list inactive">
+        <% @appointments.order(:date).each do |appointment| %>
+          <% if Time.now.strftime("%F") > appointment.date.change(offset: '-03:00').strftime("%F") %>
+            <div class="appointment-card">
+              <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
+              <% appointment.procedures.each do |procedure| %>
+                <p><%= procedure.service.title %> | 
+                <%= procedure.dentist.user.fullname %></p>
+              <% end %>
+              <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
+            </div>
+          <% end %>
+        <% end %>~
+      </div>  
     </div>
     <div><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary" %></div>
   </div>

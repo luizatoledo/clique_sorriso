@@ -4,14 +4,17 @@
 }
 
 .dentists-cards-container{
-  height: 95vh;
+  height: 70vh;
 }
 
 .dentist-card{
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   border-radius: 5px;
   padding: 12px;
-  height: 15%;
+  height: 30%;
+  &:hover{
+    background-color: #bee3db;
+  }
 }
 
 .dentist-card-avatar-img{
@@ -22,8 +25,12 @@
 
 .dentist-card-avatar{
   margin-right: 22px;
+  width: 15%;
 }
 
+.dentist-card-infos{
+ width: 80%;
+}
 .dentist-card-infos-name-link{
   text-decoration: none;
   color: #555b6e;
