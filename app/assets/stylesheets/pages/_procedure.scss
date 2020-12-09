@@ -35,23 +35,11 @@
     }   
 }
 
-
 .service-photo {
     transition: 0.2s;
     width: 30vw;
     margin: auto;
     border-radius: 5px;
-}
-
-.procedure-infos {
-    transition: 0.2s;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-    width: 60%;
 }
 
 .procedure-info {
@@ -79,18 +67,6 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.procedure-info-content {
-    transition: 0.2s;
-    width: 25vw;
-    display: flex;
-    justify-content: flex-start;
-}
-.procedure-info-title {
-    transition: 0.2s;
-    width: 10vw;
-    display: flex;
-    justify-content: flex-end;
-}
 
 .new-labo-form {
     transition: 0.2s;
@@ -102,6 +78,7 @@
       }
 
 }
+
 .labo-content-list {
     transition: 0.2s;
     width:50%;
@@ -168,6 +145,7 @@
           margin-left: 1vw;
       }
   }
+
   .prescription-buttons-line {
      display: flex;
      flex-direction: row;
@@ -183,4 +161,23 @@
         margin-bottom: 5vh;
     }
 }
+
+.show-procedure-card {
+    margin-top: 30vh;
+    width: 90vw;
+    margin: auto;
+    display: flex ;
+    flex-direction: row;
+    transition: 0.2s;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 15px;
+    h4 {
+        margin-bottom: 3%;
+        margin-top: 3%;
+    }
+    p {
+        margin-bottom: 3%;
+    }
+}
+
 
