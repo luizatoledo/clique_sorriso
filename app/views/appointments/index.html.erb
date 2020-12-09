@@ -30,8 +30,13 @@
             <% end %>
               <h6><span class="inactive" id="today">Hoje - </span><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h6>
               <% appointment.procedures.each do |procedure| %>
-                <p><%= procedure.service.title %> | 
-                <%= procedure.dentist.user.fullname %></p>
+                <% if current_user.dentist? %>
+                  <p><%= procedure.service.title %> | 
+                  <%= appointment.user.fullname %></p>
+                <% else %>
+                  <p><%= procedure.service.title %> | 
+                  <%= procedure.dentist.user.fullname %></p>
+                <% end %>
               <% end %>
               <% if Time.now > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
                 <div><%= link_to 'CHAT', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
