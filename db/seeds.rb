@@ -110,7 +110,7 @@ s4.photo.attach(io: img_tartaro, filename: 'tartaro.png', content_type: 'image/p
 s5 = Service.create!(title: 'Consulta Online',
 									description: '30 minutos de conversa com o dentista para tirar dúvidas e passar orientações prévias ou pedidos de exame. O valor da consulta é revertido se o paciente da prosseguimento ao tratamento',
 									duration: 30)
-img_online = URI.open('https://cdn1.iconfinder.com/data/icons/online-messaging-glyph/48/Sed-07-512.png')
+img_online = URI.open('https://s2.glbimg.com/5_9zua5KXTfby0qUj6cQm6nnIFU=/0x0:1733x753/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/j/W/VQU8AHTYm98qxppIyY2A/odonto.jpg')
 s5.photo.attach(io: img_online, filename: 'online.png', content_type: 'image/png')
 
 s6 = Service.create!(title: 'Aparelho Ortodôntico - Instalação ou Remoção',
