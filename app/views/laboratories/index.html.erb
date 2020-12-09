@@ -4,7 +4,10 @@
 <div class="labs-and-map-container d-flex">
   <div class="laboratory-cards-container">
     <% @laboratories.each do |laboratory| %>
-      <div class="laboratory-card d-flex flex-column my-4">
+      <div class="laboratory-card d-flex my-4">
+        <div class="laboratory-logo-div">
+          <%= cl_image_tag laboratory.photo.key, class: "laboratory-logo-img"%>
+        </div>
         <div class="laboratory-card-infos d-flex flex-column">
           <h5><%= laboratory.name %></h5>
           <p><%= laboratory.address %></p>
