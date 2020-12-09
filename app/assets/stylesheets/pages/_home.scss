@@ -50,12 +50,17 @@
   margin-left:80px;
 }
 
-.banner-link{
-  color: white;
+.btn-home {
+  color: #678583;
   text-decoration: none;
+  border: 1px solid #bee3db;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background-color: #bee3db;
   &:hover{
     text-decoration: none;
-    color: #555b6e;
-
+    background-color: #89b0ae;
+    color: white;
+    border: 1px solid #89b0ae;
   }
 }
