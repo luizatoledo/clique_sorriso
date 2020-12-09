@@ -13,7 +13,7 @@
               <%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'dentist-card-avatar-img' %>
             <% end %>
           </div>
-          <div class="dentist-card-infos d-flex flex-column justify-content-center flex-grow-1">
+          <div class="dentist-card-infos d-flex flex-column justify-content-center">
             <span class="dentist-card-infos-name">
               <%= link_to "#{dentist.user.first_name.capitalize} #{dentist.user.last_name.capitalize}", dentist_path(dentist), class: 'dentist-card-infos-name-link' %>
             </span>
