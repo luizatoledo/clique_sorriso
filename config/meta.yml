@@ -1,0 +1,5 @@
+meta_product_name: "Clique Sorriso"
+meta_title: "Clique Sorriso - Seu Gerenciador de Consultas Odontológicas"
+meta_description: "Gerenciador de consultas que possibilita aos pacientes marcar horários, fazer consulta online e localizar laboratórios mais próximos"
+meta_image: "clique_sorriso_logo.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"
