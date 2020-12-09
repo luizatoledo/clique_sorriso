@@ -273,38 +273,130 @@ t10.save!
 
 #Laboratories
 
-labo_infos = [{name: "Indor Jardim Paulista", address: "Avenida Brigadeiro Luiz Antônio, 4778, São Paulo"},
-{name: "Indor Pacaembu", address: "Rua Cardoso de Almeida, 2121, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Ibirapuera", address: "Avenida Ibirapuera, 2823, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Av Brasil", address: "Avenida Brasil, 263, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Ipiranga", address: "Rua Lino Coutinho, 1855, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Rebouças", address: "Avenida Rebouças, 1223, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Vl. Clementino", address: "Avenida Senador Casemiro da Rocha, 392, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Mooca", address: "Avenida Paes de Barros, 2050, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Sto Amaro", address: "Avenida Adolfo Pinheiro, 842, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Osasco", address: "Rua Eloy Candido Lopes, 169, Osasco"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Jardim Londrina", address: "Avenida Doutor Guilherme Dumont Vilares, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Tatuapé", address: "Rua Itapura, 850, São Paulo"},
-{name: "Papaiz Diagnósticos Odontológicos por Imagem - Lapa", address: " Rua Pio XI, 257,São Paulo"},
-{name: "ISO Radiologia - Vila Mariana", address: "Rua Vergueiro, 1898, São Paulo"},
-{name: "ISO Radiologia - Tatuapé", address: "Rua Serra de Bragança, 358, São Paulo"},
-{name: "ISO Radiologia - Freguesia do Ó", address: "Rua Candida Franco de Barros, 77, São Paulo"},
-{name: "ISO Radiologia - Santo Amaro", address: "Avenida Adolfo Pinheiro, 1854, São Paulo"},
-{name: "ISO Radiologia - Ipiranga", address: "Rua Visconde de Pirajá, 553, São Paulo"},
-{name: "ISO Radiologia - Pirituba", address: "Avenida Benedito de Andrade, 126, São Paulo"},
-{name: "ISO Radiologia - Guarulhos", address: "Avenida Doutor Timóteo Penteado, 169, São Paulo"},
-{name: "ISO Radiologia - Campo Limpo", address: "Rua Felix Fagundes, 19, São Paulo"},
-{name: "ISO Radiologia - Mooca", address: "Avenida Paes de Barros, 1562, São Paulo"},
-{name: "ISO Radiologia - Santana", address: "Rua Duarte de Azevedo, 86, São Paulo"},
-{name: "ISO Radiologia - Osasco", address: "Rua Itabuna, 195, Osasco"},
-{name: "ISO Radiologia - São Bernardo do Campo", address: "Avenida Índico, 278, São Bernardo do Campo"},
-{name: "ISO Radiologia - Lapa", address: "Rua Pio XI, 465, São Paulo"},
-{name: "ISO Radiologia - Cidade Dutra", address: "Rua Guaruva ,223, São Paulo"},
-{name: "ISO Radiologia - São Miguel", address: "Rua João Augusto Morais, 168, São Paulo"},
-{name: "ISO Radiologia - São Mateus", address: "Avenida Sapopemba, 13.933, São Paulo"},
-{name: "ISO Radiologia - Pinheiros", address: "Avenida Pedroso de Morais, 171, São Paulo"},
-{name: "ISO Radiologia - Vila Cachoeirinha", address: "Rua Adolfo Kurt Boehm, 38, São Paulo"}]
+url_indor = 'https://pbs.twimg.com/profile_images/831239185923239936/rfvM4oUJ_400x400.jpg'
+url_papaiz = 'https://papaizdiagnosticos.com.br/wp-content/uploads/elementor/thumbs/logo-ouzmjrrcgccgmjogqxz4j2hudqu22tzu74nvysmdhu.jpg'
+url_iso = 'https://logo.empregos.com.br/156708_G.jpg'
 
-labo_infos.count.times do |i|
-  Laboratory.create(labo_infos[i])
-end
+l1 = Laboratory.create!({name: "Indor Jardim Paulista", address: "Avenida Brigadeiro Luiz Antônio, 4778, São Paulo"})
+l1_img = URI.open(url_indor)
+l1.photo.attach(io: l1_img, filename: 'labo1.png', content_type: 'image/png')
+
+l2 = Laboratory.create!({name: "Indor Pacaembu", address: "Rua Cardoso de Almeida, 2121, São Paulo"})
+l2_img = URI.open(url_indor)
+l2.photo.attach(io: l2_img, filename: 'labo2.png', content_type: 'image/png')
+
+l3 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Ibirapuera", address: "Avenida Ibirapuera, 2823, São Paulo"})
+l3_img = URI.open(url_papaiz)
+l3.photo.attach(io: l3_img , filename: 'l3_img.png', content_type: 'image/png')
+
+l4 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Av Brasil", address: "Avenida Brasil, 263, São Paulo"})
+l4_img = URI.open(url_papaiz)
+l4.photo.attach(io: l4_img , filename: 'l4_img.png', content_type: 'image/png')
+
+l5 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Ipiranga", address: "Rua Lino Coutinho, 1855, São Paulo"})
+l5_img = URI.open(url_papaiz)
+l5.photo.attach(io: l5_img , filename: 'l5_img.png', content_type: 'image/png')
+
+l6 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Rebouças", address: "Avenida Rebouças, 1223, São Paulo"})
+l6_img = URI.open(url_papaiz)
+l6.photo.attach(io: l6_img , filename: 'l6_img.png', content_type: 'image/png')
+
+l7 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Vl. Clementino", address: "Avenida Senador Casemiro da Rocha, 392, São Paulo"})
+l7_img = URI.open(url_papaiz)
+l7.photo.attach(io: l7_img , filename: 'l7_img.png', content_type: 'image/png')
+
+l8 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Mooca", address: "Avenida Paes de Barros, 2050, São Paulo"})
+l8_img = URI.open(url_papaiz)
+l8.photo.attach(io: l8_img , filename: 'l8_img.png', content_type: 'image/png')
+
+l9 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Sto Amaro", address: "Avenida Adolfo Pinheiro, 842, São Paulo"})
+l9_img = URI.open(url_papaiz)
+l9.photo.attach(io: l9_img , filename: 'l9_img.png', content_type: 'image/png')
+
+l10 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Osasco", address: "Rua Eloy Candido Lopes, 169, Osasco"})
+l10_img = URI.open(url_papaiz)
+l10.photo.attach(io: l10_img , filename: 'l10_img.png', content_type: 'image/png')
+
+l11 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Jardim Londrina", address: "Avenida Doutor Guilherme Dumont Vilares, São Paulo"})
+l11_img = URI.open(url_papaiz)
+l11.photo.attach(io: l11_img , filename: 'l11_img.png', content_type: 'image/png')
+
+l12 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Tatuapé", address: "Rua Itapura, 850, São Paulo"})
+l12_img = URI.open(url_papaiz)
+l12.photo.attach(io: l12_img , filename: 'l12_img.png', content_type: 'image/png')
+
+l13 = Laboratory.create!({name: "Papaiz Diagnósticos Odontológicos por Imagem - Lapa", address: " Rua Pio XI, 257,São Paulo"})
+l13_img = URI.open(url_papaiz)
+l13.photo.attach(io: l13_img , filename: 'l13_img.png', content_type: 'image/png')
+
+l14 = Laboratory.create!({name: "ISO Radiologia - Vila Mariana", address: "Rua Vergueiro, 1898, São Paulo"})
+l14_img = URI.open(url_iso)
+l14.photo.attach(io: l14_img , filename: 'l14_img.png', content_type: 'image/png')
+
+l15 = Laboratory.create!({name: "ISO Radiologia - Tatuapé", address: "Rua Serra de Bragança, 358, São Paulo"})
+l15_img = URI.open(url_iso)
+l15.photo.attach(io: l15_img , filename: 'l15_img.png', content_type: 'image/png')
+
+l16 = Laboratory.create!({name: "ISO Radiologia - Freguesia do Ó", address: "Rua Candida Franco de Barros, 77, São Paulo"})
+l16_img = URI.open(url_iso)
+l16.photo.attach(io: l16_img , filename: 'l16_img.png', content_type: 'image/png')
+
+l17 = Laboratory.create!({name: "ISO Radiologia - Santo Amaro", address: "Avenida Adolfo Pinheiro, 1854, São Paulo"})
+l17_img = URI.open(url_iso)
+l17.photo.attach(io: l17_img , filename: 'l17_img.png', content_type: 'image/png')
+
+l18 = Laboratory.create!({name: "ISO Radiologia - Ipiranga", address: "Rua Visconde de Pirajá, 553, São Paulo"})
+l18_img = URI.open(url_iso)
+l18.photo.attach(io: l18_img , filename: 'l18_img.png', content_type: 'image/png')
+
+l19 = Laboratory.create!({name: "ISO Radiologia - Pirituba", address: "Avenida Benedito de Andrade, 126, São Paulo"})
+l19_img = URI.open(url_iso)
+l19.photo.attach(io: l19_img , filename: 'l19_img.png', content_type: 'image/png')
+
+l20 = Laboratory.create!({name: "ISO Radiologia - Guarulhos", address: "Avenida Doutor Timóteo Penteado, 169, São Paulo"})
+l20_img = URI.open(url_iso)
+l20.photo.attach(io: l20_img , filename: 'l20_img.png', content_type: 'image/png')
+
+l21 = Laboratory.create!({name: "ISO Radiologia - Campo Limpo", address: "Rua Felix Fagundes, 19, São Paulo"})
+l21_img = URI.open(url_iso)
+l21.photo.attach(io: l21_img , filename: 'l21_img.png', content_type: 'image/png')
+
+l22 = Laboratory.create!({name: "ISO Radiologia - Mooca", address: "Avenida Paes de Barros, 1562, São Paulo"})
+l22_img = URI.open(url_iso)
+l22.photo.attach(io: l22_img , filename: 'l22_img.png', content_type: 'image/png')
+
+l23 = Laboratory.create!({name: "ISO Radiologia - Santana", address: "Rua Duarte de Azevedo, 86, São Paulo"})
+l23_img = URI.open(url_iso)
+l23.photo.attach(io: l23_img , filename: 'l23_img.png', content_type: 'image/png')
+
+l24 = Laboratory.create!({name: "ISO Radiologia - Osasco", address: "Rua Itabuna, 195, Osasco"})
+l24_img = URI.open(url_iso)
+l24.photo.attach(io: l24_img , filename: 'l24_img.png', content_type: 'image/png')
+
+l25 = Laboratory.create!({name: "ISO Radiologia - São Bernardo do Campo", address: "Avenida Índico, 278, São Bernardo do Campo"})
+l25_img = URI.open(url_iso)
+l25.photo.attach(io: l25_img , filename: 'l25_img.png', content_type: 'image/png')
+
+l26 = Laboratory.create!({name: "ISO Radiologia - Lapa", address: "Rua Pio XI, 465, São Paulo"})
+l26_img = URI.open(url_iso)
+l26.photo.attach(io: l26_img , filename: 'l26_img.png', content_type: 'image/png')
+
+l27 = Laboratory.create!({name: "ISO Radiologia - Cidade Dutra", address: "Rua Guaruva ,223, São Paulo"})
+l27_img = URI.open(url_iso)
+l27.photo.attach(io: l27_img , filename: 'l27_img.png', content_type: 'image/png')
+
+l28 = Laboratory.create!({name: "ISO Radiologia - São Miguel", address: "Rua João Augusto Morais, 168, São Paulo"})
+l28_img = URI.open(url_iso)
+l28.photo.attach(io: l28_img , filename: 'l28_img.png', content_type: 'image/png')
+
+l29 = Laboratory.create!({name: "ISO Radiologia - São Mateus", address: "Avenida Sapopemba, 13.933, São Paulo"})
+l29_img = URI.open(url_iso)
+l29.photo.attach(io: l29_img , filename: 'l29_img.png', content_type: 'image/png')
+
+l30 = Laboratory.create!({name: "ISO Radiologia - Pinheiros", address: "Avenida Pedroso de Morais, 171, São Paulo"})
+l30_img = URI.open(url_iso)
+l30.photo.attach(io: l30_img , filename: 'l30_img.png', content_type: 'image/png')
+
+l31 = Laboratory.create!({name: "ISO Radiologia - Vila Cachoeirinha", address: "Rua Adolfo Kurt Boehm, 38, São Paulo"})
+l31_img = URI.open(url_iso)
+l31.photo.attach(io: l31_img , filename: 'l31_img.png', content_type: 'image/png')
