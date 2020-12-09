@@ -80,7 +80,7 @@ class LaboratoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laboratory_params
-      params.require(:laboratory).permit(:name, :address)
+      params.require(:laboratory).permit(:name, :address, :photo)
     end
 
     def find_site

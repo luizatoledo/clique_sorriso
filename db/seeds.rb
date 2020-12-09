@@ -273,7 +273,7 @@ t10.save!
 
 #Laboratories
 
-labo_infos = [{name: "Indor Jardim Paulista", address: "Avenida Brigadeiro Luiz Antônio, 4778, São Paulo"},
+labo_infos = [{name: "Indor Jardim Paulista", address: "Avenida Brigadeiro Luiz Antônio, 4778, São Paulo", photo: "../app/assets/images/indor_logo.jpg"},
 {name: "Indor Pacaembu", address: "Rua Cardoso de Almeida, 2121, São Paulo"},
 {name: "Papaiz Diagnósticos Odontológicos por Imagem - Ibirapuera", address: "Avenida Ibirapuera, 2823, São Paulo"},
 {name: "Papaiz Diagnósticos Odontológicos por Imagem - Av Brasil", address: "Avenida Brasil, 263, São Paulo"},
