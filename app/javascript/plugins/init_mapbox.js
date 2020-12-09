@@ -12,7 +12,11 @@ const initMapbox = () => {
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     navigator.geolocation.watchPosition(function(position) {
-      const positionLatLog = [position.coords.longitude, position.coords.latitude]; 
+      const markers = JSON.parse(mapElement.dataset.markers);
+      let positionLatLog = [position.coords.longitude, position.coords.latitude]; 
+      if (markers.length <= 1) {
+        positionLatLog = [markers[0]['lng'], markers[0]['lat']];
+      }
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
@@ -20,9 +24,7 @@ const initMapbox = () => {
         zoom: 14
       });
 
-      const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
-          console.log([ marker.lng, marker.lat ]);
           new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
