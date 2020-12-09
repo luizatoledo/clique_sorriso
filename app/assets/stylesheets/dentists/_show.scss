@@ -54,6 +54,8 @@
 .dentist-show-procedure-img{
   object-fit: cover;
   width: 100%;
+  overflow: hidden;
+  height: 15vh;
 }
 
 .dentist-show-procedure-infos{

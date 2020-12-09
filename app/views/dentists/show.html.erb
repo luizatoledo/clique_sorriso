@@ -29,7 +29,7 @@
 			<h2 class="mb-4 procedure-title">Procedimentos realizados:</h2>
 			<% @dentist.procedures.each do |procedure| %>
 				<div class="dentist-show-procedure-card d-flex mb-4">
-					<div class="dentist-show-procedure-img-div mr-3">
+					<div class="dentist-show-procedure-img-div mr-3 d-flex align-items-center">
 						<% if procedure.service.photo.attached? %>
 							<%= cl_image_tag procedure.service.photo.key, class: 'dentist-show-procedure-img' %>
 						<% else %>
