@@ -14,7 +14,7 @@
 <div class="application-infos d-flex p-4">
   <div class="application-info-container d-flex flex-column align-items-center w-100">
     <div class="application-info-icon mb-4">
-    <% if !(user_signed_in?) || current_user.appointments.count == 0 %>
+    <% if !(user_signed_in?) || (current_user.appointments.count == 0 && !(current_user.dentist?))%>
       <%= link_to new_appointment_path do %>
         <i class="fas fa-calendar-alt icon-style"></i>
       <% end %>
@@ -33,15 +33,9 @@
   </div>
    <div class="application-info-container d-flex flex-column align-items-center  w-100">
     <div class="application-info-icon mb-4">
-    <% if !(user_signed_in?) || current_user.appointments.count == 0 %>
-      <%= link_to new_appointment_path do %>
-        <i class="far fa-comment-dots icon-style"></i>
-      <% end %>
-    <% else %>
         <%= link_to new_appointment_path do %>
           <i class="far fa-comment-dots icon-style"></i>
         <% end %>
-    <% end %>
     </div>
     <div class="application-info-title">
       <h3>Chat online e vídeo</h3>
