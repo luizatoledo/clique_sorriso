@@ -22,9 +22,10 @@ const initMapbox = () => {
 
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
-          console.log([ marker.lng, marker.lat ]);
+          const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
           new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup)
           .addTo(map);
           let el = document.createElement('div')
           el.innerHTML = marker.name
