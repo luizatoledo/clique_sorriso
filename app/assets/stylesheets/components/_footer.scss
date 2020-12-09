@@ -27,6 +27,7 @@ footer ul {
 footer p {
   padding: 0 16px 0 0;
   margin: 0;
+  
 }
 
 #copy {
@@ -39,7 +40,7 @@ footer p {
 }
 
 .social-network a {
-  background-color: #1D3557;
+  background-color: $independence;
   color: white;
   display: inline-block;
   position: relative;
