@@ -86,13 +86,13 @@ d2.save!
 s1 = Service.create!(title: 'Clareamento',
 								 description: 'Procedimento estético para torar os tons do esmalte dentário mais claros. Utiliza-se produtos a base de peróxido de hidrogênio',
 								 duration: 45)
-img_clareamento = URI.open('https://conteudo.imguol.com.br/c/entretenimento/e1/2020/09/08/dentes-brancos-sorriso-bonito-1599583111401_v2_450x337.jpg')
+img_clareamento = URI.open('https://blog.odontocompany.com/wp-content/uploads/2019/10/307864-especialista-explica-como-funciona-o-clareamento-dental.jpg')
 s1.photo.attach(io: img_clareamento, filename: 'clareamento.png', content_type: 'image/png')
 
 s2 = Service.create!(title: 'Tratamento de Canal',
 								 description: 'Tratamento de cárie que interferiu na polpa do dente',
 								 duration: 150)
-img_canal = URI.open('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dentalartepoa.com.br%2Fsorria%2Fquando-e-preciso-fazer-tratamento-de-canal%2F&psig=AOvVaw28TYMiFlKg4VESdfPE2CmL&ust=1607457896400000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDt-LzVvO0CFQAAAAAdAAAAABAD')
+img_canal = URI.open('https://blog.odontocompany.com/wp-content/uploads/2019/11/o-que-e-e-quando-o-tratamento-de-canal-e-indicado-entenda-agora222.jpg')
 s2.photo.attach(io: img_canal, filename: 'canal.png', content_type: 'image/png')
 
 s3 = Service.create!(title: 'Profilaxia | Limpeza Dentária',
@@ -104,13 +104,13 @@ s3.photo.attach(io: img_profilaxia, filename: 'profilaxia.png', content_type: 'i
 s4 = Service.create!(title: 'Remoção de tártaro',
 								 description: 'Raspagem básica de pouco tártaro',
 								 duration: 30)
-img_tartaro = URI.open('https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
+img_tartaro = URI.open('https://static1.sorrisologia.com.br/articles/7/10/35/7/@/21178-a-profilaxia-dental-e-fundamental-para-a-slider_medias_mobile-1.jpg')
 s4.photo.attach(io: img_tartaro, filename: 'tartaro.png', content_type: 'image/png')
 
 s5 = Service.create!(title: 'Consulta Online',
 									description: '30 minutos de conversa com o dentista para tirar dúvidas e passar orientações prévias ou pedidos de exame. O valor da consulta é revertido se o paciente da prosseguimento ao tratamento',
 									duration: 30)
-img_online = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7G-saONWYuzsmdI4_lDVD2ttUoY_U1eD6ug&usqp=CAU')
+img_online = URI.open('https://s2.glbimg.com/5_9zua5KXTfby0qUj6cQm6nnIFU=/0x0:1733x753/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/j/W/VQU8AHTYm98qxppIyY2A/odonto.jpg')
 s5.photo.attach(io: img_online, filename: 'online.png', content_type: 'image/png')
 
 s6 = Service.create!(title: 'Aparelho Ortodôntico - Instalação ou Remoção',
