@@ -20,10 +20,10 @@
 					<div class="procedure-info-dentists d-flex justify-content-end">
 						<% service.dentists.each do |dentist| %>
 							<div class="procedure-dentists-container d-flex flex-column mr-3">
-								<div class="dentist-avatar">
+								<div class="dentist-avatar-procedure">
 									<%= cl_image_tag dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
 								</div>
-								<div class="dentist-name">
+								<div class="dentist-name-procedure">
 									<%= link_to dentist.user.first_name, dentist_path(dentist), class: 'link-to-dentist' %>
 								</div>
 							</div>
