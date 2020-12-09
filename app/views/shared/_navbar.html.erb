@@ -30,6 +30,7 @@
             <%= link_to "Minha área", appointments_path, class: "dropdown-item" %>
             <%= link_to "Novo agendamento", new_appointment_path, class: "dropdown-item" %>
             <%= link_to "Minhas prescrições", prescriptions_path, class: "dropdown-item" %>
+            <%= link_to "Nossos parceiros", laboratories_path, class: 'dropdown-item' %>
             <% if user_signed_in? && (current_user.admin) %>
                 <%= link_to  "Novo serviço", new_service_path, class: "btn btn-primary dropdown-item"%>
                 <%= link_to  "Todos os serviços", services_path, class: "btn btn-primary dropdown-item"%>
