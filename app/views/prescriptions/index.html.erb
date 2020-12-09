@@ -11,10 +11,20 @@
     <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
     <div class="prescription-buttons-line">
       <div><%= link_to  "Edit", edit_prescription_path(prescription) %></div>
-      <div><%= link_to "Baixar o anexo", prescription.file, download: true %></div>
+      <div><%= link_to "Baixar o anexo", prescription.file, target: '_blank' %></div>
     </div>
   </div>
   
 <% end %>
 
 
+<% if @prescriptions.count == 0 %>
+  <div class="prescription-card">
+    <div class="prescription-line"><div><b>Por enquanto, você não tem nenhuma prescrição.</b></div>
+  </div>
+  <div class="prescription-card">
+    <div><%= link_to  "Back", root_path, class: "btn btn-primary" %></div>
+  </div>
+<% end %>
+
+  
