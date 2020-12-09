@@ -1,0 +1,20 @@
+.labs-index-title{
+  color: $independence;
+  border-bottom: 1px solid $independence;
+  width: 100%;
+}
+
+.laboratory-cards-container{
+  width: 45vw;
+}
+
+.labs-and-map-container{
+  margin: 35px;
+}
+
+.laboratory-card{
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  border-radius: 5px;
+  padding: 12px;
+  width: 97%;
+}
