@@ -1,38 +1,24 @@
-
-<div class="d-flex">
-<div class="labo-content-list">
-<!-- <div class="new-labo-button btn btn-primary">
-    <%= link_to 'New Laboratory', new_laboratory_path %>
-</div> -->
-<table>
-  <h1>Laboratories</h1>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @laboratories.each do |laboratory| %>
-      <tr>
-        <td><%= laboratory.name %></td>
-        <td><%= laboratory.address %></td>
-        <td><%= link_to 'Show', laboratory, class: "btn btn-primary" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
- 
+<div class="labs-index-title my-4">
+  <h1>Laboratórios Parceiros da Clínica</h1>
 </div>
-<br>
-
+<div class="labs-and-map-container d-flex">
+  <div class="laboratory-cards-container">
+    <% @laboratories.order(:name).each do |laboratory| %>
+      <div class="laboratory-card d-flex my-4">
+        <div class="laboratory-logo-div mr-4 d-flex align-items-center justify-content-center">
+          <%= cl_image_tag laboratory.photo.key, class: "laboratory-logo-img"%>
+        </div>
+        <div class="laboratory-card-infos d-flex flex-column">
+          <h5><%= link_to laboratory.name, laboratory_path(laboratory) %></h5>
+          <p><%= laboratory.address %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ 
   <div id="map"
-     style="width: 50%; height: 600px; right: 0; position: fixed"
+     style="width: 50%; height: 100%; right: 0; position: fixed"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-   
   </div>
-  
 </div>

@@ -1,0 +1,41 @@
+.labs-index-title{
+  color: $independence;
+  border-bottom: 1px solid $independence;
+  width: 100%;
+  margin-left: 2.5vw;
+}
+
+.laboratory-cards-container{
+  width: 45vw;
+}
+
+.labs-and-map-container{
+  margin: 35px;
+  height: 75vh;
+  overflow: scroll;
+}
+
+.laboratory-card{
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  border-radius: 5px;
+  padding: 12px;
+  width: 97%;
+  height: 25vh;
+}
+
+.laboratory-logo-div{
+  width: 22%;
+  border-radius: 5%;
+}
+
+.laboratory-logo-img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
+.laboratory-card-infos{
+  h5{
+    color: #555b6e;
+    font-weight: 600;
+  }
+}

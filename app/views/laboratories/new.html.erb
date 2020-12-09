@@ -4,6 +4,7 @@
             <h1>Criar Laboratories here: </h1>
             <%= f.input :name %>
             <%= f.input :address %>
+             <%= f.input :photo, as: :file %>
             <%#= f.association :user %>
             <%= f.button :submit, class: "btn btn-primary"%>
         <% end %>

@@ -9,7 +9,8 @@ class LaboratoriesController < ApplicationController
       {
         lat: labo.latitude,
         lng: labo.longitude,
-        name: labo.name
+        name: '',
+        infoWindow: render_to_string(partial: "info_window", locals: { laboratory: labo })
       }
     end
   end
@@ -79,7 +80,7 @@ class LaboratoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laboratory_params
-      params.require(:laboratory).permit(:name, :address)
+      params.require(:laboratory).permit(:name, :address, :photo)
     end
 
     def find_site
