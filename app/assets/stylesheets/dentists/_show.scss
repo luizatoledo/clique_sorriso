@@ -8,13 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover{
     color: #555b6e;
     border: 1px solid  #555b6e;
   }
 }
-  
 
 .dentist-show-avatar{
   border-radius: 50%;
@@ -33,7 +31,7 @@
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   border-radius: 5px;
   padding: 12px;
-  height: 15%;
+  width: 100%;
 }
 
 .procedure-title{
@@ -50,10 +48,17 @@
 }
 
 .dentist-show-procedure-img-div{
-  width: 8%;
+  width: 20%;
 }
 
 .dentist-show-procedure-img{
-  width: 100%;
   object-fit: cover;
+  width: 100%;
+  overflow: hidden;
+  height: 15vh;
 }
+
+.dentist-show-procedure-infos{
+  width: 75%;
+}
+
