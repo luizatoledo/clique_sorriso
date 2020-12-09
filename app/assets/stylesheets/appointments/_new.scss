@@ -1,0 +1,29 @@
+.new-appointment-title{
+  margin-top: 25px;
+  border-bottom: 1px solid #89b0ae;
+  h1{
+    color: #89b0ae;
+  }
+}
+
+.blue-title-new-appointment{
+  color: #555b6e;
+}
+.form-for-new-appointment{
+  margin-top: 15px;
+}
+
+.btn-add-procedure{
+  color: #678583;
+  text-decoration: none;
+  border: 1px solid #bee3db;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background-color: #bee3db;
+  &:hover{
+    text-decoration: none;
+    background-color: #89b0ae;
+    color: white;
+    border: 1px solid #89b0ae;
+  }
+}
