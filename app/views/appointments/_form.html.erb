@@ -9,10 +9,10 @@
     </div>
   </div>
   <div class="new-appointment-date">
-    <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
+    <%= f.input :date, as: :string, input_html: { class: "datepicker" }, label: "Data" %>
   </div>
   <div class="new-appointment-hour d-none">
-    <%= f.input :time, collection: TIME %>
+    <%= f.input :time, collection: TIME, label: "Horário" %>
   </div>
   <%= f.submit %>
 <% end %>
