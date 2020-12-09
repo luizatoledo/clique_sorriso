@@ -4,9 +4,9 @@
       <i class="fas fa-tooth logo-white"></i>
     </div>
     <div class="banner-text ml-3">
-      <h1>Doctor Smile</h1>
-      <p class="subtitle">Saúde bucal na palma da sua mão</p>
-      <%= link_to "Marque uma Consulta", new_appointment_path, class: 'banner-link' %>
+      <h1>Clínica Doctor Smile</h1>
+      <p class="subtitle">Nos preocupamos com sua saúde e bem estar</p>
+      <%= link_to "Marque uma Consulta", new_appointment_path, class: 'banner-link btn btn-home' %>
 
     </div>
   </div>
@@ -14,7 +14,9 @@
 <div class="application-infos d-flex p-4">
   <div class="application-info-container d-flex flex-column align-items-center w-100">
     <div class="application-info-icon mb-4">
-      <i class="fas fa-calendar-alt icon-style"></i>
+      <%= link_to new_appointment_path do %>
+        <i class="fas fa-calendar-alt icon-style"></i>
+      <% end %>
     </div>
     <div class="application-info-title">
       <h3>Agendamento online</h3>
@@ -25,7 +27,9 @@
   </div>
    <div class="application-info-container d-flex flex-column align-items-center  w-100">
     <div class="application-info-icon mb-4">
-      <i class="far fa-comment-dots icon-style"></i>
+      <%= link_to new_appointment_path do %>
+        <i class="far fa-comment-dots icon-style"></i>
+      <% end %>
     </div>
     <div class="application-info-title">
       <h3>Chat online e vídeo</h3>
@@ -34,10 +38,13 @@
       <span>Converse com um de nossos doutores antes da consulta presencial</span>
     </div>
   </div>
+   
    <div class="application-info-container d-flex flex-column align-items-center  w-100">
-    <div class="application-info-icon mb-4">
-      <i class="fas fa-map-marker-alt icon-style"></i>
-    </div>
+    <%= link_to laboratories_path do %>
+      <div class="application-info-icon mb-4">
+        <i class="fas fa-map-marker-alt icon-style"></i>
+      </div>
+    <% end %>
     <div class="application-info-title">
       <h3>Localização de Laboratórios</h3>
     </div>
@@ -45,5 +52,4 @@
       <span>Encontre o laboratório parceiro mais próximo de você</span>
     </div>
   </div>
-  
 </div>

@@ -1,36 +1,38 @@
-<div class="procedures-index-title">
-	<h1>Serviços disponíveis</h1>
-</div>
+<div class="container">
+	<div class="procedures-index-title">
+		<h1>Serviços disponíveis</h1>
+	</div>
 
-<div class="procedures-cards">
-	<% Service.all.order(:title).each do |service| %>
-		<%if service.procedures.count > 0 %>
-			<div class="procedure-card d-flex">
-				<div class="procedure-img-container m-3">
-					<%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
-				</div>
-				<div class="procedure-info-container mt-3 d-flex flex-column text-blue">
-					<div class="procedure-info-title d-flex justify-content-start w-100">
-						<h4><%= service.title %></h4>
+	<div class="procedures-cards">
+		<% Service.all.order(:title).each do |service| %>
+			<%if service.procedures.count > 0 %>
+				<div class="procedure-card d-flex">
+					<div class="procedure-img-container m-3">
+						<%= (cl_image_tag service.photo.key, class: "procedure-service-photo") if service.photo.attached? %>
 					</div>
-					<div class="procedure-info-details">
-						<p class="procedure-duration-text">Duração: <%= service.duration %> minutos</p>
-						<p class="procedure-description-text"><%= service.description %></p>
-					</div>
-					<div class="procedure-info-dentists d-flex justify-content-end">
-						<% service.dentists.each do |dentist| %>
-							<div class="procedure-dentists-container d-flex flex-column mr-3">
-								<div class="dentist-avatar">
-									<%= cl_image_tag dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
+					<div class="procedure-info-container mt-3 d-flex flex-column text-blue">
+						<div class="procedure-info-title d-flex justify-content-start w-100">
+							<h4><%= service.title %></h4>
+						</div>
+						<div class="procedure-info-details">
+							<p class="procedure-duration-text">Duração: <%= service.duration %> minutos</p>
+							<p class="procedure-description-text"><%= service.description %></p>
+						</div>
+						<div class="procedure-info-dentists d-flex justify-content-end">
+							<% service.dentists.each do |dentist| %>
+								<div class="procedure-dentists-container d-flex flex-column mr-3">
+									<div class="dentist-avatar-procedure">
+										<%= cl_image_tag dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
+									</div>
+									<div class="dentist-name-procedure">
+										<%= link_to dentist.user.first_name, dentist_path(dentist), class: 'link-to-dentist' %>
+									</div>
 								</div>
-								<div class="dentist-name">
-									<%= link_to dentist.user.first_name, dentist_path(dentist), class: 'link-to-dentist' %>
-								</div>
-							</div>
-						<% end %>
+							<% end %>
+						</div>
 					</div>
 				</div>
-			</div>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 </div>
