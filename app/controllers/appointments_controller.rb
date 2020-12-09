@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
         chatroom = Chatroom.new(name: "Consulta online", appointment_id: @appointment.id)
         chatroom.save
       end
-        redirect_to appointment_path(@appointment)
+        redirect_to appointments_path
     else
       render :new
     end
