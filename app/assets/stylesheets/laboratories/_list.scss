@@ -20,8 +20,19 @@
   border-radius: 5px;
   padding: 12px;
   width: 97%;
+  height: 25vh;
 }
 
+.laboratory-logo-div{
+  width: 22%;
+  border-radius: 5%;
+}
+
+.laboratory-logo-img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
 .laboratory-card-infos{
   h5{
     color: #555b6e;

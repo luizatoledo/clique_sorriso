@@ -3,15 +3,14 @@
 </div>
 <div class="labs-and-map-container d-flex">
   <div class="laboratory-cards-container">
-    <% @laboratories.each do |laboratory| %>
+    <% @laboratories.order(:name).each do |laboratory| %>
       <div class="laboratory-card d-flex my-4">
-        <div class="laboratory-logo-div">
+        <div class="laboratory-logo-div mr-4 d-flex align-items-center justify-content-center">
           <%= cl_image_tag laboratory.photo.key, class: "laboratory-logo-img"%>
         </div>
         <div class="laboratory-card-infos d-flex flex-column">
-          <h5><%= laboratory.name %></h5>
+          <h5><%= link_to laboratory.name, laboratory_path(laboratory) %></h5>
           <p><%= laboratory.address %></p>
-          <%= link_to 'Show', laboratory, class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
