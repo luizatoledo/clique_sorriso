@@ -104,7 +104,7 @@ s3.photo.attach(io: img_profilaxia, filename: 'profilaxia.png', content_type: 'i
 s4 = Service.create!(title: 'Remoção de tártaro',
 								 description: 'Raspagem básica de pouco tártaro',
 								 duration: 30)
-img_tartaro = URI.open('https://lh3.googleusercontent.com/proxy/IC9UmTYko9OGV_rZ1mdu0Tz_EpgJLZXZZjMpia8SCYFwqYrcluwToZGPdkafBnk8is-_waG40zs6Ao2Jkdl6_-Xd14Rd2OfY7KOWOOKpFDGhyN_LEKpCK0bkAd66ZzAN5b3yI2emttDuZ4FBhpPVPKkWD_edWuk')
+img_tartaro = URI.open('https://images.unsplash.com/photo-1593022356769-11f762e25ed9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
 s4.photo.attach(io: img_tartaro, filename: 'tartaro.png', content_type: 'image/png')
 
 s5 = Service.create!(title: 'Consulta Online',

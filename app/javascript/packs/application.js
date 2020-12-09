@@ -34,6 +34,9 @@ import { initflatpickr, showTimeInput, sendProcedureInfo, sendDayInfo} from "./p
 import { initChatroomCable } from '../channels/chatroom_channel';
 
 import { initMapbox } from '../plugins/init_mapbox';
+
+import { displayAppointmentsLists } from '../channels/display_appointments';
+
 document.addEventListener('turbolinks:load', () => {
   initflatpickr();
   // Call your functions here, e.g:
@@ -43,5 +46,6 @@ document.addEventListener('turbolinks:load', () => {
   sendProcedureInfo();
   sendDayInfo();
   showTimeInput();
+  displayAppointmentsLists();
 });
 
