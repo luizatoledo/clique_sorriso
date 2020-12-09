@@ -1,5 +1,5 @@
 <div class="page row around">
-  <div class="content col-xs-12 col-md-4">
+  <div class="content profile-div col-xs-12 col-md-4">
     <div class="profile-pic d-flex align-items-center flex-column">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag @user.photo.key,
@@ -13,7 +13,7 @@
     <P><%= @user.address %></P>
     <P><%= @user.phone_number %></P>
     <P><%= @user.email %></P>
-    <div><%= link_to 'atualizar', edit_user_registration_path(@user), class: "btn btn-primary" %></div>
+    <div><%= link_to 'atualizar', edit_user_registration_path(@user), class: "btn btn-primary btn-block" %></div>
   </div>
   <div class="content col-xs-12 col-md-8">
     <div class="appointments-section">
@@ -23,8 +23,12 @@
       <div class="appointments-list">
         <% @appointments.order(:date).each do |appointment| %>
           <% if Time.now.strftime("%F") <= appointment.date.change(offset: '-03:00').strftime("%F") %>
-            <div class="appointment-card">
-              <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
+            <div class="appointment-card
+            <% if Time.now.strftime("%F") == appointment.date.change(offset: '-03:00').strftime("%F") %>
+             today ">
+            <% else %>">
+            <% end %>
+              <h6><span class="inactive" id="today">Hoje - </span><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h6>
               <% appointment.procedures.each do |procedure| %>
                 <p><%= procedure.service.title %> | 
                 <%= procedure.dentist.user.fullname %></p>
@@ -54,9 +58,9 @@
               <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
             </div>
           <% end %>
-        <% end %>~
+        <% end %>
       </div>  
     </div>
-    <div><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary" %></div>
+    <div class="content"><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary btn-block" %></div>
   </div>
 </div>
