@@ -28,7 +28,8 @@
              today ">
             <% else %>">
             <% end %>
-              <h6><span class="inactive" id="today">Hoje - </span><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h6>
+              <%# <h6><span class="inactive" id="today">Hoje - </span><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %><%#</h6> %>
+              <h6><span class="inactive" id="today">Hoje - </span><%= appointment.date.strftime("%d/%m/%Y") %> às <%= appointment.time %></h6>
               <% appointment.procedures.each do |procedure| %>
                 <% if current_user.dentist? %>
                   <p><%= procedure.service.title %> | 
@@ -38,7 +39,9 @@
                   <%= procedure.dentist.user.fullname %></p>
                 <% end %>
               <% end %>
-              <% if Time.now > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
+              <% now_in_mins = (Time.now.hour * 60) + Time.now.strftime("%M").to_i %>
+              <% if now_in_mins > (appointment.time_values[:total_mins] - 15) && now_in_mins < (appointment.time_values[:total_mins] + appointment.appoint_duration) %>
+              <%# if Time.now.strftime() > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
                 <div><%= link_to 'CHAT', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
               <% end %>
               <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
@@ -55,7 +58,8 @@
         <% @appointments.order(:date).each do |appointment| %>
           <% if Time.now.strftime("%F") > appointment.date.change(offset: '-03:00').strftime("%F") %>
             <div class="appointment-card">
-              <p><%= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></p>
+              <%# <p><%#= appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %> <%#</p> #%>
+                <p><%= appointment.date.strftime("%d/%m/%Y") %> às <%= appointment.time %></p>
               <% appointment.procedures.each do |procedure| %>
                 <p><%= procedure.service.title %> | 
                 <%= procedure.dentist.user.fullname %></p>
