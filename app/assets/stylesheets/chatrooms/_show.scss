@@ -1,7 +1,10 @@
 .chatroom-title{
   color: #555b6e;
   border-bottom: 1px solid  #555b6e;
-}
+
+ }
+
+.obs{color: #92949b;}
 
 h4{
   color: #89b0ae;
@@ -12,6 +15,9 @@ h4{
 .messages-container{
   border: 1px solid  #555b6e;
   padding: 20px;
+  background-color: #e4f7f2;
+  border-radius: 1%;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
 .author{

@@ -1,3 +1,14 @@
+.list-labs-title {
+  color: $morning-blue;
+  border-bottom: 1px solid $independence;
+  padding-top: 24px;
+  margin-bottom: 24px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 62px;
+  background-color: $cultured;
+}
+
 .laboratory-cards-container{
   width: 45vw;
 }
