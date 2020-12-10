@@ -1,7 +1,7 @@
 <%= simple_form_for(@appointment) do |f| %>
   <div id='treatments'>
     <div class="title-add-procedure blue-title-new-appointment">
-      <h4>1. Selecione os procedimentos que deseja:</h4>
+      <h5>Selecione os procedimentos que deseja:</h5>
     </div>
     <%= f.simple_fields_for :treatments do |treatment| %>
       <%= render 'treatment_fields', :f => treatment %>
@@ -11,12 +11,11 @@
     </div>
   </div>
   <div class="new-appointment-date blue-title-new-appointment">
-    <h4>2. Selecione a melhor data: </h4>
-    <%= f.input :date, label: '', as: :string, input_html: { class: "datepicker" } %>
+    <%= f.input :date, label: 'Selecione a melhor data:', as: :string, input_html: { class: "datepicker" } %>
   </div>
   <div class="new-appointment-hour d-none blue-title-new-appointment">
-    <h4>3. Selecione o melhor horário disponível na data informada: </h4>
-    <%= f.input :time, collection: TIME, required: true, label: "" %>
+
+    <%= f.input :time, collection: TIME, required: true, label: "Selecione o melhor horário disponível na data informada:" %>
   </div>
-  <%= f.button :submit, "Agendar", class: 'btn-add-procedure'%>
+  <%= f.button :submit, "Salvar", class: 'btn-add-procedure'%>
 <% end %>
