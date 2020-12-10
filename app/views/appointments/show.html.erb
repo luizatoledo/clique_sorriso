@@ -10,7 +10,8 @@
 	  <% if @appointment.prescriptions.count > 0 %>    
     <h4>Baixar as suas priscrições aqui:
     <% @appointment.prescriptions.each_with_index do |p, index| %>
-    <%= link_to p.file, target: '_blank', class: "btn btn-primary" do %>
+    <%# cl_image_tag "#{p.file.key}.jpg", target: '_blank' %>
+    <%= link_to "https://res.cloudinary.com/luizatoledo/image/upload/#{p.file.key}.jpg", target: '_blank', class: "btn btn-primary" do %>
       <div><%= index + 1 %>ª
         <i class="fas fa-prescription-bottle-alt"></i></div>
       <% end %>
