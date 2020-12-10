@@ -1,10 +1,10 @@
 
   <div class="procedures-index-title appointment-show-head-card">
 		<h1>
-    <% if @appointment.date.to_s.first(10) == DateTime.now.to_s.first(10) %>
-    <span class="inactive" id="today-show"><b>Hoje</b> - </span><%= @appointment.date.strftime("%Hh%M") %>
+    <% if @appointment.date.strftime("%d-%m-%Y") == DateTime.now.strftime("%d-%m-%Y") %>
+    <span id="today-show"><b>Hoje</b> - </span><%= @appointment.time %>
     <% else %>
-    <%= @appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %>
+      <%= @appointment.date.strftime("%d/%m/%Y") %> às <%= @appointment.time %>
     <% end %>
     </h1>
 	  <% if @appointment.prescriptions.count > 0 %>    
@@ -21,45 +21,56 @@
   </div>
 
 <div class="procedures-cards">
-<% procedure_duration = 0 %>
-		<% @appointment.procedures.order(:dentist_id).each do |procedure| %>
-        <% start_time = @appointment.date + procedure_duration.minutes %>
-        <% procedure_duration += procedure.service.duration %>
-        <% end_time = @appointment.date + procedure_duration.minutes %>
-				<div class="procedure-card d-flex">
-					<div class="procedure-img-container m-3">
-						<%= (cl_image_tag procedure.service.photo.key, class: "procedure-service-photo") if procedure.service.photo.attached? %>
-					</div>
-					<div class="procedure-info-container mt-3 d-flex flex-column text-blue">
-						<div class="procedure-info-title d-flex justify-content-start w-100">
-							<h4><%= procedure.service.title %></h4>
-						</div>
-						<div class="procedure-info-details">
-              <p class="procedure-duration-text"><%= start_time.strftime("%d-%m-%Y") %><% if Time.now.strftime("%F") == @appointment.date.strftime("%F") %> (Hoje) <% end %> - <%= start_time.strftime("%Hh%M") %> até <%= end_time.strftime("%Hh%M") %></p>
-							<p class="procedure-duration-text">Duração: <%= procedure.service.duration %> minutos</p>
-							<p class="procedure-description-text"><%= procedure.service.description %></p>
-              <div class="appointment-show-buttons d-flex justify-content-start">
-                <div><%= link_to 'editar', edit_appointment_path(@appointment), class: "btn btn-primary" %></div>
-                <div><%= link_to 'Cancelar', @appointment, method: :delete, data: { confirm: 'Cancelar?' }, class: "btn btn-primary" %></div>
-                <% if current_user.dentist? && current_user.dentist.id == procedure.dentist_id %>
-                  <div><%= link_to "Criar prescrição", new_prescription_path(@appointment), class: "btn btn-primary" %></div>
-                <% end %>
+  <% minutes_passed = 0 %>
+  <% @appointment.procedures.order(:dentist_id).each_with_index do |procedure, index| %>
+    <% if index == 0 %>
+      <% start_time = @appointment.time %>
+    <% else %>
+      <% start_time = (Time.parse(@appointment.time) + minutes_passed * 60).strftime("%H:%M") %>
+    <% end %>
+    <% minutes_passed += procedure.service.duration %>
+    <% end_time = (Time.parse(@appointment.time) + minutes_passed * 60).strftime("%H:%M") %>
+    <div class="procedure-card d-flex">
+      <div class="procedure-img-container m-3">
+        <%= (cl_image_tag procedure.service.photo.key, class: "procedure-service-photo") if procedure.service.photo.attached? %>
+      </div>
+      <div class="procedure-info-container mt-3 d-flex flex-column text-blue">
+        <div class="procedure-info-title d-flex justify-content-start w-100">
+          <h4><%= procedure.service.title %></h4>
+        </div>
+        <div class="procedure-info-details">
+          <p class="procedure-duration-text">
+            <% if Time.now.strftime("%F") == @appointment.date.strftime("%F") %>
+                Hoje - 
+            <% else %>
+              <%= @appointment.date.strftime("%d/%m/%Y") %>
+            <% end %>
+            <%= start_time %> até <%= end_time %>
+          </p>
+          <p class="procedure-duration-text">Duração: <%= procedure.service.duration %> minutos</p>
+          <p class="procedure-description-text"><%= procedure.service.description %></p>
+            <div class="appointment-show-buttons d-flex justify-content-start">
+              <div><%= link_to 'editar', edit_appointment_path(@appointment), class: "btn btn-primary" %></div>
+              <div><%= link_to 'Cancelar', @appointment, method: :delete, data: { confirm: 'Cancelar?' }, class: "btn btn-primary" %></div>
+              <% if current_user.dentist? && current_user.dentist.id == procedure.dentist_id %>
+                <div><%= link_to "Criar prescrição", new_prescription_path(@appointment), class: "btn btn-primary" %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="procedure-info-dentists d-flex justify-content-end">
+          
+          
+              <div class="procedure-dentists-container d-flex flex-column mr-3">
+                <div class="dentist-avatar-procedure">
+                  <%= cl_image_tag procedure.dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
+                </div>
+                <div class="dentist-name-procedure">
+                  <%= link_to procedure.dentist.user.first_name, dentist_path(procedure.dentist), class: 'link-to-dentist' %>
+                </div>
               </div>
-						</div>
-						<div class="procedure-info-dentists d-flex justify-content-end">
-						
-						
-								<div class="procedure-dentists-container d-flex flex-column mr-3">
-									<div class="dentist-avatar-procedure">
-										<%= cl_image_tag procedure.dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
-									</div>
-									<div class="dentist-name-procedure">
-										<%= link_to procedure.dentist.user.first_name, dentist_path(procedure.dentist), class: 'link-to-dentist' %>
-									</div>
-								</div>
-							
-						</div>
-					</div>
-				</div>
-		<% end %>
+            
+          </div>
+        </div>
+      </div>
+  <% end %>
 	</div>

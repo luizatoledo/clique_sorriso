@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   post '/appointments/selected_procedures', to: 'appointments#selected_procedures'
   post '/appointments/selected_day', to: 'appointments#selected_day'
-  get '/appointments/:id/videocall', to: 'appointments#videocall'
+  get '/appointments/:id/videocall', to: 'appointments#videocall', as: 'videocall'
   resources :appointments
 
   resources :prescriptions, only: [:index, :new, :create, :edit, :update, :destroy]
