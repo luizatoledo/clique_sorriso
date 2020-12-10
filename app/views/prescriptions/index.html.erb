@@ -10,8 +10,13 @@
     <div class="prescription-line"><div><b>Appointment-date: </b></div><div><%= prescription.appointment.date.to_s[0..10] %></div></div>
     <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
     <div class="prescription-buttons-line">
-      <div><%= link_to  "Edit", edit_prescription_path(prescription) %></div>
-      <div><%= link_to "Baixar o anexo", prescription.file, target: '_blank' %></div>
+    <% if current_user.dentist? %>
+      <div><%= link_to  "Editar", edit_prescription_path(prescription) %></div>
+    <% end %>
+      <div><%= link_to  "Agendamento", appointment_path(prescription.appointment) %></div>
+       <div><%= link_to prescription.file, target: '_blank' do %>
+        <div>Anexo <i class="fas fa-prescription-bottle-alt"></i></div>
+      <% end %> 
     </div>
   </div>
   
