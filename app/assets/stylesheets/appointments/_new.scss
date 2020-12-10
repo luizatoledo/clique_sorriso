@@ -8,7 +8,18 @@
 
 .blue-title-new-appointment{
   color: #555b6e;
+  label {
+    color: #555b6e;
+    font-size: 19px;
+  }
+  h5 {
+    margin-top: 3vh;
+  }
+  input {
+    border-radius: 10px;
+  }
 }
+
 .form-for-new-appointment{
   margin-top: 15px;
 }
@@ -18,7 +29,7 @@
   text-decoration: none;
   border: 1px solid #bee3db;
   padding: 8px 24px;
-  border-radius: 50px;
+  border-radius: 10px;
   background-color: #bee3db;
   &:hover{
     text-decoration: none;

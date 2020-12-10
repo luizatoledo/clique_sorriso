@@ -21,8 +21,9 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-    if @appointment.save
-      if @appointment.services.count == 1 && @appointment.services.first.title == "Consulta Online"
+    @appointment.date = @appointment.date.change(offset: '-03:00') - 3.hours + (@appointment.time.first(2).to_i * 60 + @appointment.time.last(2).to_i).minutes
+    if @appointment.date >= DateTime.now && @appointment.save
+      if @appointment.services.first.title == "Consulta Online"
         chatroom = Chatroom.new(name: "Consulta online", appointment_id: @appointment.id)
         chatroom.save
       end
@@ -31,6 +32,8 @@ class AppointmentsController < ApplicationController
       render :new
     end
   end
+
+  
 
   def edit
   end
@@ -84,5 +87,26 @@ class AppointmentsController < ApplicationController
   def find_appointment
     @appointment = Appointment.find(params[:id])
   end
-    
+   
+  # def if_dentist_busy_this_time(appointment)
+  #   p_duration = 0
+  #   appointment.procedures.order(:dentist_id).each do |p|
+  #     p_start_time = appointment.date + p_duration.minutes
+  #     p_duration += p.service.duration
+  #     p_end_time = appointment.date + p_duration.minutes
+  #     his_appointments_that_day = []
+  #     p.dentist.appointments.each { |a| his_appointments_that_day << a if a.date.to_s.first(10) == appointment.date.to_s.first(10) }
+  #     his_appointments_that_day.each do |reserved_appointment|
+  #       procedure_duration = 0
+  #       reserved_appointment.procedures.order(:dentist_id).each do |procedure|
+  #         procedure_start_time = reserved_appointment.date + procedure_duration.minutes
+  #         procedure_duration += procedure.service.duration
+  #         procedure_end_time = reserved_appointment.date + procedure_duration.minutes
+  #         return false if !(p_start_time > procedure_end_time || p_end_time < procedure_start_time)
+  #       end
+  #     end
+  #   end
+  #   return true
+  # end
 end
+
