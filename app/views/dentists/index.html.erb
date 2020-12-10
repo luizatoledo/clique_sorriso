@@ -5,7 +5,7 @@
 	<div class="dentists-cards-container">
 		<% @dentists.each do |dentist| %>
 			<% if dentist.approved %>
-        <%= link_to dentist_path(dentist) do %>
+        <%= link_to dentist_path(dentist), class: "text-decoration-none" do %>
           <div class="dentist-card d-flex my-4">
             <div class="dentist-card-avatar">
               <% if dentist.user.photo.attached? %>
