@@ -8,7 +8,7 @@ class Appointment < ApplicationRecord
   has_many :procedures, through: :treatments
   has_many :dentists, through: :procedures
   has_many :services, through: :procedures
-  has_many :prescriptions
+  has_many :prescriptions, dependent: :destroy
   validates :date, presence: true
   validates :time, presence: true, on: :update
 
@@ -24,5 +24,8 @@ class Appointment < ApplicationRecord
       duration += service.duration
     end
     duration
+  end
+  def end_time
+    self.date + self.appoint_duration.minutes
   end
 end
