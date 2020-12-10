@@ -1,35 +1,37 @@
-<div class="prescription-card">
-  <h1>Minhas Prescrições</h1>
-</div>
+<div class="container">
+
+  <div class="list-title">
+    <h1>Minhas Prescrições</h1>
+  </div>
 
 
-<% @prescriptions.each do |prescription| %>
- <div class="prescription-card">
-    <div class="prescription-line"><div><b>Paciente: </b></div><div><%= prescription.user.fullname %></div></div>
-    <div class="prescription-line"><div><b>Dentista: </b></div><div><%= prescription.dentist.user.fullname %></div></div>
-    <div class="prescription-line"><div><b>Appointment-date: </b></div><div><%= prescription.appointment.date.to_s[0..10] %></div></div>
-    <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
-    <div class="prescription-buttons-line">
-    <% if current_user.dentist? %>
-      <div><%= link_to  "Editar", edit_prescription_path(prescription) %></div>
-    <% end %>
-      <div><%= link_to  "Agendamento", appointment_path(prescription.appointment) %></div>
-       <div><%= link_to prescription.file, target: '_blank' do %>
-        <div>Anexo <i class="fas fa-prescription-bottle-alt"></i></div>
-      <% end %> 
+  <% @prescriptions.each do |prescription| %>
+  <div class="prescription-card">
+      <div class="prescription-line"><div><b>Paciente: </b></div><div><%= prescription.user.fullname %></div></div>
+      <div class="prescription-line"><div><b>Dentista: </b></div><div><%= prescription.dentist.user.fullname %></div></div>
+      <div class="prescription-line"><div><b>Appointment-date: </b></div><div><%= prescription.appointment.date.to_s[0..10] %></div></div>
+      <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
+      <div class="prescription-buttons-line">
+      <% if current_user.dentist? %>
+        <div><%= link_to  "Editar", edit_prescription_path(prescription) %></div>
+      <% end %>
+        <div><%= link_to  "Agendamento", appointment_path(prescription.appointment) %></div>
+        <div><%= link_to prescription.file, target: '_blank' do %>
+          <div>Anexo <i class="fas fa-prescription-bottle-alt"></i></div>
+        <% end %> 
+      </div>
     </div>
-  </div>
-  
-<% end %>
+    
+  <% end %>
 
 
-<% if @prescriptions.count == 0 %>
-  <div class="prescription-card">
-    <div class="prescription-line"><div><b>Por enquanto, você não tem nenhuma prescrição.</b></div>
-  </div>
-  <div class="prescription-card">
-    <div><%= link_to  "Back", root_path, class: "btn btn-primary" %></div>
-  </div>
-<% end %>
+  <% if @prescriptions.count == 0 %>
+    <div class="prescription-card">
+      <div class="prescription-line"><div><b>Por enquanto, você não tem nenhuma prescrição.</b></div>
+    </div>
+    <div class="prescription-card">
+      <div><%= link_to  "Back", root_path, class: "btn btn-primary" %></div>
+    </div>
+  <% end %>
 
-  
+</div>
