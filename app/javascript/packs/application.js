@@ -38,6 +38,7 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+import { initVideocall } from "../plugins/videocall";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -49,5 +50,6 @@ document.addEventListener('turbolinks:load', () => {
   sendProcedureInfo();
   sendDayInfo();
   showTimeInput();
+  initVideocall();
 });
 
