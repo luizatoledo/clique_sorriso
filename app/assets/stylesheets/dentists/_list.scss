@@ -15,6 +15,9 @@
   height: 30%;
   &:hover{
     background-color: #bee3db;
+    .dentist-card-infos-name {
+      font-weight: bold;
+    }
   }
 }
 
