@@ -4,11 +4,12 @@
   </div>
   <% if current_user.dentist.nil? %>
     <h4>Mande sua mensagem para o dentista!</h4>
+    <span class="obs">Se não for o horário da sua consulta, o dentista te responderá em até 48h</span>
   <% else %>
     <h4>Mande sua mensagem para o paciente!</h4>
   <% end %>
 
-  <div class="messages-container">
+  <div class="messages-container my-4">
     <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
       <%= f.input :content, label: false, placeholder: "Mensagem" %>
     <% end %>
@@ -19,24 +20,4 @@
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="videocall">
-  <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
-  <script>
-    callFrame = window.DailyIframe.createFrame({
-      iframeStyle: {
-        position: 'fixed',
-        border: '1px solid black',
-        width: '375px',
-        height: '450px',
-        right: '1em',
-        bottom: '1em'
-      },
-      lang: 'pt',
-      showLeaveButton: true,
-      showFullscreenButton: true
-    });
-    callFrame.join({ url: 'https://cliquesorriso.daily.co/cliquesorriso' })
-  </script>
 </div>

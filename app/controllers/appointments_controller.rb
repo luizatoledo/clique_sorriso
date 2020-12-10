@@ -1,6 +1,6 @@
 require "pry-byebug"
 class AppointmentsController < ApplicationController
-  before_action :find_appointment, only: %i[edit update show destroy]
+  before_action :find_appointment, only: %i[edit update show destroy videocall]
 
   def index
     @user = current_user
@@ -38,8 +38,6 @@ class AppointmentsController < ApplicationController
       render :new
     end
   end
-
-  
 
   def edit
   end
@@ -82,6 +80,9 @@ class AppointmentsController < ApplicationController
     # available = []
     # appoint_of_day.each do |app|
     appoint_of_day
+  end
+
+  def videocall
   end
 
   private

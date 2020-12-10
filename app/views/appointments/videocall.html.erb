@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="videocall-title my-4">
+    <h1>Sua Consulta Online com <%= @appointment.dentists.first.user.fullname %></h1>
+  </div>
+  <div class="videocall-appoint-info rounded">
+    <span class="rounded"><%= @appointment.date.strftime("%d/%m/%Y")%> às <%= @appointment.time%></span>
+  </div>
+  <div class="videocall">
+    <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+  </div>
+</div>

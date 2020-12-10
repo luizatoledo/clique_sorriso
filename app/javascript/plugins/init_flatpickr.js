@@ -52,56 +52,62 @@ const initflatpickr = () => {
 // function to make the time input available for the user to see
 const showTimeInput = () => {
   const dateInput = document.querySelector('.appointment_date > input');
-  dateInput.addEventListener('change', (event) => {
-    const timeInput = document.querySelector('.new-appointment-hour');
-    timeInput.classList.remove("d-none")
-  });
+  if (dateInput) {
+    dateInput.addEventListener('change', (event) => {
+      const timeInput = document.querySelector('.new-appointment-hour');
+      timeInput.classList.remove("d-none")
+    });
+  };
 };
 
 // function that will listen which procedures the user chooses and sends that to appoint/new
 const sendProcedureInfo = () => {
   $(document).on('cocoon:after-insert', 'form', function(e) {
     const procedures = document.querySelectorAll('.nested-fields > select');
-    const procedure = procedures[procedures.length - 1]
-    procedure.addEventListener('change', (event) => {
-      const procedureId = event.currentTarget.value;
-      const url = window.location.origin + '/appointments/selected_procedures';
-      fetch(url, {
-        method: "POST",
-        headers:{
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken()
-        },
-        body: JSON.stringify({ procedure_id: procedureId })
-      }).then(response => response.json())
-      .then((data) => {
-        console.log(data);
+    if (procedures) {
+      const procedure = procedures[procedures.length - 1]
+      procedure.addEventListener('change', (event) => {
+        const procedureId = event.currentTarget.value;
+        const url = window.location.origin + '/appointments/selected_procedures';
+        fetch(url, {
+          method: "POST",
+          headers:{
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken()
+          },
+          body: JSON.stringify({ procedure_id: procedureId })
+        }).then(response => response.json())
+        .then((data) => {
+          console.log(data);
+        });
       });
-    });
+    };
   });
 };
 
 const sendDayInfo = () => {
   const dateInput = document.querySelector('.appointment_date > input');
-  dateInput.addEventListener('change',(event) => {
-    // const form = document.getElementById('new_appointment');
-    // form.submit();
-    const dateValue = event.currentTarget.value;
-    const url = window.location.origin + '/appointments/selected_day';
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken()
-      },
-      body: JSON.stringify({date_picked: dateValue})
-    }).then(response => response.json())
-    .then((data) => {
-      console.log(data);
+  if (dateInput) {
+    dateInput.addEventListener('change',(event) => {
+      // const form = document.getElementById('new_appointment');
+      // form.submit();
+      const dateValue = event.currentTarget.value;
+      const url = window.location.origin + '/appointments/selected_day';
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken()
+        },
+        body: JSON.stringify({date_picked: dateValue})
+      }).then(response => response.json())
+      .then((data) => {
+        console.log(data);
+      });
     });
-  });
+  };
 };
 
 export {initflatpickr, showTimeInput, sendProcedureInfo, sendDayInfo}
