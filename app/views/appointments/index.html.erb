@@ -40,7 +40,7 @@
                 <% end %>
               <% end %>
               
-              <% now_in_mins = (Time.now.hour * 60) + Time.now.strftime("%M").to_i %>
+              <% now_in_mins = (Time.now - 3 * 60 * 60).hour * 60) + (Time.now - 3 * 60 * 60 ).strftime("%M").to_i%>
               <% unless appointment.chatroom.nil? %>
                 <div><%= link_to 'Chat', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
               <% end %>
