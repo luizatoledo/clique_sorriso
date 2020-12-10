@@ -4,11 +4,12 @@
   </div>
   <% if current_user.dentist.nil? %>
     <h4>Mande sua mensagem para o dentista!</h4>
+    <span class="obs">Se não for o horário da sua consulta, o dentista te responderá em até 48h</span>
   <% else %>
     <h4>Mande sua mensagem para o paciente!</h4>
   <% end %>
 
-  <div class="messages-container">
+  <div class="messages-container my-4">
     <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
       <%= f.input :content, label: false, placeholder: "Mensagem" %>
     <% end %>
