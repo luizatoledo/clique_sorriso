@@ -9,10 +9,10 @@ const initVideocall = () => {
       iframeStyle: {
         position: 'fixed',
         border: '1px solid black',
-        width: '375px',
-        height: '450px',
-        right: '1em',
-        bottom: '1em'
+        width: '70vw',
+        height: '60vh',
+        right: '15em',
+        bottom: '4em'
       },
       lang: 'pt',
       showLeaveButton: true,
