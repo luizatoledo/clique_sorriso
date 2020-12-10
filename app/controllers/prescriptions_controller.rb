@@ -22,10 +22,9 @@ class PrescriptionsController < ApplicationController
     @prescription.user = @appointment.user
     @prescription.dentist = current_user.dentist
     if @prescription.save
-      redirect_to prescriptions_path  
+      redirect_to appointment_path(@appointment)  
     else
       render :new
-      raise
     end
   end
 
