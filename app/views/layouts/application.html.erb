@@ -34,9 +34,9 @@
 
   <body>
     <div id="application-html-container">
-      <div id="content-wrap">
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
+      <div id="content-wrap">
         <%= yield %>
       </div>
       <%= render "/shared/footer" %>

@@ -1,0 +1,36 @@
+.page-show {
+    height: 100%;
+    color: $independence;
+    
+    i {
+        color: $cultured;
+    }
+
+    a {
+        text-decoration: none;
+        color: $cultured;
+    }
+}
+
+.appointment-show-card {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: #555B6E25 0px 1px 4px;
+    border-radius: 5px;
+    padding: 10px;
+}
+ 
+
+.today {
+    border: solid $independence;
+
+    #today-show {
+        display: inline;
+    }
+
+    h6 {
+        font-weight: bolder;
+    }
+}
