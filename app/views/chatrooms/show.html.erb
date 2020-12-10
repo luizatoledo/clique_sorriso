@@ -1,13 +1,23 @@
 <div class="container">
-  <h1><%= @chatroom.name %> - <%= current_user.fullname %></h1>
-  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+  <div class="chatroom-title my-4">
+    <h1><%= @chatroom.name %> - <%= current_user.fullname %></h1>
+  </div>
+  <% if current_user.dentist.nil? %>
+    <h4>Mande sua mensagem para o dentista!</h4>
+  <% else %>
+    <h4>Mande sua mensagem para o paciente!</h4>
   <% end %>
 
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-    <% @chatroom.messages.each do |message| %>
-      <%= render partial: 'messages/message', locals: { message: message} %>
+  <div class="messages-container">
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Mensagem" %>
     <% end %>
+
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% @chatroom.messages.each do |message| %>
+        <%= render partial: 'messages/message', locals: { message: message} %>
+      <% end %>
+    </div>
   </div>
 </div>
 
