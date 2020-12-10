@@ -1,4 +1,3 @@
-require "pry-byebug"
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: %i[edit update show destroy videocall]
 
