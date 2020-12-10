@@ -1,27 +1,51 @@
-<div class="page-show container">
-    <div class="appointment-show-card 
-      <% if Time.now.strftime("%F") == @appointment.date.change(offset: '-03:00').strftime("%F") %>
-      today ">
-      <% else %>">
+
+  <div class="procedures-index-title appointment-show-head-card">
+		<h1><span class="inactive" id="today-show">Hoje - </span><%= @appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h1>
+	  <h4>Baixar as suas priscrições aqui:
+    <% @appointment.prescriptions.each_with_index do |p, index| %>
+    <%= link_to p.file, target: '_blank', class: "btn btn-primary" do %>
+      <div><%= index + 1 %>ª
+        <i class="fas fa-prescription-bottle-alt"></i></div>
       <% end %>
-      <div>
-        <h6><span class="inactive" id="today-show">Hoje - </span><%= @appointment.date.strftime("%d/%m/%Y  -  %Hh%M") %></h6>
-        <p><% @appointment.procedures.each do |procedure| %></p>
-          <p><%= procedure.service.title %> | 
-          <% if current_user.dentist? %>
-            <%= @appointment.user.fullname %>
-          <% else %>
-            <%= procedure.dentist.user.fullname %>
-          <% end %></p>
-        <% end %>
-      </div>  
-      <div>
-        <div><%= link_to 'editar', edit_appointment_path(@appointment), class: "btn btn-primary" %></div>
-        <div><%= link_to 'Excluir', @appointment, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary" %></div>
-      </div>
-    </div>
-    <div class="btn btn-primary" ><i class="fas fa-angle-left"></i><%= link_to "  Meus agendamentos", appointments_path %></div>
-    <% if current_user.dentist? %>
-      <div><%= link_to "Criar prescrição", new_prescription_path(@appointment), class: "btn btn-primary" %></div>
-    <% end %>
-</div>
+      <% end %>
+    </h4>
+  </div>
+
+<div class="procedures-cards">
+		<% @appointment.procedures.order(:dentist_id).each do |procedure| %>
+				<div class="procedure-card d-flex">
+					<div class="procedure-img-container m-3">
+						<%= (cl_image_tag procedure.service.photo.key, class: "procedure-service-photo") if procedure.service.photo.attached? %>
+					</div>
+					<div class="procedure-info-container mt-3 d-flex flex-column text-blue">
+						<div class="procedure-info-title d-flex justify-content-start w-100">
+							<h4><%= procedure.service.title %></h4>
+						</div>
+						<div class="procedure-info-details">
+							<p class="procedure-duration-text">Duração: <%= procedure.service.duration %> minutos</p>
+							<p class="procedure-description-text"><%= procedure.service.description %></p>
+              <div class="appointment-show-buttons d-flex justify-content-start">
+                <div><%= link_to 'editar', edit_appointment_path(@appointment), class: "btn btn-primary" %></div>
+                <div><%= link_to 'Excluir', @appointment, method: :delete, data: { confirm: 'Delete?' }, class: "btn btn-primary" %></div>
+                <% if current_user.dentist? && current_user.dentist.id == procedure.dentist_id %>
+                  <div><%= link_to "Criar prescrição", new_prescription_path(@appointment), class: "btn btn-primary" %></div>
+                <% end %>
+              </div>
+						</div>
+						<div class="procedure-info-dentists d-flex justify-content-end">
+						
+						
+								<div class="procedure-dentists-container d-flex flex-column mr-3">
+									<div class="dentist-avatar-procedure">
+										<%= cl_image_tag procedure.dentist.user.photo.key, class: 'avatar', transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}] %>
+									</div>
+									<div class="dentist-name-procedure">
+										<%= link_to procedure.dentist.user.first_name, dentist_path(procedure.dentist), class: 'link-to-dentist' %>
+									</div>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+		<% end %>
+	</div>

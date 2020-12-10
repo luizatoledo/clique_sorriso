@@ -11,6 +11,20 @@
         color: $cultured;
     }
 }
+.appointment-show-head-card {
+    margin-left: 20vw;
+    margin-top: 5vh;
+    .btn {
+        margin-left: 2vw;
+
+    }
+}
+.appointment-show-buttons {
+    .btn {
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+}
 
 .appointment-show-card {
     display: flex;
