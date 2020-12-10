@@ -1,6 +1,7 @@
-.dentists-list-title{
-  color: #89b0ae;
-  border-bottom: 1px solid #555b6e;
+.list-title{
+  color: $morning-blue;
+  border-bottom: 1px solid $independence;
+  margin: 24px 0;
 }
 
 .dentist-card{
@@ -30,7 +31,6 @@
 }
 
 .dentist-card-infos-name{
-  width: 80%;
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 24px;
