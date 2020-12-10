@@ -5,35 +5,38 @@
 	<div class="dentists-cards-container">
 		<% @dentists.each do |dentist| %>
 			<% if dentist.approved %>
-        <div class="dentist-card d-flex my-4">
-          <div class="dentist-card-avatar">
-            <% if dentist.user.photo.attached? %>
-              <%= cl_image_tag dentist.user.photo.key, transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}], class: 'dentist-card-avatar-img' %>
-            <% else %>
-              <%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'dentist-card-avatar-img' %>
-            <% end %>
-          </div>
-          <div class="dentist-card-infos d-flex flex-column justify-content-center">
-            <span class="dentist-card-infos-name">
-              <%= link_to "#{dentist.user.first_name.capitalize} #{dentist.user.last_name.capitalize}", dentist_path(dentist), class: 'dentist-card-infos-name-link' %>
-            </span>
-            <span class="dentist-card-infos-specialty">
-              <%= dentist.specialty %>
-            </span>
-            <span class="dentist-card-infos-cro">
-              CRO: <%= dentist.cro %>
-            </span>
-          </div>
-          <% if user_signed_in? && (current_user.admin || current_user.dentist == dentist)%>
-            <div class="see-more-options-dentist-card dropdown">
-              <i class="fas fa-ellipsis-v" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-              <div class="dropdown-menu">
-                <%= link_to "Edit dentist profile", dentist_path(dentist), class: 'dropdown-item' %>
-              </div>
+        <%= link_to dentist_path(dentist), class: "text-decoration-none" do %>
+          <div class="dentist-card d-flex my-4">
+            <div class="dentist-card-avatar">
+              <% if dentist.user.photo.attached? %>
+                <%= cl_image_tag dentist.user.photo.key, transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 400, crop: "scale"}], class: 'dentist-card-avatar-img' %>
+              <% else %>
+                <%= image_tag "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png", class: 'dentist-card-avatar-img' %>
+              <% end %>
             </div>
-          <% end %>
+            <div class="dentist-card-infos d-flex flex-column justify-content-center">
+              <span class="dentist-card-infos-name">
+                <%# <%= link_to "#{dentist.user.first_name.capitalize} #{dentist.user.last_name.capitalize}", dentist_path(dentist), class: 'dentist-card-infos-name-link' %>
+                <%= dentist.user.fullname %>
+              </span>
+              <span class="dentist-card-infos-specialty">
+                <%= dentist.specialty %>
+              </span>
+              <span class="dentist-card-infos-cro">
+                CRO: <%= dentist.cro %>
+              </span>
+            </div>
+            <% if user_signed_in? && (current_user.admin || current_user.dentist == dentist)%>
+              <div class="see-more-options-dentist-card dropdown">
+                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu">
+                  <%= link_to "Edit dentist profile", dentist_path(dentist), class: 'dropdown-item' %>
+                </div>
+              </div>
+            <% end %>
 
-        </div>
+          </div>
+        <% end %>
       <% end %>
 		<% end %>
 	</div>

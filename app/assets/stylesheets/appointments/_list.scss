@@ -1,63 +1,62 @@
 .page-index {
-    height: 100%;
     margin: 20px;
     
-    .appointments-title {
+}
+
+.appointments-title {
+    color: $independence;
+    border-bottom: 1px solid $independence;
+    margin-bottom: 20px;
+    h2, h4 {
+        display: inline-block;
+    }
+    i {
+        font-size: 20px;
+        margin-right: 0.5rem;
+    }
+}
+
+.inactive {
+    display: none;
+}
+
+.content {
+    padding: 20px 40px;
+}
+
+.profile-div {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: #555B6E25 0px 1px 4px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: $cultured;
+}
+
+.profile-pic {
+    margin: 20px;    
+}
+
+.appointment-card {
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: #555B6E25 0px 1px 4px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.today {
+    border: solid $independence;
+
+    #today {
+        display: inline;
+    }
+
+    h6 {
         color: $independence;
-        border-bottom: 1px solid $independence;
-        margin-bottom: 20px;
-        h2, h4 {
-            display: inline-block;
-        }
-        i {
-            font-size: 20px;
-            margin-right: 0.5rem;
-        }
+        font-weight: bolder;
     }
-    
-    .inactive {
-        display: none;
-    }
-
-    .content {
-        padding: 20px 40px;
-    }
-
-    .profile-div {
-        background-color: rgba(255, 255, 255, 0.5);
-        box-shadow: #555B6E25 0px 1px 4px;
-        border-radius: 5px;
-    }
-
-    a {
-        text-decoration: none;
-        color: $cultured;
-    }
-
-    .profile-pic {
-        margin: 20px;    
-    }
-
-    .appointment-card {
-        margin: 20px 0;
-        background-color: rgba(255, 255, 255, 0.5);
-        box-shadow: #555B6E25 0px 1px 4px;
-        border-radius: 5px;
-        padding: 10px;
-    }
-
-    
-    .today {
-        border: solid $independence;
-
-        #today {
-            display: inline;
-        }
-
-        h6 {
-            color: $independence;
-            font-weight: bolder;
-        }
-    }
-
 }
