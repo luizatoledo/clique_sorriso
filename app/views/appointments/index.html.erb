@@ -13,7 +13,7 @@
     <P><%= @user.address %></P>
     <P><%= @user.phone_number %></P>
     <P><%= @user.email %></P>
-    <div><%= link_to 'atualizar', edit_user_registration_path(@user), class: "btn btn-primary btn-block" %></div>
+    <div><%= link_to 'atualizar', edit_user_registration_path(@user), class: "btn btn-primary btn-block btn-mm" %></div>
   </div>
   <div class="content col-xs-12 col-md-8">
     <div class="appointments-section">
@@ -42,11 +42,11 @@
               
               <% now_in_mins = (Time.now.hour * 60) + Time.now.strftime("%M").to_i %>
               <% unless appointment.chatroom.nil? %>
-                <div><%= link_to 'Chat', chatroom_path(appointment.chatroom), class: "btn btn-primary" %></div>
+                <div><%= link_to 'Chat', chatroom_path(appointment.chatroom), class: "btn btn-mm btn-primary" %></div>
               <% end %>
               <% if now_in_mins > (appointment.time_values[:total_mins] - 15) && now_in_mins < (appointment.time_values[:total_mins] + appointment.appoint_duration) %>
               <%# if Time.now.strftime() > (appointment.date.change(offset: '-03:00') - (60 * 15)) && Time.now < (appointment.date.change(offset: '-03:00') + (appointment.appoint_duration * 60)) %>
-                <div><%= link_to 'Videocall', videocall_path(appointment), class: "btn btn-primary" %></div>
+                <div><%= link_to 'Videocall', videocall_path(appointment), class: "btn btn-mm btn-primary" %></div>
               <% end %>
               <div class="d-flex justify-content-end"><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
             </div>
@@ -68,12 +68,12 @@
                 <p><%= procedure.service.title %> | 
                 <%= procedure.dentist.user.fullname %></p>
               <% end %>
-              <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary" %></div>
+              <div><%= link_to 'detalhes', appointment_path(appointment), class: "btn btn-primary btn-mm" %></div>
             </div>
           <% end %>
         <% end %>
       </div>  
     </div>
-    <div class="content"><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary btn-block" %></div>
+    <div class="content"><%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-primary btn-mm btn-block" %></div>
   </div>
 </div>
