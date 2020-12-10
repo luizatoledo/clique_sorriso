@@ -178,7 +178,8 @@ p9.save!
 # User 1 appointments and treatments
 a1 = Appointment.new
 a1.user = u1 
-a1.date = '2020-07-12 09:00:00'
+a1.date = '2020-07-12'
+a1.time = "09:00"
 a1.save!
 
 t1 = Treatment.new
@@ -188,7 +189,8 @@ t1.save!
 
 a2 = Appointment.new
 a2.user = u1
-a2.date = '2020-10-15 12:30:00'
+a2.date = '2020-10-15'
+a2.time = '12:30'
 a2.save!
 
 t2 = Treatment.new()
@@ -203,7 +205,8 @@ t3.save!
 
 a3 = Appointment.new
 a3.user = u1
-a3.date = '2020-12-14 09:00:00'
+a3.date = '2020-12-14'
+a3.time = '09:00'
 a3.save!
 
 t4 = Treatment.new()
@@ -215,7 +218,8 @@ t4.save!
 
 a4 = Appointment.new
 a4.user = u4
-a4.date = '2020-12-14 15:00:00'
+a4.date = '2020-12-14'
+a4.time = '15:00'
 a4.save!
 
 t5 = Treatment.new
@@ -226,7 +230,8 @@ t5.save!
 # User 5 appointments and treatments
 
 a5 = Appointment.new
-a5.date = '2019-09-18 16:30:00'
+a5.date = '2019-09-18'
+a5.time = '16:30'
 a5.user = u5
 a5.save!
 
@@ -236,7 +241,8 @@ t6.procedure = p7
 t6.save!
 
 a6 = Appointment.new
-a6.date = '2019-10-01 08:30:00'
+a6.date = '2019-10-01'
+a6.time = '08:30'
 a6.user = u5
 a6.save!
 
@@ -246,7 +252,8 @@ t7.procedure = p8
 t7.save!
 
 a7 = Appointment.new
-a7.date = '2019-11-01 14:30:00'
+a7.date = '2019-11-01'
+a7.time = '14:30'
 a7.user = u5
 a7.save!
 
@@ -257,7 +264,8 @@ t8.save!
 
 a8 = Appointment.new
 a8.user = u5
-a8.date = '2019-12-01 16:00:00'
+a8.date = '2019-12-01' 
+a8.time = '16:00:00'
 a8.save!
 
 t9 = Treatment.new
