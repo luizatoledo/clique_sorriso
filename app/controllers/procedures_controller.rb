@@ -53,7 +53,7 @@ class ProceduresController < ApplicationController
   
   def can_delete?(procedure)
     procedure.treatments.each do |t1|
-      return false if  (t1.appointment.time_values[:total_mins]) + t1.appointment.appoint_duration > DateTime.now
+      return false if  (t1.appointment.time_values[:total_mins]) + t1.appointment.appoint_duration > (DateTime.now - 3 * 60 * 60)
     end
     return true
   end
