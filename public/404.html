@@ -489,10 +489,10 @@ button {
   }
 }
 @media (max-width: 750px) {
-  body, html, {
+  body, html {
     max-height: 100vh;
   }
-   .error__content {
+  .error__content {
     position: static;
     margin: 0 auto;
     transform: none;
@@ -503,7 +503,7 @@ button {
     padding-bottom: 100px;
     height: 100vh;
   }
-  }
+  
 @media (max-width: 650px) {
   .message__title {
     font-size: 36px;
@@ -521,7 +521,7 @@ button {
   .error__content {
     padding-top: 180px;
   }
-  }
+}
 @media (max-width: 480px) {
 
   .message__title {
@@ -541,7 +541,7 @@ button {
 
   </head>
 
-<body class="rails-default-error-page">
+<body>
   <!-- This file lives in public/404.html -->
   <!--dust particel-->
 <div>
