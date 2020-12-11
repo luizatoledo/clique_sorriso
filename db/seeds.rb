@@ -23,15 +23,15 @@ u1.photo.attach(io: file1, filename: 'user1.png', content_type: 'image/png')
 
 u2 = User.create!(role: 'dentist', 
 									admin: false,
-									first_name: 'Maria',
-									last_name: 'Souza',
-									cpf: '111.111.111-11',
-									phone_number: '(11)99999-9999',
+									first_name: 'Luiza',
+									last_name: 'Toledo',
+									cpf: '451.765.843-55',
+									phone_number: '(11)98085-7677',
 									address: 'Rua Harmonia, 555, São Paulo',
-									birthday: '1975-06-08',
-									email: 'maria@email.com',
+									birthday: '1993-06-08',
+									email: 'luiza@email.com',
 									password: '123456')
-file2 = URI.open('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')
+file2 = URI.open('https://media-exp1.licdn.com/dms/image/C4E03AQEQYKrjsZekUA/profile-displayphoto-shrink_400_400/0/1558023556404?e=1613001600&v=beta&t=Wz6NFPc3l6OzTB-5WOYZ4rulO5VNT7GIB_FwPBblAeQ')
 u2.photo.attach(io: file2, filename: 'user2.png', content_type: 'image/png')
 
 u3 = User.create!(role: 'dentist', 
@@ -62,23 +62,23 @@ u4.photo.attach(io: file4, filename: 'user4.png', content_type: 'image/png')
 									
 u5 = User.create!(role: 'patient', 
 									admin: false,
-									first_name: 'Luiza',
-									last_name: 'Toledo',
+									first_name: 'Bruna',
+									last_name: 'Vasconcelos',
 									cpf: '444.444.444-44',
 									phone_number: '(11)99999-9999',
 									address: 'Rua Cayowaa, 1575, São Paulo',
 									birthday: '1996-09-11',
-									email: 'luiza@email.com',
+									email: 'bruna@email.com',
 									password: '123456')
-file5 = URI.open('https://ca.slack-edge.com/T02NE0241-U01C7U49X46-155e289c591e-512')
+file5 = URI.open('https://images.unsplash.com/photo-1584351830300-4eae0a6f5ed9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixlib=rb-1.2.1&q=80&w=500')
 u5.photo.attach(io: file5, filename: 'user5.png', content_type: 'image/png')
 
 # Dentist
-d1 = Dentist.new(approved: true, cro: '000.000', specialty: 'Periodontista')
+d1 = Dentist.new(approved: true, cro: 'SP 567.944', specialty: 'Periodontista')
 d1.user = u2
 d1.save!
 
-d2 = Dentist.new(approved: true, cro: '111.111', specialty: 'Ortodontista')
+d2 = Dentist.new(approved: true, cro: 'SP 162.891', specialty: 'Ortodontista')
 d2.user = u3
 d2.save!
 
