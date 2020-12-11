@@ -1,9 +1,7 @@
 <div class="container">
-
   <div class="list-title">
     <h1>Minhas Prescrições</h1>
   </div>
-
 
   <% @prescriptions.each do |prescription| %>
   <div class="prescription-card">
@@ -15,9 +13,8 @@
       <% if current_user.dentist? %>
         <div><%= link_to  "Editar", edit_prescription_path(prescription) %></div>
       <% end %>
-        <div><%= link_to  "Agendamento", appointment_path(prescription.appointment) %></div>
-        <div><%= link_to prescription.file, target: '_blank' do %>
-          <div>Anexo <i class="fas fa-prescription-bottle-alt"></i></div>
+        <div><%= link_to "https://res.cloudinary.com/luizatoledo/image/upload/#{prescription.file.key}.jpg", target: '_blank', class: "btn btn-primary btn-mm" do %>
+          <i class="fas fa-prescription-bottle-alt"></i> Download
         <% end %> 
       </div>
     </div>
@@ -27,10 +24,9 @@
 
   <% if @prescriptions.count == 0 %>
     <div class="prescription-card">
-      <div class="prescription-line"><div><b>Por enquanto, você não tem nenhuma prescrição.</b></div>
-    </div>
-    <div class="prescription-card">
-      <div><%= link_to  "Back", root_path, class: "btn btn-primary" %></div>
+      <div class="prescription-line">
+        <div><b>Por enquanto, você não tem nenhuma prescrição.</b></div>
+        <div><%= link_to  "Back", root_path, class: "btn btn-primary" %></div>
     </div>
   <% end %>
 

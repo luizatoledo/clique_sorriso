@@ -25,14 +25,12 @@
 }
 
 .btn-add-procedure{
-  color: #678583;
   text-decoration: none;
-  border: 1px solid #bee3db;
-  padding: 8px 24px;
-  border-radius: 10px;
-  background-color: #bee3db;
+  color: #FAF9F9;
+  background-color: #89B0AE;
+  border-color: #89B0AE;
+
   &:hover{
-    text-decoration: none;
     background-color: #89b0ae;
     color: white;
     border: 1px solid #89b0ae;
