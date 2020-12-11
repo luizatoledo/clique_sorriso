@@ -1,8 +1,8 @@
-<div class="container">
-	<div class="list-labs-title">
+<div class="page-index-labs">
+  <div class="list-labs-title">
     <h1>Laboratórios Parceiros da Clínica</h1>
   </div>
-  <div class="d-flex">
+  <div class="row around">
     <div class="laboratory-cards-container">
       <% @laboratories.order(:name).each do |laboratory| %>
         <div class="laboratory-card d-flex my-4">
@@ -18,7 +18,7 @@
     </div>
   
     <div id="map"
-      style="width: 50%; height: 100%; right: 0; position: fixed"
+      style="width: 50%; height: 100%; right: 20px; top: 142px; position: fixed"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
