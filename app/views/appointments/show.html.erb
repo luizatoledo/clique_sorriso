@@ -8,7 +8,7 @@
     <% end %>
     </h1>
 	  <% if @appointment.prescriptions.count > 0 %>    
-    <h4>Baixar as suas priscrições aqui:
+    <h4>Baixar as suas prescrições aqui:
     <% @appointment.prescriptions.each_with_index do |p, index| %>
     <%# cl_image_tag "#{p.file.key}.jpg", target: '_blank' %>
     <%= link_to "https://res.cloudinary.com/luizatoledo/image/upload/#{p.file.key}.jpg", target: '_blank', class: "btn btn-primary" do %>
