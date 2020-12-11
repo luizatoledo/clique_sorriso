@@ -40,9 +40,9 @@
       </div>
       <div class="appointments-list">
         <% @appointments.order(:date).each do |appointment| %>
-          <% if Time.now.strftime("%F") <= appointment.date.strftime("%F") %>
+          <% if (Time.now - 3 * 60 * 60).strftime("%F") <= appointment.date.strftime("%F") %>
             <div class="appointment-card
-            <% if Time.now.strftime("%F") == appointment.date.strftime("%F") %>
+            <% if (Time.now - 3 * 60 * 60).strftime("%F") == appointment.date.strftime("%F") %>
              today ">
             <% else %>">
             <% end %>
