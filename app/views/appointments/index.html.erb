@@ -31,7 +31,12 @@
   <div class="content col-xs-12 col-md-8">
     <div class="appointments-section">
       <div class="appointments-title">
-        <i class="fas fa-angle-down"></i><i class="fas fa-angle-right inactive"></i><h2>Próximas Consultas</h2>
+        <i class="fas fa-angle-down"></i><i class="fas fa-angle-right inactive"></i>
+          <% if current_user.dentist? %>
+            <h2>Próximas consultas marcadas com você</h2>
+          <% else %>
+            <h2>Próximas Consultas</h2>
+          <% end %>
       </div>
       <div class="appointments-list">
         <% @appointments.order(:date).each do |appointment| %>
@@ -69,7 +74,12 @@
     </div>
     <div class="appointments-section">
       <div class="appointments-title">
-        <i class="fas fa-angle-right"></i><i class="fas fa-angle-down inactive"></i><h4>Histórico de Consultas</h4>
+        <i class="fas fa-angle-right"></i><i class="fas fa-angle-down inactive"></i>
+        <% if current_user.dentist? %>
+          <h4>Histórico de consultas realizadas com você</h4>
+        <% else %>
+          <h4>Histórico de Consultas</h4>
+        <% end %>
       </div>
       <div class="appointments-list inactive">
         <% @appointments.order(:date).each do |appointment| %>
