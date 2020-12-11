@@ -24,7 +24,9 @@ class User < ApplicationRecord
   message: "only accepts format (XX)XXXXX-XXXX" }
 
   def fullname
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    full_name = ""
+    first_name.split.each { |name| full_name += "#{name.capitalize} "}
+    last_name.split.each { |n| full_name += "#{n.capitalize} "}
+    full_name.delete_suffix(" ")
   end
-
 end

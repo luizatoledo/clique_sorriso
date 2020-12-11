@@ -7,7 +7,7 @@
   <div class="prescription-card">
       <div class="prescription-line"><div><b>Paciente: </b></div><div><%= prescription.user.fullname %></div></div>
       <div class="prescription-line"><div><b>Dentista: </b></div><div><%= prescription.dentist.user.fullname %></div></div>
-      <div class="prescription-line"><div><b>Appointment-date: </b></div><div><%= prescription.appointment.date.to_s[0..10] %></div></div>
+      <div class="prescription-line"><div><b>Data da consulta: </b></div><div><%= prescription.appointment.date.strftime("%d/%m/%Y") %></div></div>
       <div class="prescription-line"><div><b>Detalhe: </b></div><div><%= prescription.description %></div></div>
       <div class="prescription-buttons-line">
       <% if current_user.dentist? %>
